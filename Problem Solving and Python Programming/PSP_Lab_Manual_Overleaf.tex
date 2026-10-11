@@ -1,0 +1,1066 @@
+\documentclass[12pt,a4paper]{report}
+
+% ---------- Packages ----------
+\usepackage[a4paper,margin=1in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{float}
+
+\definecolor{codebg}{RGB}{247,248,250}
+\definecolor{codeframe}{RGB}{190,195,205}
+\definecolor{codeblue}{RGB}{30,70,150}
+\definecolor{codegreen}{RGB}{30,115,70}
+\definecolor{codered}{RGB}{160,45,45}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=codeblue,
+  urlcolor=codeblue,
+  pdftitle={Problem Solving and Python Programming Laboratory Manual},
+  pdfauthor={Department of Computer Science and Engineering}
+}
+
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{codeblue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{codered},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=8pt,
+  frame=single,
+  rulecolor=\color{codeframe},
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=4,
+  columns=fullflexible,
+  keepspaces=true
+}
+\lstset{style=pythonstyle}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small S1 PSP -- 1131}
+\rhead{\small Problem Solving and Python Programming}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\centering}
+  {\large EXPERIMENT NO. \thechapter}
+  {0.5ex}
+  {\Large\MakeUppercase}
+
+\setlist[enumerate]{itemsep=2pt,topsep=3pt}
+\setlist[itemize]{itemsep=2pt,topsep=3pt}
+
+\newcommand{\experimentdate}{\hfill\textbf{Date:} \rule{3cm}{0.4pt}}
+\newcommand{\aim}[1]{\section*{AIM}#1}
+\newcommand{\result}[1]{\section*{RESULT}#1}
+\newcommand{\courseoutcome}[1]{\section*{RELEVANT COURSE OUTCOME}#1}
+\newcommand{\procedure}{\section*{PROCEDURE}}
+\newcommand{\questions}[1]{\section*{PRACTICAL RELATED QUESTIONS}#1}
+\newcommand{\sampleoutput}{\section*{SAMPLE OUTPUT}}
+
+\begin{document}
+
+% ---------- Cover ----------
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+{\Large\bfseries STATE BOARD OF TECHNICAL EDUCATION KERALA\par}
+\vspace{0.4cm}
+{\large Directorate of Technical Education\par}
+\vspace{1.4cm}
+{\large Diploma in Computer Engineering\par}
+{\large Semester I\par}
+\vspace{1.3cm}
+\rule{\textwidth}{1.2pt}\par
+\vspace{0.5cm}
+{\Huge\bfseries LABORATORY MANUAL\par}
+\vspace{0.5cm}
+{\Large\bfseries 1131 -- PROBLEM SOLVING AND\\[0.2cm] PYTHON PROGRAMMING\par}
+\vspace{0.5cm}
+\rule{\textwidth}{1.2pt}\par
+\vspace{1cm}
+{\large For Diploma Curriculum Revision 2026\par}
+\vfill
+{\large Prepared by:\par}
+{\large Department of Computer Science and Engineering\par}
+\vspace{0.3cm}
+{\large Academic Year: \rule{4cm}{0.4pt}\par}
+\vspace{1cm}
+\end{titlepage}
+
+\pagenumbering{roman}
+\chapter*{PREFACE}
+This laboratory manual is prepared for first-semester diploma students studying
+\textit{Problem Solving and Python Programming (1131)}. It follows the experiment
+sequence and course outcomes of the supplied 1131 laboratory syllabus. The format
+is based on the reference laboratory manual and includes the aim, objectives,
+theory, problem statements, algorithms where appropriate, Python programs,
+sample outputs, results, and practice questions.
+
+Students should first understand the problem, identify the input and expected output,
+develop the logic, write the program, test it with suitable values, and record the
+actual output obtained in the laboratory.
+
+\chapter*{COURSE OUTCOME MATRIX}
+\begin{longtable}{>{\centering\arraybackslash}p{1.7cm}p{11cm}}
+\toprule
+\textbf{CO} & \textbf{Course Outcome}\\
+\midrule
+CO1 & Acquire foundational logical reasoning skills by designing flowcharts and algorithms and develop Python programs incorporating variables, fundamental data types, and standard input/output operations.\\
+CO2 & Optimize program execution through the strategic use of control structures and loop control statements.\\
+CO3 & Implement effective data management strategies using strings, lists, tuples, sets, and dictionaries by applying operations and built-in methods to solve programming problems.\\
+CO4 & Design and develop modular programs using functions, modules, and packages with proper scope management and argument-passing techniques.\\
+\bottomrule
+\end{longtable}
+
+\chapter*{GENERAL INSTRUCTIONS}
+\begin{enumerate}
+\item Read the experiment before attending the laboratory session.
+\item Write the experiment number, title, and date clearly in the record.
+\item Understand the problem statement before writing the algorithm or program.
+\item Type and run the program using the configured Python environment.
+\item Check the output with more than one suitable input whenever possible.
+\item Correct syntax and logical errors, and record the verified output.
+\item Keep the record neat and submit it as instructed by the faculty.
+\item Follow laboratory rules and use computers and software responsibly.
+\end{enumerate}
+
+\chapter*{INDEX}
+\renewcommand{\arraystretch}{1.35}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.8cm}|p{7cm}|>{\centering\arraybackslash}p{1.5cm}|>{\centering\arraybackslash}p{1.5cm}|p{1.6cm}|}
+\hline
+\textbf{Sl. No.} & \textbf{Title of Practical} & \textbf{Mapped CO} & \textbf{Page No.} & \textbf{Date} \\
+\hline
+1 & Algorithm and Flowchart & CO1 & & \\
+\hline
+2 & Installation of Python and an IDE & CO1 & & \\
+\hline
+3 & Introduction to Python Programming & CO1 & & \\
+\hline
+4 & Decision Control Structures & CO2 & & \\
+\hline
+5 & Selection-Based Control Structure & CO2 & & \\
+\hline
+6 & Loop Control Structure & CO2 & & \\
+\hline
+7 & String Manipulations & CO3 & & \\
+\hline
+8 & List Operations & CO3 & & \\
+\hline
+9 & Dictionary Operations & CO3 & & \\
+\hline
+10 & Set Operations & CO3 & & \\
+\hline
+11 & Built-in Functions & CO4 & & \\
+\hline
+12 & User-Defined Functions & CO4 & & \\
+\hline
+\end{longtable}
+\renewcommand{\arraystretch}{1}
+
+\clearpage
+\pagenumbering{arabic}
+
+% =========================================================
+\chapter{ALGORITHM AND FLOWCHART FOR SIMPLE PROBLEMS}
+\experimentdate
+
+\aim{To understand algorithms and flowcharts by designing step-by-step solutions for simple problems before implementing them in Python.}
+
+\section*{OBJECTIVES}
+\begin{itemize}
+\item Understand the purpose and characteristics of an algorithm.
+\item Identify common flowchart symbols.
+\item Develop a logical sequence of steps for a problem.
+\item Represent the steps using a flowchart.
+\end{itemize}
+
+\section*{THEORY}
+An \textbf{algorithm} is a finite sequence of clear steps used to solve a problem.
+A \textbf{flowchart} is a graphical representation of an algorithm using standard
+symbols connected by arrows. An oval usually represents Start/Stop, a parallelogram
+represents input/output, a rectangle represents processing, and a diamond represents
+a decision.
+
+\courseoutcome{CO1 -- Design algorithms and flowcharts and develop foundational logical reasoning skills.}
+
+\section*{PROBLEM STATEMENTS}
+\begin{enumerate}
+\item Calculate simple interest from principal, rate, and time.
+\item Check whether a given integer is odd or even.
+\item Display natural numbers from 1 to a given limit \(N\).
+\item Calculate an employee's salary from working days and daily wage.
+\end{enumerate}
+
+\section*{ALGORITHM / FLOWCHART}
+\subsection*{Problem 1: Simple Interest}
+Formula: \(\mathrm{SI}=(P\times R\times T)/100\).
+\begin{enumerate}
+\item Start.
+\item Input principal \(P\), rate \(R\), and time \(T\).
+\item Calculate \(\mathrm{SI}=(P\times R\times T)/100\).
+\item Display SI.
+\item Stop.
+\end{enumerate}
+\subsection*{Problem 2: Odd or Even}
+\begin{enumerate}
+\item Start; input integer \(N\).
+\item If \(N \bmod 2=0\), display ``Even Number''.
+\item Otherwise, display ``Odd Number''.
+\item Stop.
+\end{enumerate}
+\subsection*{Problem 3: Natural Numbers up to \(N\)}
+\begin{enumerate}
+\item Start; input \(N\); set \(i=1\).
+\item While \(i\leq N\), display \(i\) and update \(i=i+1\).
+\item Stop.
+\end{enumerate}
+\subsection*{Problem 4: Employee Salary}
+Formula: \(\mathrm{Salary}=\mathrm{WorkingDays}\times\mathrm{DailyWage}\).
+\begin{enumerate}
+\item Start; input working days and daily wage.
+\item Calculate salary.
+\item Display salary and stop.
+\end{enumerate}
+
+\section*{FLOWCHART RECORD}
+Draw a separate flowchart for each problem using standard symbols. Connect the symbols with arrows and label the decision branches Yes/No where required.
+
+\result{Algorithms for simple interest, odd/even checking, printing natural numbers, and employee salary calculation were designed. The corresponding flowcharts should be drawn and verified in the record.}
+
+\questions{
+\begin{enumerate}
+\item What is an algorithm?
+\item What is a flowchart?
+\item Which flowchart symbol represents a decision?
+\item Why should program logic be planned before coding?
+\end{enumerate}}
+
+% =========================================================
+\chapter{INSTALLATION OF PYTHON AND AN IDE}
+\experimentdate
+
+\aim{To install or verify the Python interpreter and configure an Integrated Development Environment (IDE) for writing and executing Python programs.}
+
+\section*{OBJECTIVES}
+\begin{itemize}
+\item Understand the Python interpreter and IDE.
+\item Verify Python installation.
+\item Create and execute a Python file.
+\end{itemize}
+
+\section*{THEORY}
+The Python interpreter runs Python code. An IDE provides tools such as a code editor,
+program execution, syntax highlighting, and debugging. Visual Studio Code (VS Code)
+can be used for Python programming after installing the Python extension.
+
+\section*{RESOURCES REQUIRED}
+A computer with Windows or Ubuntu, internet access for installation, Python, and an IDE such as VS Code.
+
+\section*{PROCEDURE}
+\subsection*{A. Verify or install Python in Windows}
+\begin{enumerate}
+\item Visit \url{https://www.python.org/downloads/} and download the Windows installer.
+\item Run the installer and enable ``Add Python to PATH'' when that option is available.
+\item Complete installation.
+\item Open Command Prompt and run \texttt{python --version}.
+\end{enumerate}
+\subsection*{B. Verify or install Python in Ubuntu}
+\begin{enumerate}
+\item Open Terminal.
+\item If Python 3 is not installed, use the package manager as directed by the laboratory instructor.
+\item Verify with \texttt{python3 --version}.
+\end{enumerate}
+\subsection*{C. Configure VS Code}
+\begin{enumerate}
+\item Download VS Code from \url{https://code.visualstudio.com/}.
+\item Install and open VS Code.
+\item Open Extensions, search for Python, and install the Python extension.
+\item Create a file named \texttt{hello.py} and enter the following code.
+\end{enumerate}
+
+\begin{lstlisting}
+print("Hello, Python!")
+\end{lstlisting}
+
+Run the file using the IDE or the appropriate terminal command for the operating system.
+
+\sampleoutput
+\begin{verbatim}
+Hello, Python!
+\end{verbatim}
+
+\result{Python and the selected IDE were verified or configured, and a simple Python program was executed. Record the version and output obtained on the laboratory computer.}
+
+\questions{
+\begin{enumerate}
+\item What is a Python interpreter?
+\item What is an IDE?
+\item What is the purpose of the Python extension in VS Code?
+\item What is the extension of a Python source file?
+\end{enumerate}}
+
+% =========================================================
+\chapter{INTRODUCTION TO PYTHON PROGRAMMING}
+\experimentdate
+
+\aim{To write and execute basic Python programs using variables, input/output statements, data types, and arithmetic operators.}
+
+\section*{OBJECTIVES}
+\begin{itemize}
+\item Use variables to store values.
+\item Accept input using \texttt{input()} and display results using \texttt{print()}.
+\item Perform arithmetic calculations.
+\item Convert input strings to numeric values when necessary.
+\end{itemize}
+
+\courseoutcome{CO1 -- Develop Python programs using variables, fundamental data types, and standard input/output operations.}
+
+\section*{THEORY}
+Python is a high-level, general-purpose programming language. Variables refer to stored
+values. The \texttt{input()} function reads user input as text; \texttt{int()} and
+\texttt{float()} convert input to numeric types. The \texttt{print()} function displays
+information. Arithmetic operators include \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/},
+\texttt{//}, \texttt{\%}, and \texttt{**}.
+
+\section*{PROBLEM 1: TEMPERATURE CONVERSION}
+Convert temperature from Celsius to Fahrenheit using
+\(F=(C\times 9/5)+32\).
+
+\textbf{Algorithm:} Start; input Celsius \(C\); calculate \(F=(C\times9/5)+32\);
+display \(F\); stop.
+
+\begin{lstlisting}
+celsius = float(input("Enter temperature in Celsius: "))
+fahrenheit = (celsius * 9 / 5) + 32
+print("Temperature in Fahrenheit:", fahrenheit)
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter temperature in Celsius: 30
+Temperature in Fahrenheit: 86.0
+\end{verbatim}
+
+\section*{PROBLEM 2: EMPLOYEE SALARY}
+Calculate salary using working days multiplied by daily wage.
+
+\begin{lstlisting}
+working_days = int(input("Enter number of working days: "))
+daily_wage = float(input("Enter daily wage: "))
+salary = working_days * daily_wage
+print("Monthly Salary:", salary)
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter number of working days: 26
+Enter daily wage: 850
+Monthly Salary: 22100.0
+\end{verbatim}
+
+\section*{PROBLEM 3: STUDENT PERCENTAGE}
+Calculate total and percentage for five subjects, assuming each subject is out of 100.
+
+\begin{lstlisting}
+m1 = float(input("Enter marks of subject 1: "))
+m2 = float(input("Enter marks of subject 2: "))
+m3 = float(input("Enter marks of subject 3: "))
+m4 = float(input("Enter marks of subject 4: "))
+m5 = float(input("Enter marks of subject 5: "))
+total = m1 + m2 + m3 + m4 + m5
+percentage = (total / 500) * 100
+print("Total Marks:", total)
+print("Percentage:", percentage)
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter marks of subject 1: 80
+Enter marks of subject 2: 75
+Enter marks of subject 3: 90
+Enter marks of subject 4: 85
+Enter marks of subject 5: 70
+Total Marks: 400.0
+Percentage: 80.0
+\end{verbatim}
+
+\result{The programs for temperature conversion, employee salary, and student percentage were executed and their outputs verified.}
+
+\questions{
+\begin{enumerate}
+\item What is a variable?
+\item What is the difference between \texttt{int()} and \texttt{float()}?
+\item What is the purpose of \texttt{input()}?
+\item What does the modulus operator return?
+\end{enumerate}}
+
+% =========================================================
+\chapter{DECISION CONTROL STRUCTURES}
+\experimentdate
+
+\aim{To develop Python programs using conditional statements to make decisions based on input values.}
+
+\section*{OBJECTIVES}
+Understand \texttt{if}, \texttt{if-else}, and \texttt{if-elif-else}; use relational and logical operators; test programs using different inputs.
+
+\section*{THEORY}
+A decision statement selects which block of code runs according to a condition.
+Python uses indentation to define the body of a conditional statement.
+
+\courseoutcome{CO2 -- Use control structures to solve programming problems.}
+
+\section*{PROBLEM 1: BUS TICKET CHARGE}
+For this exercise, the supplied reference rule is: if the passenger is female or older than 60, set the charge to zero; otherwise retain the entered charge.
+
+\begin{lstlisting}
+gender = input("Enter gender (male/female): ")
+age = int(input("Enter age: "))
+charge = float(input("Enter bus charge: "))
+
+if gender.lower() == "female" or age > 60:
+    charge = 0
+
+print("Bus Ticket Charge:", charge)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter gender (male/female): female
+Enter age: 35
+Enter bus charge: 50
+Bus Ticket Charge: 0
+\end{verbatim}
+
+\section*{PROBLEM 2: LEAP YEAR CHECKING}
+A year is a leap year if it is divisible by 400, or divisible by 4 but not by 100.
+
+\begin{lstlisting}
+year = int(input("Enter a year: "))
+
+if year % 400 == 0:
+    print("Leap Year")
+elif year % 100 == 0:
+    print("Not a Leap Year")
+elif year % 4 == 0:
+    print("Leap Year")
+else:
+    print("Not a Leap Year")
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter a year: 2024
+Leap Year
+\end{verbatim}
+
+\section*{PROBLEM 3: ELECTRICITY BILL}
+Use the rates specified in the reference manual: up to 100 units at Rs. 5 per unit, above 100 and up to 300 at Rs. 8 per unit, and above 300 at Rs. 10 per unit. The program below applies the selected rate to all units consumed.
+
+\begin{lstlisting}
+units = int(input("Enter electricity units consumed: "))
+
+if units <= 100:
+    bill = units * 5
+elif units <= 300:
+    bill = units * 8
+else:
+    bill = units * 10
+
+print("Electricity Bill Amount: Rs.", bill)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter electricity units consumed: 250
+Electricity Bill Amount: Rs. 2000
+\end{verbatim}
+
+\result{The programs using conditional statements were executed and tested.}
+
+\questions{
+\begin{enumerate}
+\item What is the purpose of an \texttt{if} statement?
+\item What is the difference between \texttt{and} and \texttt{or}?
+\item Why is the leap-year condition checked in a particular order?
+\item What is the role of indentation in Python?
+\end{enumerate}}
+
+% =========================================================
+\chapter{SELECTION-BASED CONTROL STRUCTURE}
+\experimentdate
+
+\aim{To write Python programs using an if-elif-else ladder and match-case statement for selecting one outcome from multiple alternatives.}
+
+\section*{THEORY}
+An \texttt{if-elif-else} ladder checks conditions in order. The \texttt{match-case}
+statement selects a case based on the value or pattern being matched and is available
+in Python 3.10 and later.
+
+\courseoutcome{CO2 -- Apply control structures to select the appropriate action.}
+
+\section*{PROBLEM 1: STUDENT GRADE}
+Use the following grading policy: 90 and above: A; 80--89: B; 70--79: C; 60--69: D; below 60: Fail.
+
+\begin{lstlisting}
+mark = int(input("Enter student's mark: "))
+
+if mark >= 90:
+    grade = "A"
+elif mark >= 80:
+    grade = "B"
+elif mark >= 70:
+    grade = "C"
+elif mark >= 60:
+    grade = "D"
+else:
+    grade = "Fail"
+
+print("Grade:", grade)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter student's mark: 85
+Grade: B
+\end{verbatim}
+
+\section*{PROBLEM 2: DAY NAME USING MATCH-CASE}
+\begin{lstlisting}
+day = int(input("Enter day number (1-7): "))
+
+match day:
+    case 1:
+        print("Sunday")
+    case 2:
+        print("Monday")
+    case 3:
+        print("Tuesday")
+    case 4:
+        print("Wednesday")
+    case 5:
+        print("Thursday")
+    case 6:
+        print("Friday")
+    case 7:
+        print("Saturday")
+    case _:
+        print("Invalid Day Number")
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter day number (1-7): 4
+Wednesday
+\end{verbatim}
+
+\result{The grade evaluation and day-name selection programs were executed and tested with valid and invalid inputs.}
+
+\questions{
+\begin{enumerate}
+\item When is an if-elif-else ladder useful?
+\item What does the underscore case \texttt{case \_} represent?
+\item Which Python version introduced \texttt{match-case}?
+\end{enumerate}}
+
+% =========================================================
+\chapter{LOOP CONTROL STRUCTURE}
+\experimentdate
+
+\aim{To write Python programs using loops to repeat operations and solve problems involving sequences and repeated calculations.}
+
+\section*{THEORY}
+A loop executes a block of code repeatedly. A \texttt{for} loop is commonly used to
+iterate over a sequence or range. A \texttt{while} loop repeats while its condition
+remains true. The \texttt{break} statement exits a loop, while \texttt{continue}
+skips to the next iteration.
+
+\courseoutcome{CO2 -- Use loops and loop-control statements effectively.}
+
+\section*{PROBLEM 1: PRINT NATURAL NUMBERS UP TO \(N\)}
+\begin{lstlisting}
+n = int(input("Enter the limit: "))
+
+for i in range(1, n + 1):
+    print(i, end=" ")
+print()
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter the limit: 5
+1 2 3 4 5
+\end{verbatim}
+
+\section*{PROBLEM 2: SUM OF FIRST \(N\) NATURAL NUMBERS}
+\begin{lstlisting}
+n = int(input("Enter the limit: "))
+total = 0
+
+for i in range(1, n + 1):
+    total = total + i
+
+print("Sum:", total)
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter the limit: 5
+Sum: 15
+\end{verbatim}
+
+\section*{PROBLEM 3: COUNT VOWELS IN A WORD}
+\begin{lstlisting}
+word = input("Enter a word: ")
+count = 0
+
+for ch in word.lower():
+    if ch in "aeiou":
+        count += 1
+
+print("Number of vowels:", count)
+\end{lstlisting}
+\sampleoutput
+\begin{verbatim}
+Enter a word: Education
+Number of vowels: 5
+\end{verbatim}
+
+\result{Loop-based programs were executed and checked using suitable input values.}
+
+\questions{
+\begin{enumerate}
+\item State one difference between \texttt{for} and \texttt{while}.
+\item What is an infinite loop?
+\item What does \texttt{break} do?
+\item Why must a loop's condition or control variable be updated when required?
+\end{enumerate}}
+
+% =========================================================
+\chapter{STRING MANIPULATIONS}
+\experimentdate
+
+\aim{To perform string operations such as indexing, slicing, concatenation, membership testing, searching, replacing, and formatting.}
+
+\section*{THEORY}
+A string is a sequence of characters enclosed in quotes. Strings are immutable:
+string methods produce new strings rather than changing the original string in place.
+Indexing accesses individual characters, slicing extracts a portion, and methods such
+as \texttt{upper()}, \texttt{lower()}, \texttt{replace()}, \texttt{find()},
+\texttt{count()}, \texttt{strip()}, and \texttt{split()} help process text.
+
+\courseoutcome{CO3 -- Manage string data using operations and built-in methods.}
+
+\section*{PROBLEM STATEMENT}
+Develop a customer feedback program that accepts customer details and performs common string operations.
+
+\begin{lstlisting}
+name = input("Enter customer name: ").strip()
+customer_id = input("Enter customer ID: ").strip()
+email = input("Enter email address: ").strip()
+feedback = input("Enter feedback: ").strip()
+
+print("First character:", name[0] if name else "")
+print("Last character:", name[-1] if name else "")
+print("First five feedback characters:", feedback[:5])
+print("Last five feedback characters:", feedback[-5:])
+
+first_name = name.split()[0] if name else ""
+username = first_name + customer_id
+print("Username:", username)
+print("Contains 'good':", "good" in feedback.lower())
+print("Uppercase:", feedback.upper())
+print("Lowercase:", feedback.lower())
+print("Capitalized:", feedback.capitalize())
+print("Updated feedback:", feedback.lower().replace("bad", "improve"))
+print("Position of 'delivery':", feedback.lower().find("delivery"))
+print("Count of 'good':", feedback.lower().count("good"))
+print("Words:", feedback.split())
+print("Email contains @:", "@" in email)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter customer name: Anu
+Enter customer ID: 102
+Enter email address: anu@example.com
+Enter feedback: Good delivery and good service
+First character: A
+Last character: u
+First five feedback characters: Good 
+Last five feedback characters: rvice
+Username: Anu102
+Contains 'good': True
+Uppercase: GOOD DELIVERY AND GOOD SERVICE
+Lowercase: good delivery and good service
+Capitalized: Good delivery and good service
+Updated feedback: good delivery and good service
+Position of 'delivery': 5
+Count of 'good': 2
+Words: ['Good', 'delivery', 'and', 'good', 'service']
+Email contains @: True
+\end{verbatim}
+
+\result{String indexing, slicing, joining, membership checks, and common string methods were demonstrated.}
+
+\questions{
+\begin{enumerate}
+\item What is a string?
+\item What is meant by string immutability?
+\item What is the difference between indexing and slicing?
+\item What do \texttt{strip()} and \texttt{split()} do?
+\end{enumerate}}
+
+% =========================================================
+\chapter{LIST OPERATIONS}
+\experimentdate
+
+\aim{To create and manipulate lists using indexing, insertion, deletion, membership testing, slicing, sorting, and list methods.}
+
+\section*{THEORY}
+A list stores an ordered collection of items and is written using square brackets.
+Lists are mutable, so elements can be added, removed, or changed. Common operations
+include \texttt{append()}, \texttt{insert()}, \texttt{remove()}, \texttt{len()},
+\texttt{sort()}, \texttt{reverse()}, \texttt{count()}, and \texttt{index()}.
+
+\courseoutcome{CO3 -- Manage sequential data using list operations and built-in methods.}
+
+\section*{PROBLEM STATEMENT}
+Create a product inventory and demonstrate list operations.
+
+\begin{lstlisting}
+products = ["Rice", "Milk", "Bread", "Tea"]
+print("Initial list:", products)
+print("First product:", products[0])
+print("Last product:", products[-1])
+
+products.append("Sugar")
+products.insert(1, "Coffee")
+print("After adding products:", products)
+
+products.remove("Bread")
+print("After removing Bread:", products)
+print("Number of products:", len(products))
+print("Is Milk available?", "Milk" in products)
+print("Slice [0:3]:", products[0:3])
+
+products.sort()
+print("Sorted list:", products)
+products.reverse()
+print("Reversed list:", products)
+print("Count of Rice:", products.count("Rice"))
+print("Index of Milk:", products.index("Milk"))
+print("Final inventory:", products)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Initial list: ['Rice', 'Milk', 'Bread', 'Tea']
+First product: Rice
+Last product: Tea
+After adding products: ['Rice', 'Coffee', 'Milk', 'Bread', 'Tea', 'Sugar']
+After removing Bread: ['Rice', 'Coffee', 'Milk', 'Tea', 'Sugar']
+Number of products: 5
+Is Milk available? True
+Slice [0:3]: ['Rice', 'Coffee', 'Milk']
+Sorted list: ['Coffee', 'Milk', 'Rice', 'Sugar', 'Tea']
+Reversed list: ['Tea', 'Sugar', 'Rice', 'Milk', 'Coffee']
+Count of Rice: 1
+Index of Milk: 3
+Final inventory: ['Tea', 'Sugar', 'Rice', 'Milk', 'Coffee']
+\end{verbatim}
+
+\result{The list was created and updated using common list operations.}
+
+\questions{
+\begin{enumerate}
+\item How is a list created?
+\item How does \texttt{append()} differ from \texttt{insert()}?
+\item What does \texttt{len()} return?
+\item Are lists mutable?
+\end{enumerate}}
+
+% =========================================================
+\chapter{DICTIONARY OPERATIONS}
+\experimentdate
+
+\aim{To store and manage data as key-value pairs using Python dictionaries.}
+
+\section*{THEORY}
+A dictionary stores information as key-value pairs and is written using curly braces.
+Keys must be unique. Dictionaries are mutable, so entries can be added, updated, or
+removed. Common methods include \texttt{keys()}, \texttt{values()}, \texttt{items()},
+and \texttt{pop()}.
+
+\courseoutcome{CO3 -- Use dictionaries to organize and retrieve structured data.}
+
+\section*{PROBLEM STATEMENT}
+Create a product dictionary using product IDs as keys and product names as values.
+
+\begin{lstlisting}
+products = {101: "Rice", 102: "Milk", 103: "Tea"}
+print("Initial dictionary:", products)
+print("Product 102:", products[102])
+
+products[104] = "Sugar"
+products[103] = "Green Tea"
+print("After add/update:", products)
+
+products.pop(101)
+print("After removing product 101:", products)
+print("Product IDs:", list(products.keys()))
+print("Product names:", list(products.values()))
+print("Key-value pairs:", list(products.items()))
+print("Is product 102 present?", 102 in products)
+print("Number of products:", len(products))
+print("Final dictionary:", products)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Initial dictionary: {101: 'Rice', 102: 'Milk', 103: 'Tea'}
+Product 102: Milk
+After add/update: {101: 'Rice', 102: 'Milk', 103: 'Green Tea', 104: 'Sugar'}
+After removing product 101: {102: 'Milk', 103: 'Green Tea', 104: 'Sugar'}
+Product IDs: [102, 103, 104]
+Product names: ['Milk', 'Green Tea', 'Sugar']
+Key-value pairs: [(102, 'Milk'), (103, 'Green Tea'), (104, 'Sugar')]
+Is product 102 present? True
+Number of products: 3
+Final dictionary: {102: 'Milk', 103: 'Green Tea', 104: 'Sugar'}
+\end{verbatim}
+
+\result{Dictionary entries were accessed, added, updated, removed, and displayed using dictionary methods.}
+
+\questions{
+\begin{enumerate}
+\item What is a key-value pair?
+\item Can a dictionary contain duplicate keys?
+\item What is the purpose of \texttt{items()}?
+\item What happens when an existing key is assigned a new value?
+\end{enumerate}}
+
+% =========================================================
+\chapter{SET OPERATIONS}
+\experimentdate
+
+\aim{To create sets and perform common operations including adding, removing, membership testing, union, intersection, and difference.}
+
+\section*{THEORY}
+A set is an unordered collection of distinct elements. Duplicate values are stored only
+once. Sets are useful for membership checks and comparing groups of values. The
+operators \texttt{|}, \texttt{\&}, and \texttt{-} represent union, intersection, and
+difference, respectively.
+
+\courseoutcome{CO3 -- Apply set operations to manage collections of distinct values.}
+
+\section*{PROBLEM STATEMENT}
+Maintain library members from two branches and compare their membership lists.
+
+\begin{lstlisting}
+branch_a = {"Anu", "Binu", "Ciya", "Dev"}
+branch_b = {"Ciya", "Dev", "Esha"}
+
+print("Branch A:", branch_a)
+branch_a.add("Fathima")
+branch_a.discard("Binu")
+print("Updated Branch A:", branch_a)
+print("Is Anu registered?", "Anu" in branch_a)
+print("Number of members in Branch A:", len(branch_a))
+
+print("Union:", branch_a | branch_b)
+print("Intersection:", branch_a & branch_b)
+print("Members only in Branch A:", branch_a - branch_b)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Branch A: {'Anu', 'Binu', 'Ciya', 'Dev'}
+Updated Branch A: {'Anu', 'Ciya', 'Dev', 'Fathima'}
+Is Anu registered? True
+Number of members in Branch A: 4
+Union: {'Anu', 'Ciya', 'Dev', 'Esha', 'Fathima'}
+Intersection: {'Ciya', 'Dev'}
+Members only in Branch A: {'Anu', 'Fathima'}
+\end{verbatim}
+\textit{Note: The order in which set elements are displayed may differ between runs.}
+
+\result{Set membership and the union, intersection, and difference operations were demonstrated.}
+
+\questions{
+\begin{enumerate}
+\item How is a set different from a list?
+\item Why are duplicate elements not retained in a set?
+\item What is the difference between union and intersection?
+\item What does the expression \(A-B\) represent?
+\end{enumerate}}
+
+% =========================================================
+\chapter{BUILT-IN FUNCTIONS}
+\experimentdate
+
+\aim{To use suitable Python built-in functions to process values and collections.}
+
+\section*{THEORY}
+Built-in functions are available in Python without defining them first. Examples include
+\texttt{len()}, \texttt{sum()}, \texttt{min()}, \texttt{max()}, \texttt{sorted()},
+\texttt{type()}, \texttt{abs()}, and numeric conversion functions such as \texttt{int()}
+and \texttt{float()}. Select a function based on the operation required.
+
+\courseoutcome{CO4 -- Use functions and built-in facilities in Python programs.}
+
+\section*{PROBLEM STATEMENT}
+Read marks, then use built-in functions to report basic statistics.
+
+\begin{lstlisting}
+marks = [78, 85, 92, 67, 88]
+
+print("Marks:", marks)
+print("Number of marks:", len(marks))
+print("Total:", sum(marks))
+print("Highest mark:", max(marks))
+print("Lowest mark:", min(marks))
+print("Sorted marks:", sorted(marks))
+print("Absolute value of -12:", abs(-12))
+print("Data type of marks:", type(marks))
+average = sum(marks) / len(marks)
+print("Average:", average)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Marks: [78, 85, 92, 67, 88]
+Number of marks: 5
+Total: 410
+Highest mark: 92
+Lowest mark: 67
+Sorted marks: [67, 78, 85, 88, 92]
+Absolute value of -12: 12
+Data type of marks: <class 'list'>
+Average: 82.0
+\end{verbatim}
+
+\result{Built-in functions were used to find collection length, total, minimum, maximum, sorted values, absolute value, and data type.}
+
+\questions{
+\begin{enumerate}
+\item What does \texttt{len()} return?
+\item What is the difference between \texttt{sort()} and \texttt{sorted()}?
+\item What does \texttt{type()} return?
+\item How can an average be calculated using \texttt{sum()} and \texttt{len()}?
+\end{enumerate}}
+
+% =========================================================
+\chapter{USER-DEFINED FUNCTIONS}
+\experimentdate
+
+\aim{To define and call functions in Python and use parameters, return values, and local variables to create modular programs.}
+
+\section*{THEORY}
+A user-defined function is a named block of reusable code created using the \texttt{def}
+keyword. Parameters receive values when the function is called. The \texttt{return}
+statement sends a result back to the caller. Functions help divide a large problem into
+smaller, understandable parts and reduce repeated code.
+
+\courseoutcome{CO4 -- Develop modular programs using functions, scope management, and argument passing.}
+
+\section*{PROBLEM 1: CALCULATE SIMPLE INTEREST USING A FUNCTION}
+\begin{lstlisting}
+def simple_interest(principal, rate, time):
+    interest = (principal * rate * time) / 100
+    return interest
+
+p = float(input("Enter principal: "))
+r = float(input("Enter rate of interest: "))
+t = float(input("Enter time in years: "))
+
+answer = simple_interest(p, r, t)
+print("Simple Interest:", answer)
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter principal: 10000
+Enter rate of interest: 5
+Enter time in years: 2
+Simple Interest: 1000.0
+\end{verbatim}
+
+\section*{PROBLEM 2: CHECK EVEN OR ODD USING A FUNCTION}
+\begin{lstlisting}
+def even_or_odd(number):
+    if number % 2 == 0:
+        return "Even"
+    return "Odd"
+
+n = int(input("Enter an integer: "))
+print(n, "is", even_or_odd(n))
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Enter an integer: 7
+7 is Odd
+\end{verbatim}
+
+\section*{PROBLEM 3: FUNCTION WITH DEFAULT ARGUMENT}
+\begin{lstlisting}
+def greet(name="Student"):
+    print("Welcome,", name)
+
+greet()
+greet("Anu")
+\end{lstlisting}
+
+\sampleoutput
+\begin{verbatim}
+Welcome, Student
+Welcome, Anu
+\end{verbatim}
+
+\result{User-defined functions were created and called. Parameters, return values, and a default argument were demonstrated.}
+
+\questions{
+\begin{enumerate}
+\item Which keyword is used to define a function?
+\item What is the purpose of \texttt{return}?
+\item What is a parameter?
+\item What is a default argument?
+\item What is the difference between a local variable and a global variable?
+\end{enumerate}}
+
+% ---------- End matter ----------
+\chapter*{ADDITIONAL PRACTICE}
+\begin{enumerate}
+\item Write a program to find the largest of three numbers.
+\item Write a program to calculate factorial using a loop.
+\item Accept a sentence and count its words.
+\item Store five student names in a list and search for a given name.
+\item Create a dictionary of student names and marks, then update one student's mark.
+\item Create two sets of course participants and display common participants.
+\item Write a function that returns the square of a number.
+\item Write a function to calculate the average of a list of numbers.
+\end{enumerate}
+
+\chapter*{REFERENCES}
+\begin{enumerate}
+\item \textit{1131 -- Problem Solving and Python Programming Laboratory Manual}, Diploma Curriculum Revision 2026, State Institute of Technical Teachers Training and Research, Kalamassery.
+\item Python documentation: \url{https://docs.python.org/3/}
+\item Python downloads: \url{https://www.python.org/downloads/}
+\item Visual Studio Code: \url{https://code.visualstudio.com/}
+\end{enumerate}
+
+\end{document}

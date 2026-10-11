@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Discrete Mathematics - Module 1 Part 1 Notes</title>
+
+<style>
+
+@page {
+    size: A4;
+    margin: 18mm 16mm 18mm 16mm;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f2f4f7;
+    color: #222;
+    line-height: 1.65;
+    margin: 0;
+    padding: 0;
+}
+
+.document {
+    width: 210mm;
+    max-width: 100%;
+    margin: 25px auto;
+    background: white;
+    padding: 28px 38px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.12);
+}
+
+/* =========================================================
+   COVER / HEADER
+   ========================================================= */
+
+.cover {
+    text-align: center;
+    padding: 35px 10px 30px;
+    border-bottom: 4px solid #1f4e79;
+    margin-bottom: 30px;
+}
+
+.cover .institution {
+    font-size: 17px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+.cover h1 {
+    font-size: 32px;
+    color: #1f4e79;
+    margin: 18px 0 5px;
+    letter-spacing: 1px;
+}
+
+.cover h2 {
+    font-size: 22px;
+    color: #333;
+    margin: 5px 0 15px;
+}
+
+.cover .module {
+    display: inline-block;
+    background: #1f4e79;
+    color: white;
+    padding: 8px 22px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* =========================================================
+   TABLE OF CONTENTS
+   ========================================================= */
+
+.toc {
+    background: #f5f8fb;
+    border-left: 5px solid #1f4e79;
+    padding: 18px 25px;
+    margin-bottom: 30px;
+}
+
+.toc h2 {
+    margin-top: 0;
+    color: #1f4e79;
+}
+
+.toc ol {
+    margin-bottom: 0;
+}
+
+.toc a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h2, h3, h4 {
+    page-break-after: avoid;
+}
+
+h2 {
+    color: #1f4e79;
+    border-bottom: 2px solid #d8e2ec;
+    padding-bottom: 6px;
+    margin-top: 32px;
+}
+
+h3 {
+    color: #2f5f8f;
+    margin-top: 24px;
+}
+
+h4 {
+    color: #444;
+}
+
+/* =========================================================
+   INTRODUCTORY BOXES
+   ========================================================= */
+
+.definition {
+    background: #eaf3fb;
+    border-left: 5px solid #1f4e79;
+    padding: 15px 18px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+.important {
+    background: #fff4d6;
+    border-left: 5px solid #e0a100;
+    padding: 15px 18px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+.example {
+    background: #eef8ee;
+    border-left: 5px solid #4d8c4d;
+    padding: 15px 18px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+.warning {
+    background: #fff0f0;
+    border-left: 5px solid #c0392b;
+    padding: 15px 18px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+.summary {
+    background: #f4f0fa;
+    border-left: 5px solid #7956a8;
+    padding: 15px 18px;
+    margin: 18px 0;
+    border-radius: 4px;
+}
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 24px;
+    font-size: 14px;
+}
+
+th {
+    background: #1f4e79;
+    color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+td {
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #f7f9fb;
+}
+
+.left {
+    text-align: left;
+}
+
+/* =========================================================
+   FORMULAS
+   ========================================================= */
+
+.formula {
+    text-align: center;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin: 15px 0;
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logic {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 19px;
+}
+
+/* =========================================================
+   TRUTH TABLES
+   ========================================================= */
+
+.truth-table {
+    width: 70%;
+    margin: 15px auto 25px;
+}
+
+.truth-table th {
+    background: #2f5f8f;
+}
+
+.truth-table td {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 16px;
+}
+
+/* =========================================================
+   DIRECTION BOXES
+   ========================================================= */
+
+.direction {
+    text-align: center;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 12px;
+}
+
+.one-way {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid #1f4e79;
+    border-radius: 6px;
+    background: #eef5fb;
+}
+
+.two-way {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 2px solid #4d8c4d;
+    border-radius: 6px;
+    background: #eef8ee;
+}
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+li {
+    margin-bottom: 5px;
+}
+
+.key-point li {
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 2px solid #ddd;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+/* =========================================================
+   PAGE BREAK
+   ========================================================= */
+
+.page-break {
+    page-break-before: always;
+}
+
+.avoid-break {
+    page-break-inside: avoid;
+}
+
+/* =========================================================
+   PRINT SETTINGS
+   ========================================================= */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .document {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+/* =========================================================
+   MOBILE VIEW
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+
+    .document {
+        padding: 20px;
+        margin: 0;
+    }
+
+    .cover h1 {
+        font-size: 26px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .truth-table {
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="document">
+
+<!-- =====================================================
+     COVER
+     ===================================================== -->
+
+<section class="cover">
+
+    <div class="institution">
+        ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING
+    </div>
+
+    <div class="institution">
+        SEMESTER 3
+    </div>
+
+    <h1>DISCRETE MATHEMATICS</h1>
+
+    <h2>Module 1 – Mathematical Logic</h2>
+
+    <div class="module">
+        NOTE - Part - 1
+    </div>
+
+    <p>
+        <strong>Topics:</strong>
+        Discrete vs Continuous Mathematics • Propositions •
+        Logical Connectives • Truth Tables • Tautology •
+        Contradiction • Contingency • Logical Equivalence •
+        Converse • Inverse • Contrapositive • Duality Principle
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     TABLE OF CONTENTS
+     ===================================================== -->
+
+<div class="toc">
+
+<h2>Contents – Module 1, Part 1</h2>
+
+<ol>
+    <li><a href="#discrete">Discrete vs Continuous Mathematics</a></li>
+    <li><a href="#propositions">Propositions / Statements</a></li>
+    <li><a href="#simple-compound">Simple and Compound Propositions</a></li>
+    <li><a href="#connectives">Logical Connectives</a></li>
+    <li><a href="#truth-tables">Truth Tables</a></li>
+    <li><a href="#classification">Tautology, Contradiction and Contingency</a></li>
+    <li><a href="#translation">Translating English Sentences into Logical Expressions</a></li>
+    <li><a href="#equivalence">Logical Equivalence</a></li>
+    <li><a href="#laws">Important Logical Equivalences</a></li>
+    <li><a href="#cic">Converse, Inverse and Contrapositive</a></li>
+    <li><a href="#duality">Duality Principle</a></li>
+    <li><a href="#mistakes">Common Mistakes</a></li>
+    <li><a href="#summary">Quick Revision Summary</a></li>
+    <li><a href="#practice">Practice Questions</a></li>
+    <li><a href="#exam">Exam Tips</a></li>
+</ol>
+
+</div>
+
+
+<!-- =====================================================
+     1. DISCRETE VS CONTINUOUS
+     ===================================================== -->
+
+<h2 id="discrete">1. Discrete vs Continuous Mathematics</h2>
+
+<h3>1.1 What is Discrete Mathematics?</h3>
+
+<div class="definition">
+
+<strong>Definition:</strong><br>
+
+Discrete Mathematics is the branch of mathematics that studies
+<strong>countable, distinct and separate objects</strong> rather than
+continuous quantities.
+
+</div>
+
+<p>
+Discrete Mathematics provides an important mathematical foundation for
+<strong>Computer Science, Artificial Intelligence, Machine Learning,
+digital systems, cryptography, algorithms, databases and data structures.</strong>
+</p>
+
+<p>
+A computer works with separate and countable pieces of information such as
+<strong>0 and 1, True and False, Yes and No.</strong>
+Therefore, mathematics dealing with such separate values is called
+<strong>Discrete Mathematics.</strong>
+</p>
+
+
+<h3>1.2 Simple Example</h3>
+
+<p>Imagine a classroom.</p>
+
+<p>You can count:</p>
+
+<ul>
+    <li>45 students</li>
+    <li>30 chairs</li>
+    <li>5 windows</li>
+</ul>
+
+<p>
+These are <strong>discrete</strong> because they are separate objects that
+can be counted individually.
+</p>
+
+<p>But consider:</p>
+
+<ul>
+    <li>Air in the room</li>
+    <li>Heat</li>
+    <li>Time passing</li>
+</ul>
+
+<p>
+These quantities are treated as <strong>continuous</strong> because they
+can vary smoothly and can take values within a range.
+</p>
+
+
+<h3>1.3 Discrete Mathematics and Computers</h3>
+
+<div class="important">
+
+<strong>Important Idea:</strong>
+
+<p>
+Every computer program makes decisions.
+</p>
+
+<p>For example:</p>
+
+<div class="formula">
+IF password is correct → Open account<br>
+ELSE → Show "Invalid Password"
+</div>
+
+<p>
+How does the computer make such a decision?
+</p>
+
+<p>
+<strong>Answer: Using Logic.</strong>
+</p>
+
+</div>
+
+
+<h3>1.4 Discrete vs Continuous Mathematics</h3>
+
+<table>
+
+<tr>
+    <th>Continuous Mathematics</th>
+    <th>Discrete Mathematics</th>
+</tr>
+
+<tr>
+    <td>Deals with continuous values</td>
+    <td>Deals with separate and countable values</td>
+</tr>
+
+<tr>
+    <td>Example: Time, Distance, Temperature</td>
+    <td>Example: Students, Books, Cars</td>
+</tr>
+
+<tr>
+    <td>Uses concepts such as Calculus</td>
+    <td>Uses Logic, Sets, Graphs, etc.</td>
+</tr>
+
+</table>
+
+
+<div class="summary">
+
+<strong>Remember:</strong>
+
+<p>
+Continuous → quantities that vary smoothly.
+</p>
+
+<p>
+Discrete → separate and countable objects or values.
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     2. PROPOSITIONS
+     ===================================================== -->
+
+<h2 id="propositions">2. Propositions / Statements</h2>
+
+<h3>2.1 Definition of Proposition</h3>
+
+<div class="definition">
+
+<strong>Definition:</strong><br>
+
+A proposition is a <strong>declarative sentence</strong> that is either
+<strong>True or False, but not both.</strong>
+
+</div>
+
+<p>
+The truth value of a proposition tells us whether the proposition is
+<strong>True (T)</strong> or <strong>False (F)</strong>.
+</p>
+
+<div class="formula">
+Truth Value ∈ {T, F}
+</div>
+
+<p>
+Propositions are usually represented using lowercase letters such as
+<strong>p, q, r, ...</strong>
+</p>
+
+
+<h3>2.2 Examples of Propositions</h3>
+
+<table>
+
+<tr>
+    <th>Sentence</th>
+    <th>Proposition?</th>
+    <th>Reason / Truth Value</th>
+</tr>
+
+<tr>
+    <td>2 + 3 = 5</td>
+    <td>Yes</td>
+    <td>True</td>
+</tr>
+
+<tr>
+    <td>Earth is round.</td>
+    <td>Yes</td>
+    <td>True</td>
+</tr>
+
+<tr>
+    <td>10 &gt; 20</td>
+    <td>Yes</td>
+    <td>False</td>
+</tr>
+
+<tr>
+    <td>Water boils at 100°C at standard atmospheric pressure.</td>
+    <td>Yes</td>
+    <td>True</td>
+</tr>
+
+</table>
+
+
+<h3>2.3 Examples That Are NOT Propositions</h3>
+
+<table>
+
+<tr>
+    <th>Sentence</th>
+    <th>Reason</th>
+</tr>
+
+<tr>
+    <td>How are you?</td>
+    <td>Question</td>
+</tr>
+
+<tr>
+    <td>Close the door.</td>
+    <td>Command</td>
+</tr>
+
+<tr>
+    <td>x + 5 = 10</td>
+    <td>Truth depends on the value assigned to x</td>
+</tr>
+
+<tr>
+    <td>Wow!</td>
+    <td>Exclamation</td>
+</tr>
+
+</table>
+
+
+<div class="important">
+
+<strong>Important:</strong>
+
+A sentence does not become a proposition merely because it ends with a
+full stop. The important condition is that it must be a
+<strong>declarative sentence with a definite truth value.</strong>
+
+</div>
+
+
+<!-- =====================================================
+     3. SIMPLE AND COMPOUND
+     ===================================================== -->
+
+<h2 id="simple-compound">3. Simple and Compound Propositions</h2>
+
+<h3>3.1 Simple Proposition</h3>
+
+<div class="definition">
+
+A <strong>simple proposition</strong> contains one basic statement and
+cannot be divided into smaller propositions using logical connectives.
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+p : It is raining.
+</p>
+
+</div>
+
+
+<h3>3.2 Compound Proposition</h3>
+
+<div class="definition">
+
+A <strong>compound proposition</strong> is formed by combining two or
+more propositions using logical connectives.
+
+</div>
+
+<div class="example">
+
+<strong>Let:</strong>
+
+<p>
+p : It is raining.
+</p>
+
+<p>
+q : I carry an umbrella.
+</p>
+
+<p>Then:</p>
+
+<div class="formula">
+p ∧ q
+</div>
+
+<p>
+means:
+</p>
+
+<p>
+"It is raining AND I carry an umbrella."
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     4. LOGICAL CONNECTIVES
+     ===================================================== -->
+
+<h2 id="connectives">4. Logical Connectives</h2>
+
+<div class="definition">
+
+<strong>Definition:</strong><br>
+
+Logical connectives are symbols used to combine or modify propositions
+to form compound propositions.
+
+</div>
+
+<p>
+The five important logical connectives are:
+</p>
+
+<ol>
+    <li>Negation (NOT)</li>
+    <li>Conjunction (AND)</li>
+    <li>Disjunction (OR)</li>
+    <li>Implication (IF...THEN)</li>
+    <li>Biconditional (IF AND ONLY IF)</li>
+</ol>
+
+
+<!-- NEGATION -->
+
+<h3>4.1 Negation (NOT)</h3>
+
+<div class="definition">
+
+<strong>Symbol:</strong> ¬p
+
+<br><br>
+
+<strong>Meaning:</strong> The opposite or negation of p.
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+p : It is raining.
+</p>
+
+<p>
+¬p : It is not raining.
+</p>
+
+</div>
+
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>¬p</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+</table>
+
+
+<!-- CONJUNCTION -->
+
+<h3>4.2 Conjunction (AND)</h3>
+
+<div class="definition">
+
+<strong>Symbol:</strong> p ∧ q
+
+<br><br>
+
+<strong>Meaning:</strong> Both propositions must be true.
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+"I studied AND I passed."
+</p>
+
+<p>
+p : I studied.
+</p>
+
+<p>
+q : I passed.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+p ∧ q
+</div>
+
+</div>
+
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>q</th>
+    <th>p ∧ q</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+</table>
+
+<div class="important">
+
+<strong>Remember:</strong>
+
+<br>
+
+Only <strong>TT</strong> gives True for AND.
+
+</div>
+
+
+<!-- DISJUNCTION -->
+
+<h3>4.3 Disjunction (OR)</h3>
+
+<div class="definition">
+
+<strong>Symbol:</strong> p ∨ q
+
+<br><br>
+
+<strong>Meaning:</strong> At least one of the propositions is true.
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+"I will have tea OR I will have coffee."
+</p>
+
+</div>
+
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>q</th>
+    <th>p ∨ q</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+</table>
+
+
+<div class="important">
+
+<strong>Remember:</strong>
+
+<br>
+
+Only <strong>FF</strong> gives False for OR.
+
+</div>
+
+
+<!-- IMPLICATION -->
+
+<h3>4.4 Implication</h3>
+
+<div class="definition">
+
+<strong>Symbol:</strong> p → q
+
+<br><br>
+
+<strong>Read as:</strong> "If p, then q."
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+"If it rains, then roads become wet."
+</p>
+
+<p>
+p : It rains.
+</p>
+
+<p>
+q : Roads become wet.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+p → q
+</div>
+
+</div>
+
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>q</th>
+    <th>p → q</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+</table>
+
+
+<div class="important">
+
+<strong>Golden Rule of Implication:</strong>
+
+<p>
+p → q is <strong>False only when p is True and q is False.</strong>
+</p>
+
+<div class="formula">
+T → F = F
+</div>
+
+</div>
+
+
+<!-- BICONDITIONAL -->
+
+<h3>4.5 Biconditional</h3>
+
+<div class="definition">
+
+<strong>Symbol:</strong> p ↔ q
+
+<br><br>
+
+<strong>Read as:</strong> "p if and only if q."
+
+</div>
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+"You pass the exam if and only if you study."
+</p>
+
+<p>
+p : You pass the exam.
+</p>
+
+<p>
+q : You study.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+p ↔ q
+</div>
+
+</div>
+
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>q</th>
+    <th>p ↔ q</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+</table>
+
+
+<div class="important">
+
+<strong>Remember:</strong>
+
+Biconditional is True when both propositions have the
+<strong>same truth value.</strong>
+
+<br><br>
+
+TT → True
+
+<br>
+
+FF → True
+
+</div>
+
+
+<h3>4.6 Summary of Logical Connectives</h3>
+
+<table>
+
+<tr>
+    <th>Connective</th>
+    <th>Symbol</th>
+    <th>Meaning</th>
+    <th>When is it True?</th>
+</tr>
+
+<tr>
+    <td>Negation</td>
+    <td>¬p</td>
+    <td>NOT p</td>
+    <td>Opposite of p</td>
+</tr>
+
+<tr>
+    <td>Conjunction</td>
+    <td>p ∧ q</td>
+    <td>p AND q</td>
+    <td>Only TT</td>
+</tr>
+
+<tr>
+    <td>Disjunction</td>
+    <td>p ∨ q</td>
+    <td>p OR q</td>
+    <td>TT, TF, FT</td>
+</tr>
+
+<tr>
+    <td>Implication</td>
+    <td>p → q</td>
+    <td>If p, then q</td>
+    <td>All except TF</td>
+</tr>
+
+<tr>
+    <td>Biconditional</td>
+    <td>p ↔ q</td>
+    <td>p iff q</td>
+    <td>TT and FF</td>
+</tr>
+
+</table>
+
+
+<!-- =====================================================
+     5. TRUTH TABLES
+     ===================================================== -->
+
+<h2 id="truth-tables">5. Truth Tables</h2>
+
+<div class="definition">
+
+<strong>Definition:</strong><br>
+
+A truth table is a table that shows all possible combinations of truth
+values of the propositions involved in a logical expression.
+
+</div>
+
+<h3>5.1 Number of Rows</h3>
+
+<p>
+If a truth table contains <strong>n distinct propositions</strong>, then
+the number of rows required is:
+</p>
+
+<div class="formula">
+Number of rows = 2<sup>n</sup>
+</div>
+
+
+<table>
+
+<tr>
+    <th>Number of Propositions</th>
+    <th>Number of Rows</th>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>2<sup>1</sup> = 2</td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>2<sup>2</sup> = 4</td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>2<sup>3</sup> = 8</td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>2<sup>4</sup> = 16</td>
+</tr>
+
+</table>
+
+
+<div class="example">
+
+<strong>Example:</strong>
+
+<p>
+Suppose an expression contains p, q and r.
+</p>
+
+<p>
+Here, n = 3.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+Number of rows = 2<sup>3</sup> = 8
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     6. TAUTOLOGY CONTRADICTION CONTINGENCY
+     ===================================================== -->
+
+<h2 id="classification">6. Tautology, Contradiction and Contingency</h2>
+
+<h3>6.1 Tautology</h3>
+
+<div class="definition">
+
+A <strong>tautology</strong> is a compound proposition that is
+<strong>always True</strong>, regardless of the truth values of its
+component propositions.
+
+</div>
+
+<h4>Example: p ∨ ¬p</h4>
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>¬p</th>
+    <th>p ∨ ¬p</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+</table>
+
+<div class="summary">
+
+The last column contains only True values.
+
+<br><br>
+
+Therefore:
+
+<div class="formula">
+p ∨ ¬p = Tautology
+</div>
+
+</div>
+
+
+<h3>6.2 Contradiction</h3>
+
+<div class="definition">
+
+A <strong>contradiction</strong> is a compound proposition that is
+<strong>always False</strong>, regardless of the truth values of its
+component propositions.
+
+</div>
+
+<h4>Example: p ∧ ¬p</h4>
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>¬p</th>
+    <th>p ∧ ¬p</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+</table>
+
+<div class="summary">
+
+The last column contains only False values.
+
+<br><br>
+
+Therefore:
+
+<div class="formula">
+p ∧ ¬p = Contradiction
+</div>
+
+</div>
+
+
+<h3>6.3 Contingency</h3>
+
+<div class="definition">
+
+A <strong>contingency</strong> is a compound proposition that is
+<strong>True for some combinations</strong> of truth values and
+<strong>False for other combinations.</strong>
+
+</div>
+
+<h4>Example: p ∧ q</h4>
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>q</th>
+    <th>p ∧ q</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>T</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>F</td>
+    <td>F</td>
+</tr>
+
+</table>
+
+<p>
+The final column contains both True and False values.
+</p>
+
+<div class="formula">
+p ∧ q = Contingency
+</div>
+
+
+<h3>6.4 Comparison</h3>
+
+<table>
+
+<tr>
+    <th>Type</th>
+    <th>Last Column of Truth Table</th>
+</tr>
+
+<tr>
+    <td><strong>Tautology</strong></td>
+    <td>All True</td>
+</tr>
+
+<tr>
+    <td><strong>Contradiction</strong></td>
+    <td>All False</td>
+</tr>
+
+<tr>
+    <td><strong>Contingency</strong></td>
+    <td>Mixture of True and False</td>
+</tr>
+
+</table>
+
+
+<!-- =====================================================
+     7. TRANSLATION
+     ===================================================== -->
+
+<h2 id="translation">7. Translating English Sentences into Logical Expressions</h2>
+
+<div class="important">
+
+<strong>Basic Rule:</strong>
+
+<p>
+Before translating an English sentence into a logical expression,
+first identify:
+</p>
+
+<ol>
+    <li>The simple propositions.</li>
+    <li>The connecting word or phrase.</li>
+    <li>The corresponding logical symbol.</li>
+</ol>
+
+</div>
+
+
+<h3>7.1 Common English Words and Logical Symbols</h3>
+
+<table>
+
+<tr>
+    <th>English Word / Phrase</th>
+    <th>Logical Symbol</th>
+    <th>Example</th>
+</tr>
+
+<tr>
+    <td>Not</td>
+    <td>¬</td>
+    <td>Not raining → ¬p</td>
+</tr>
+
+<tr>
+    <td>And</td>
+    <td>∧</td>
+    <td>Study and pass → p ∧ q</td>
+</tr>
+
+<tr>
+    <td>Or</td>
+    <td>∨</td>
+    <td>Tea or coffee → p ∨ q</td>
+</tr>
+
+<tr>
+    <td>If...then</td>
+    <td>→</td>
+    <td>If p then q → p → q</td>
+</tr>
+
+<tr>
+    <td>If and only if</td>
+    <td>↔</td>
+    <td>p iff q → p ↔ q</td>
+</tr>
+
+</table>
+
+
+<h3>7.2 Example 1 – AND</h3>
+
+<div class="example">
+
+<p><strong>Let:</strong></p>
+
+<p>
+p : I study.
+</p>
+
+<p>
+q : I pass.
+</p>
+
+<p><strong>Sentence:</strong></p>
+
+<p>
+I study and I pass.
+</p>
+
+<p><strong>Connecting word:</strong> AND</p>
+
+<p><strong>Expression:</strong></p>
+
+<div class="formula">
+p ∧ q
+</div>
+
+</div>
+
+
+<h3>7.3 Example 2 – OR</h3>
+
+<div class="example">
+
+<p><strong>Sentence:</strong></p>
+
+<p>
+I study or I pass.
+</p>
+
+<p><strong>Expression:</strong></p>
+
+<div class="formula">
+p ∨ q
+</div>
+
+</div>
+
+
+<h3>7.4 Example 3 – NOT</h3>
+
+<div class="example">
+
+<p><strong>Sentence:</strong></p>
+
+<p>
+I do not study.
+</p>
+
+<p><strong>Expression:</strong></p>
+
+<div class="formula">
+¬p
+</div>
+
+</div>
+
+
+<h3>7.5 Example 4 – IF...THEN</h3>
+
+<div class="example">
+
+<p><strong>Sentence:</strong></p>
+
+<p>
+If I study, then I pass.
+</p>
+
+<p>Let:</p>
+
+<p>
+p : I study.
+</p>
+
+<p>
+q : I pass.
+</p>
+
+<p>Therefore:</p>
+
+<div class="formula">
+p → q
+</div>
+
+</div>
+
+
+<!-- ONLY IF -->
+
+<h3>7.6 Understanding "Only If"</h3>
+
+<div class="important">
+
+<strong>Rule:</strong>
+
+<div class="formula">
+p only if q : p → q
+</div>
+
+</div>
+
+<p><strong>Example:</strong></p>
+
+<p>
+"I pass only if I study."
+</p>
+
+<p>Let:</p>
+
+<p>
+p : I pass.
+</p>
+
+<p>
+q : I study.
+</p>
+
+<p>Therefore:</p>
+
+<div class="formula">
+p → q
+</div>
+
+<p>
+This means:
+</p>
+
+<p>
+"If I pass, then I study."
+</p>
+
+<div class="direction">
+<span class="one-way">PASS → STUDY</span>
+</div>
+
+
+<!-- IF AND ONLY IF -->
+
+<h3>7.7 Understanding "If and Only If"</h3>
+
+<div class="important">
+
+<strong>Rule:</strong>
+
+<div class="formula">
+p if and only if q : p ↔ q
+</div>
+
+</div>
+
+<p>
+"If and only if" represents a <strong>two-way relationship.</strong>
+</p>
+
+<p>
+It means both:
+</p>
+
+<div class="formula">
+p → q
+</div>
+
+<p>
+AND
+</p>
+
+<div class="formula">
+q → p
+</div>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+p ↔ q
+</div>
+
+
+<div class="direction">
+
+<span class="two-way">
+p ↔ q
+</span>
+
+</div>
+
+
+<h3>7.8 Only If vs If and Only If</h3>
+
+<table>
+
+<tr>
+    <th>Phrase</th>
+    <th>Meaning</th>
+    <th>Direction</th>
+</tr>
+
+<tr>
+    <td><strong>Only if</strong></td>
+    <td>One condition is necessary for another</td>
+    <td>One-way</td>
+</tr>
+
+<tr>
+    <td><strong>If and only if</strong></td>
+    <td>Both conditions imply each other</td>
+    <td>Two-way</td>
+</tr>
+
+</table>
+
+
+<div class="example">
+
+<strong>Only If:</strong>
+
+<p>
+I write the exam only if I paid the fee.
+</p>
+
+<div class="formula">
+Write Exam → Paid Fee
+</div>
+
+<p>
+There is only one direction.
+</p>
+
+</div>
+
+
+<div class="example">
+
+<strong>If and Only If:</strong>
+
+<p>
+I pass if and only if I receive the required result.
+</p>
+
+<div class="formula">
+Pass ↔ Receive Required Result
+</div>
+
+<p>
+Both directions are involved.
+</p>
+
+</div>
+
+
+<!-- COMPLEX TRANSLATION -->
+
+<h3>7.9 Example – Compound Premise</h3>
+
+<div class="example">
+
+<p><strong>Let:</strong></p>
+
+<p>
+p : I study.
+</p>
+
+<p>
+q : I attend class.
+</p>
+
+<p>
+r : I pass.
+</p>
+
+<p><strong>Sentence:</strong></p>
+
+<p>
+If I study and attend class, then I pass.
+</p>
+
+<p><strong>Step 1:</strong> Identify the first part.</p>
+
+<div class="formula">
+I study and attend class = p ∧ q
+</div>
+
+<p><strong>Step 2:</strong> Identify "if...then".</p>
+
+<div class="formula">
+→
+</div>
+
+<p><strong>Step 3:</strong> Form the complete expression.</p>
+
+<div class="formula">
+(p ∧ q) → r
+</div>
+
+</div>
+
+<div class="important">
+
+<strong>Why are parentheses used?</strong>
+
+<p>
+Parentheses show that <strong>p ∧ q</strong> forms one complete part of
+the implication.
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     8. LOGICAL EQUIVALENCE
+     ===================================================== -->
+
+<h2 id="equivalence">8. Logical Equivalence</h2>
+
+<div class="definition">
+
+<strong>Definition:</strong>
+
+<p>
+Two propositions are logically equivalent if they have
+<strong>identical truth values for every possible combination</strong>
+of truth values of their variables.
+</p>
+
+</div>
+
+<p><strong>Notation:</strong></p>
+
+<div class="formula">
+p ≡ q
+</div>
+
+<p>
+Read this as:
+</p>
+
+<p>
+<strong>"p is logically equivalent to q."</strong>
+</p>
+
+
+<h3>8.1 Example – Double Negation</h3>
+
+<p>Consider:</p>
+
+<div class="formula">
+¬(¬p)
+</div>
+
+<table class="truth-table">
+
+<tr>
+    <th>p</th>
+    <th>¬p</th>
+    <th>¬¬p</th>
+</tr>
+
+<tr>
+    <td>T</td>
+    <td>F</td>
+    <td>T</td>
+</tr>
+
+<tr>
+    <td>F</td>
+    <td>T</td>
+    <td>F</td>
+</tr>
+
+</table>
+
+<p>
+Compare the first column and the third column.
+</p>
+
+<p>
+They are identical.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<div class="formula">
+¬(¬p) ≡ p
+</div>
+
+
+<!-- =====================================================
+     9. IMPORTANT LAWS
+     ===================================================== -->
+
+<h2 id="laws">9. Important Logical Equivalences</h2>
+
+<table>
+
+<tr>
+    <th>Law</th>
+    <th>Logical Equivalence</th>
+</tr>
+
+<tr>
+    <td>Double Negation</td>
+    <td>¬(¬p) ≡ p</td>
+</tr>
+
+<tr>
+    <td>Identity</td>
+    <td>p ∧ T ≡ p<br>p ∨ F ≡ p</td>
+</tr>
+
+<tr>
+    <td>Domination</td>
+    <td>p ∨ T ≡ T<br>p ∧ F ≡ F</td>
+</tr>
+
+<tr>
+    <td>Idempotent</td>
+    <td>p ∨ p ≡ p<br>p ∧ p ≡ p</td>
+</tr>
+
+<tr>
+    <td>Complement</td>
+    <td>p ∨ ¬p ≡ T<br>p ∧ ¬p ≡ F</td>
+</tr>
+
+<tr>
+    <td>De Morgan's Law</td>
+    <td>¬(p ∧ q) ≡ ¬p ∨ ¬q</td>
+</tr>
+
+<tr>
+    <td>De Morgan's Law</td>
+    <td>¬(p ∨ q) ≡ ¬p ∧ ¬q</td>
+</tr>
+
+</table>
+
+
+<div class="important">
+
+<strong>Memory Tip for De Morgan's Laws:</strong>
+
+<p>
+When a negation moves inside parentheses:
+</p>
+
+<ul>
+    <li>AND changes to OR.</li>
+    <li>OR changes to AND.</li>
+    <li>Each proposition is negated.</li>
+</ul>
+
+</div>
+
+
+<!-- =====================================================
+     10. CONVERSE INVERSE CONTRAPOSITIVE
+     ===================================================== -->
+
+<h2 id="cic">10. Converse, Inverse and Contrapositive</h2>
+
+<p>Consider the original implication:</p>
+
+<div class="formula">
+p → q
+</div>
+
+<p>Example:</p>
+
+<p>
+<strong>If it rains, then roads are wet.</strong>
+</p>
+
+<p>Let:</p>
+
+<p>
+p : It rains.
+</p>
+
+<p>
+q : Roads are wet.
+</p>
+
+
+<h3>10.1 Original Statement</h3>
+
+<div class="formula">
+p → q
+</div>
+
+<p>
+If it rains, then roads are wet.
+</p>
+
+
+<h3>10.2 Converse</h3>
+
+<div class="definition">
+
+<strong>Rule:</strong>
+
+<p>
+Interchange p and q.
+</p>
+
+<div class="formula">
+p → q becomes q → p
+</div>
+
+</div>
+
+<p>
+Therefore:
+</p>
+
+<p>
+If roads are wet, then it rains.
+</p>
+
+<div class="warning">
+
+The converse is <strong>not necessarily logically equivalent</strong>
+to the original implication.
+
+</div>
+
+
+<h3>10.3 Inverse</h3>
+
+<div class="definition">
+
+<strong>Rule:</strong>
+
+<p>
+Negate both p and q.
+</p>
+
+<div class="formula">
+p → q becomes ¬p → ¬q
+</div>
+
+</div>
+
+<p>
+Therefore:
+</p>
+
+<p>
+If it does not rain, then roads are not wet.
+</p>
+
+<div class="warning">
+
+The inverse is <strong>not necessarily logically equivalent</strong>
+to the original implication.
+
+</div>
+
+
+<h3>10.4 Contrapositive</h3>
+
+<div class="definition">
+
+<strong>Rule:</strong>
+
+<p>
+Interchange p and q and negate both.
+</p>
+
+<div class="formula">
+p → q becomes ¬q → ¬p
+</div>
+
+</div>
+
+<p>
+Therefore:
+</p>
+
+<p>
+If roads are not wet, then it did not rain.
+</p>
+
+<div class="important">
+
+<strong>Important:</strong>
+
+The contrapositive is logically equivalent to the original implication.
+
+<div class="formula">
+p → q ≡ ¬q → ¬p
+</div>
+
+</div>
+
+
+<h3>10.5 Summary</h3>
+
+<table>
+
+<tr>
+    <th>Form</th>
+    <th>Symbol</th>
+    <th>How to Form</th>
+</tr>
+
+<tr>
+    <td>Original</td>
+    <td>p → q</td>
+    <td>Given statement</td>
+</tr>
+
+<tr>
+    <td>Converse</td>
+    <td>q → p</td>
+    <td>Interchange p and q</td>
+</tr>
+
+<tr>
+    <td>Inverse</td>
+    <td>¬p → ¬q</td>
+    <td>Negate both</td>
+</tr>
+
+<tr>
+    <td>Contrapositive</td>
+    <td>¬q → ¬p</td>
+    <td>Interchange and negate</td>
+</tr>
+
+</table>
+
+
+<div class="summary">
+
+<strong>Memory Trick:</strong>
+
+<p>
+Original:
+<strong>p → q</strong>
+</p>
+
+<p>
+Converse:
+<strong>q → p</strong>
+</p>
+
+<p>
+Inverse:
+<strong>¬p → ¬q</strong>
+</p>
+
+<p>
+Contrapositive:
+<strong>¬q → ¬p</strong>
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     11. DUALITY
+     ===================================================== -->
+
+<h2 id="duality">11. Duality Principle</h2>
+
+<div class="definition">
+
+<strong>Definition:</strong>
+
+<p>
+The dual of a logical expression is obtained by replacing:
+</p>
+
+<ul>
+    <li>AND (∧) with OR (∨)</li>
+    <li>OR (∨) with AND (∧)</li>
+    <li>True (T) with False (F)</li>
+    <li>False (F) with True (T)</li>
+</ul>
+
+<p>
+The variables such as p, q, r and the negation symbol ¬ are
+<strong>not changed.</strong>
+</p>
+
+</div>
+
+
+<h3>11.1 Example 1</h3>
+
+<p>Find the dual of:</p>
+
+<div class="formula">
+p ∧ T
+</div>
+
+<p>Replace:</p>
+
+<div class="formula">
+∧ → ∨
+<br>
+T → F
+</div>
+
+<p>Therefore:</p>
+
+<div class="formula">
+Dual = p ∨ F
+</div>
+
+
+<h3>11.2 Example 2</h3>
+
+<p>Find the dual of:</p>
+
+<div class="formula">
+(p ∧ q) ∨ r
+</div>
+
+<p>Replace:</p>
+
+<ul>
+    <li>∧ → ∨</li>
+    <li>∨ → ∧</li>
+</ul>
+
+<p>Therefore:</p>
+
+<div class="formula">
+Dual = (p ∨ q) ∧ r
+</div>
+
+
+<h3>11.3 Example 3</h3>
+
+<p>Find the dual of:</p>
+
+<div class="formula">
+(p ∨ q) ∧ (r ∨ T)
+</div>
+
+<p>Replace:</p>
+
+<ul>
+    <li>First ∨ → ∧</li>
+    <li>∧ → ∨</li>
+    <li>Second ∨ → ∧</li>
+    <li>T → F</li>
+</ul>
+
+<p>Therefore:</p>
+
+<div class="formula">
+Dual = (p ∧ q) ∨ (r ∧ F)
+</div>
+
+
+<div class="important">
+
+<strong>Important:</strong>
+
+<p>
+While finding the dual:
+</p>
+
+<ul>
+    <li>Do NOT change p, q, r.</li>
+    <li>Do NOT change negation ¬.</li>
+    <li>Change ∧ to ∨.</li>
+    <li>Change ∨ to ∧.</li>
+    <li>Change T to F.</li>
+    <li>Change F to T.</li>
+</ul>
+
+</div>
+
+
+<!-- =====================================================
+     12. COMMON MISTAKES
+     ===================================================== -->
+
+<h2 id="mistakes">12. Common Mistakes to Avoid</h2>
+
+<ol>
+
+<li>
+<strong>Thinking every sentence is a proposition.</strong><br>
+Questions, commands and exclamations are generally not propositions.
+</li>
+
+<li>
+<strong>Confusing implication with biconditional.</strong><br>
+p → q means one direction, while p ↔ q represents both directions.
+</li>
+
+<li>
+<strong>Forgetting the special case of implication.</strong><br>
+p → q is False only when p = T and q = F.
+</li>
+
+<li>
+<strong>Reversing "only if".</strong><br>
+"p only if q" means p → q.
+</li>
+
+<li>
+<strong>Confusing converse and contrapositive.</strong><br>
+Converse: q → p.<br>
+Contrapositive: ¬q → ¬p.
+</li>
+
+<li>
+<strong>Changing variables while finding a dual.</strong><br>
+Variables remain unchanged.
+</li>
+
+<li>
+<strong>Using the wrong number of truth-table rows.</strong><br>
+For n propositions, always use 2<sup>n</sup> rows.
+</li>
+
+</ol>
+
+
+<!-- =====================================================
+     13. QUICK REVISION
+     ===================================================== -->
+
+<h2 id="summary">13. Quick Revision Summary</h2>
+
+<table>
+
+<tr>
+    <th>Concept</th>
+    <th>Key Point</th>
+</tr>
+
+<tr>
+    <td>Discrete Mathematics</td>
+    <td>Studies separate and countable objects.</td>
+</tr>
+
+<tr>
+    <td>Proposition</td>
+    <td>Declarative sentence that is either True or False.</td>
+</tr>
+
+<tr>
+    <td>Negation</td>
+    <td>¬p</td>
+</tr>
+
+<tr>
+    <td>Conjunction</td>
+    <td>p ∧ q; True only when both are True.</td>
+</tr>
+
+<tr>
+    <td>Disjunction</td>
+    <td>p ∨ q; False only when both are False.</td>
+</tr>
+
+<tr>
+    <td>Implication</td>
+    <td>p → q; False only for T → F.</td>
+</tr>
+
+<tr>
+    <td>Biconditional</td>
+    <td>p ↔ q; True when both have the same truth value.</td>
+</tr>
+
+<tr>
+    <td>Truth Table</td>
+    <td>Shows all possible truth-value combinations.</td>
+</tr>
+
+<tr>
+    <td>Number of rows</td>
+    <td>2<sup>n</sup></td>
+</tr>
+
+<tr>
+    <td>Tautology</td>
+    <td>Always True.</td>
+</tr>
+
+<tr>
+    <td>Contradiction</td>
+    <td>Always False.</td>
+</tr>
+
+<tr>
+    <td>Contingency</td>
+    <td>Sometimes True and sometimes False.</td>
+</tr>
+
+<tr>
+    <td>Logical Equivalence</td>
+    <td>Same truth values in every possible case.</td>
+</tr>
+
+<tr>
+    <td>Converse</td>
+    <td>q → p</td>
+</tr>
+
+<tr>
+    <td>Inverse</td>
+    <td>¬p → ¬q</td>
+</tr>
+
+<tr>
+    <td>Contrapositive</td>
+    <td>¬q → ¬p</td>
+</tr>
+
+<tr>
+    <td>Duality</td>
+    <td>Interchange ∧ ↔ ∨ and T ↔ F.</td>
+</tr>
+
+</table>
+
+
+<!-- =====================================================
+     14. PRACTICE QUESTIONS
+     ===================================================== -->
+
+<h2 id="practice">14. Practice Questions</h2>
+
+<h3>A. Very Short Answer Questions</h3>
+
+<ol>
+
+<li>Define Discrete Mathematics.</li>
+
+<li>What is a proposition?</li>
+
+<li>What is the truth value of a proposition?</li>
+
+<li>Give two examples of propositions.</li>
+
+<li>Give two examples of sentences that are not propositions.</li>
+
+<li>What is a simple proposition?</li>
+
+<li>What is a compound proposition?</li>
+
+<li>Write the symbol for negation.</li>
+
+<li>Write the symbol for conjunction.</li>
+
+<li>Write the symbol for disjunction.</li>
+
+<li>Write the symbol for implication.</li>
+
+<li>Write the symbol for biconditional.</li>
+
+<li>What is a tautology?</li>
+
+<li>What is a contradiction?</li>
+
+<li>What is a contingency?</li>
+
+</ol>
+
+
+<h3>B. Truth Table Questions</h3>
+
+<ol>
+
+<li>Construct the truth table for p ∧ q.</li>
+
+<li>Construct the truth table for p ∨ q.</li>
+
+<li>Construct the truth table for p → q.</li>
+
+<li>Construct the truth table for p ↔ q.</li>
+
+<li>Construct the truth table for p ∨ ¬p and identify its type.</li>
+
+<li>Construct the truth table for p ∧ ¬p and identify its type.</li>
+
+</ol>
+
+
+<h3>C. Translation Questions</h3>
+
+<ol>
+
+<li>
+Let p = "I study" and q = "I pass".
+Translate:
+"I study and I pass."
+</li>
+
+<li>
+Translate:
+"I study or I attend class."
+</li>
+
+<li>
+Translate:
+"I do not study."
+</li>
+
+<li>
+Translate:
+"If I study, then I pass."
+</li>
+
+<li>
+Translate:
+"I pass only if I study."
+</li>
+
+<li>
+Translate:
+"I study if and only if I attend class."
+</li>
+
+<li>
+Let p = "I study", q = "I attend class", r = "I pass".
+Translate:
+"If I study and attend class, then I pass."
+</li>
+
+</ol>
+
+
+<h3>D. Converse, Inverse and Contrapositive</h3>
+
+<p>
+For each statement, write its converse, inverse and contrapositive.
+</p>
+
+<ol>
+
+<li>
+If a number is divisible by 2, then it is even.
+</li>
+
+<li>
+If it rains, then the ground becomes wet.
+</li>
+
+<li>
+If a student studies regularly, then the student performs well.
+</li>
+
+</ol>
+
+
+<h3>E. Logical Equivalence</h3>
+
+<ol>
+
+<li>Show that ¬(¬p) ≡ p using a truth table.</li>
+
+<li>Verify p ∨ ¬p is a tautology.</li>
+
+<li>Verify p ∧ ¬p is a contradiction.</li>
+
+<li>Verify one of De Morgan's laws using a truth table.</li>
+
+</ol>
+
+
+<h3>F. Duality Principle</h3>
+
+<ol>
+
+<li>Find the dual of p ∧ T.</li>
+
+<li>Find the dual of p ∨ F.</li>
+
+<li>Find the dual of (p ∧ q) ∨ r.</li>
+
+<li>Find the dual of (p ∨ q) ∧ (r ∨ T).</li>
+
+</ol>
+
+
+<!-- =====================================================
+     15. EXAM TIPS
+     ===================================================== -->
+
+<h2 id="exam">15. Exam Tips</h2>
+
+<div class="important">
+
+<h3>Tip 1 – Remember the truth-table rules</h3>
+
+<ul>
+    <li>AND → only TT is True.</li>
+    <li>OR → only FF is False.</li>
+    <li>Implication → only TF is False.</li>
+    <li>Biconditional → TT and FF are True.</li>
+</ul>
+
+</div>
+
+
+<div class="important">
+
+<h3>Tip 2 – Remember the classification</h3>
+
+<ul>
+    <li>All T → Tautology</li>
+    <li>All F → Contradiction</li>
+    <li>Both T and F → Contingency</li>
+</ul>
+
+</div>
+
+
+<div class="important">
+
+<h3>Tip 3 – Remember the four forms</h3>
+
+<div class="formula">
+Original: p → q
+<br><br>
+Converse: q → p
+<br><br>
+Inverse: ¬p → ¬q
+<br><br>
+Contrapositive: ¬q → ¬p
+</div>
+
+</div>
+
+
+<div class="important">
+
+<h3>Tip 4 – Remember "Only If"</h3>
+
+<div class="formula">
+p only if q : p → q
+</div>
+
+<p>
+The statement before <strong>only if</strong> becomes the antecedent.
+</p>
+
+</div>
+
+
+<div class="important">
+
+<h3>Tip 5 – Remember "If and Only If"</h3>
+
+<div class="formula">
+p if and only if q : p ↔ q
+</div>
+
+<p>
+It represents two directions:
+</p>
+
+<div class="formula">
+p → q
+<br>
+AND
+<br>
+q → p
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     FINAL SUMMARY
+     ===================================================== -->
+
+<h2>16. Module 1 – Part 1: Final Takeaway</h2>
+
+<div class="summary">
+
+<p>
+Discrete Mathematics deals with mathematical objects that are
+<strong>separate, distinct and countable.</strong>
+</p>
+
+<p>
+A <strong>proposition</strong> is a declarative sentence that is either
+True or False.
+</p>
+
+<p>
+Propositions can be combined using logical connectives such as
+<strong>¬, ∧, ∨, → and ↔.</strong>
+</p>
+
+<p>
+Truth tables help us determine the truth value of compound propositions
+for every possible combination of input values.
+</p>
+
+<p>
+A proposition is:
+</p>
+
+<ul>
+    <li><strong>Tautology</strong> if it is always True.</li>
+    <li><strong>Contradiction</strong> if it is always False.</li>
+    <li><strong>Contingency</strong> if it is sometimes True and sometimes False.</li>
+</ul>
+
+<p>
+Logical equivalence means that two logical expressions have the same
+truth value for every possible combination of truth values.
+</p>
+
+<p>
+For an implication p → q, we can form the
+<strong>converse, inverse and contrapositive.</strong>
+The contrapositive is logically equivalent to the original implication.
+</p>
+
+<p>
+The <strong>duality principle</strong> allows us to obtain the dual of
+a logical expression by interchanging AND with OR and True with False.
+</p>
+
+<p>
+<strong>Note:</strong> This document covers only <strong>Part 1 of
+Module 1</strong>. The remaining topics of Module 1 will be covered
+separately.
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<div class="footer">
+
+    <strong>ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING – SEMESTER 3</strong><br>
+    DISCRETE MATHEMATICS – MODULE 1, PART 1<br>
+    Student Study Note
+
+</div>
+
+</div>
+
+</body>
+</html>

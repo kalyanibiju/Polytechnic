@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UNIT 4 - Abstract Algebraic Systems & Lattices</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 15mm;
+    }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: #1a1a1a;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #0d3b66;
+      border-bottom: 2px solid #0d3b66;
+      padding-bottom: 8px;
+      font-size: 21pt;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 11pt;
+      color: #555;
+      margin-top: -4px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #0d3b66;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-top: 24px;
+      font-size: 14pt;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #1e293b;
+      margin-top: 14px;
+      font-size: 11pt;
+      page-break-after: avoid;
+    }
+    p, li {
+      font-size: 10pt;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      page-break-inside: avoid;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #94a3b8;
+      padding: 7px 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+    .problem-box {
+      background-color: #f8fafc;
+      border-left: 4px solid #0284c7;
+      padding: 9px 13px;
+      margin: 10px 0;
+      page-break-inside: avoid;
+      font-size: 9.5pt;
+      border-radius: 0 4px 4px 0;
+    }
+    .theorem-box {
+      background-color: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid #16a34a;
+      padding: 9px 13px;
+      margin: 10px 0;
+      page-break-inside: avoid;
+      font-size: 9.5pt;
+      border-radius: 0 4px 4px 0;
+    }
+    pre {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      font-family: Consolas, monospace;
+      font-size: 9.5pt;
+      page-break-inside: avoid;
+      border-radius: 4px;
+    }
+    .highlight-chain {
+      background-color: #eff6ff;
+      border: 1.5px solid #93c5fd;
+      text-align: center;
+      padding: 10px;
+      font-weight: 600;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+    @media print {
+      body { padding: 0; }
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body onload="window.print()">
+
+  <div class="no-print" style="background:#e0f2fe; border:1px solid #7dd3fc; padding:10px; text-align:center; margin-bottom:15px; border-radius:4px;">
+    <strong>Print to PDF:</strong> Press <strong>Ctrl + P</strong> (Windows) or <strong>Cmd + P</strong> (Mac), set Destination to <em>"Save as PDF"</em>, and click <em>Save</em>.
+  </div>
+
+  <h1>UNIT 4: ABSTRACT ALGEBRAIC SYSTEMS & LATTICES</h1>
+  <div class="subtitle">Comprehensive Examination Notes, Solved Problems & Theorems</div>
+
+  <h2>1. ALGEBRAIC SYSTEMS</h2>
+  <h3>1.1 Binary Operation</h3>
+  <p>Let \(A\) be a non-empty set. A binary operation on \(A\) is an operation which combines any two elements of \(A\) and produces another element of \(A\):
+  $$* : A \times A \to A$$
+  Thus, for every \(a, b \in A\), \(a * b \in A\) (Closure Property).</p>
+  <ul>
+    <li><strong>Addition on integers:</strong> \(+ : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}\). For any \(a, b \in \mathbb{Z}\), \(a + b \in \mathbb{Z}\). It is a binary operation.</li>
+    <li><strong>Multiplication on natural numbers:</strong> \(\times : \mathbb{N} \times \mathbb{N} \to \mathbb{N}\) is a binary operation.</li>
+    <li><strong>Subtraction on natural numbers:</strong> Not a binary operation because \(2 - 5 = -3 \notin \mathbb{N}\).</li>
+  </ul>
+
+  <h3>1.2 Properties of Binary Operations</h3>
+  <ol>
+    <li><strong>Closure:</strong> An operation \(*\) on \(A\) is closed if \(a * b \in A\) for all \(a, b \in A\).</li>
+    <li><strong>Associative:</strong> \((a * b) * c = a * (b * c)\) for all \(a, b, c \in A\).</li>
+    <li><strong>Commutative:</strong> \(a * b = b * a\) for all \(a, b \in A\).</li>
+    <li><strong>Identity Element:</strong> An element \(e \in A\) is an identity element if \(a * e = e * a = a\) for all \(a \in A\).
+      <ul>
+        <li>For addition on \(\mathbb{Z}\): \(e = 0\).</li>
+        <li>For multiplication on \(\mathbb{Z}\): \(e = 1\).</li>
+      </ul>
+    </li>
+    <li><strong>Inverse Element:</strong> If \(e\) is the identity, \(b\) is the inverse of \(a\) if \(a * b = b * a = e\).
+      <ul>
+        <li>Additive inverse: \(-a\).</li>
+        <li>Multiplicative inverse (\(a \neq 0\)): \(1/a\).</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>1.3 Algebraic System</h3>
+  <p>An algebraic system is a non-empty set together with one or more operations defined on it: \((A, *)\) or \((A, +, \times)\).</p>
+
+  <h3>Solved Problems: Algebraic Systems</h3>
+  <div class="problem-box">
+    <strong>Problem 1:</strong> Determine whether subtraction is a binary operation on \(\mathbb{Z}\).<br>
+    <strong>Solution:</strong> Let \(a, b \in \mathbb{Z}\). Since the difference of any two integers is an integer, \(a - b \in \mathbb{Z}\).<br>
+    <strong>Answer:</strong> Yes, subtraction is a binary operation on \(\mathbb{Z}\).
+  </div>
+  <div class="problem-box">
+    <strong>Problem 2:</strong> Determine whether division is a binary operation on \(\mathbb{Z}\).<br>
+    <strong>Solution:</strong> For \(2, 3 \in \mathbb{Z}\), \(2 \div 3 = \frac{2}{3} \notin \mathbb{Z}\). Closure fails.<br>
+    <strong>Answer:</strong> Division is not a binary operation on \(\mathbb{Z}\).
+  </div>
+  <div class="problem-box">
+    <strong>Problem 3:</strong> Show that multiplication is associative on \(\mathbb{Z}\).<br>
+    <strong>Solution:</strong> \((a \times b) \times c = (ab)c = abc\) and \(a \times (b \times c) = a(bc) = abc\). Hence, \((a \times b) \times c = a \times (b \times c)\).
+  </div>
+  <div class="problem-box">
+    <strong>Problem 4:</strong> Find the identity element for \(a * b = a + b - 5\) on \(\mathbb{Z}\).<br>
+    <strong>Solution:</strong> \(a * e = a \implies a + e - 5 = a \implies e = 5\). Checking: \(a * 5 = a + 5 - 5 = a\). Identity is \(e = 5\).
+  </div>
+  <div class="problem-box">
+    <strong>Problem 5:</strong> Determine whether \(a * b = a + b\) on \(\mathbb{Z}\) is commutative and associative.<br>
+    <strong>Solution:</strong> Commutative: \(a + b = b + a \implies a * b = b * a\). Associative: \((a + b) + c = a + (b + c)\). Closed: Yes, Associative: Yes, Commutative: Yes, Identity: 0.
+  </div>
+
+  <h2>2. HOMOMORPHISM AND ISOMORPHISM</h2>
+  <p>A mapping \(f : (A, *) \to (B, \circ)\) is a <strong>homomorphism</strong> if it preserves the operation:
+  $$f(a * b) = f(a) \circ f(b) \quad \forall a, b \in A$$
+  An <strong>isomorphism</strong> is a bijective (one-to-one and onto) homomorphism. We write \(A \cong B\).</p>
+
+  <table>
+    <thead>
+      <tr><th>Feature</th><th>Homomorphism</th><th>Isomorphism</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Operation preserving</td><td>Yes: \(f(a * b) = f(a) \circ f(b)\)</td><td>Yes: \(f(a * b) = f(a) \circ f(b)\)</td></tr>
+      <tr><td>One-to-one</td><td>Need not be</td><td>Must be</td></tr>
+      <tr><td>Onto</td><td>Need not be</td><td>Must be</td></tr>
+      <tr><td>Structure</td><td>Preserved (may lose info)</td><td>Preserves complete structure</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Solved Problems: Morphisms</h3>
+  <div class="problem-box">
+    <strong>Problem 1:</strong> Determine whether \(f(x) = 3x\) from \((\mathbb{Z}, +)\) to \((\mathbb{Z}, +)\) is a homomorphism.<br>
+    <strong>Solution:</strong> \(f(a + b) = 3(a + b) = 3a + 3b = f(a) + f(b)\). Hence, \(f\) is a homomorphism.
+  </div>
+  <div class="problem-box">
+    <strong>Problem 2:</strong> Determine whether \(f(x) = x + 1\) on \((\mathbb{Z}, +)\) is a homomorphism.<br>
+    <strong>Solution:</strong> \(f(a + b) = a + b + 1\), but \(f(a) + f(b) = (a + 1) + (b + 1) = a + b + 2\). Since \(a + b + 1 \neq a + b + 2\), \(f\) is not a homomorphism.
+  </div>
+  <div class="problem-box">
+    <strong>Problem 3:</strong> Show that \(f(x) = 2x\) on \((\mathbb{Z}, +)\) is not an isomorphism.<br>
+    <strong>Solution:</strong> While it is a homomorphism, for \(y = 1 \in \mathbb{Z}\), \(2x = 1 \implies x = 1/2 \notin \mathbb{Z}\). Thus it is not onto, so it cannot be an isomorphism.
+  </div>
+  <div class="problem-box">
+    <strong>Problem 4:</strong> Show that \(f(x) = -x\) on \((\mathbb{Z}, +)\) is an isomorphism.<br>
+    <strong>Solution:</strong> Homomorphism: \(f(a+b) = -(a+b) = -a-b = f(a)+f(b)\). One-to-one: \(-a = -b \implies a = b\). Onto: For \(y \in \mathbb{Z}\), \(f(-y) = y\). Thus, \(f\) is an isomorphism.
+  </div>
+  <div class="problem-box">
+    <strong>Problem 5:</strong> Let \(f : \mathbb{Z} \to \mathbb{Z}_3\) be \(f(x) = x \bmod 3\). Show \(f\) is a homomorphism but not an isomorphism.<br>
+    <strong>Solution:</strong> \(f(a+b) = (a+b)\bmod 3 = (a\bmod 3 + b\bmod 3)\bmod 3 = f(a) +_3 f(b)\). It is onto but not one-to-one since \(f(0) = f(3) = 0\).
+  </div>
+
+  <h2>3. SEMIGROUPS, MONOIDS, AND GROUPS</h2>
+  <div class="highlight-chain">
+    Semigroup (Closure + Associativity) &rarr; Monoid (+ Identity) &rarr; Group (+ Inverse) &rarr; Abelian Group (+ Commutativity)
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Property</th><th>Semigroup</th><th>Monoid</th><th>Group</th><th>Abelian Group</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Closure</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Associativity</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Identity</td><td>Not required</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Inverse</td><td>Not required</td><td>Not required</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Commutativity</td><td>Not required</td><td>Not required</td><td>Not required</td><td>✓</td></tr>
+      <tr><td>Standard Example</td><td>\((\mathbb{N}, +)\)</td><td>\((\mathbb{N}_0, +)\), \((\mathbb{N}, \times)\)</td><td>\((\mathbb{Z}, +)\), \((\mathbb{R}^*, \times)\)</td><td>\((\mathbb{Z}, +)\), \((\mathbb{Z}_n, +_n)\)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Key Distinctions and Examples</h3>
+  <ul>
+    <li>\((\mathbb{Z}, -)\) is <strong>not</strong> a semigroup because \((5 - 3) - 1 = 1 \neq 5 - (3 - 1) = 3\).</li>
+    <li>Positive integers \((\mathbb{Z}^+, +)\) form a semigroup, but <strong>not</strong> a monoid because the identity \(0 \notin \mathbb{Z}^+\).</li>
+    <li>\(2 \times 2\) real matrices under multiplication form a <strong>monoid</strong> with identity \(I = \begin{bmatrix}1 & 0\\0 & 1\end{bmatrix}\), but not a group (singular matrices lack inverses).</li>
+    <li>\((\mathbb{N}, +)\) is <strong>not</strong> a group because inverses do not exist in \(\mathbb{N}\).</li>
+  </ul>
+
+  <h2>4. SUBGROUPS</h2>
+  <p>A non-empty subset \(H \subseteq G\) is a <strong>subgroup</strong> (\(H \le G\)) if \(H\) forms a group under the same operation of \(G\).</p>
+  <ul>
+    <li><strong>Multiplicative Subgroup Test:</strong> \(a, b \in H \implies a b^{-1} \in H\).</li>
+    <li><strong>Additive Subgroup Test:</strong> \(a, b \in H \implies a - b \in H\).</li>
+  </ul>
+
+  <div class="problem-box">
+    <strong>Example:</strong> Even integers \(2\mathbb{Z} \le (\mathbb{Z}, +)\).<br>
+    For \(a = 2m, b = 2n \in 2\mathbb{Z}\), \(a - b = 2(m - n) \in 2\mathbb{Z}\). Hence, \(2\mathbb{Z}\) is a subgroup.
+  </div>
+
+  <h2>5. LATTICES</h2>
+  <h3>5.1 Poset and Lattice Definition</h3>
+  <p>A relation \(\le\) on \(P\) is a <strong>partial order</strong> if it is Reflexive (\(a \le a\)), Antisymmetric (\(a \le b \land b \le a \implies a = b\)), and Transitive (\(a \le b \land b \le c \implies a \le c\)).</p>
+  <p>A poset \((L, \le)\) is a <strong>lattice</strong> if every pair of elements \(a, b \in L\) has:
+  <ul>
+    <li>A greatest lower bound (GLB), called the <strong>meet</strong>: \(a \wedge b\).</li>
+    <li>A least upper bound (LUB), called the <strong>join</strong>: \(a \vee b\).</li>
+  </ul>
+  </p>
+
+  <h3>5.2 Hasse Diagram Example: \(L = \{1, 2, 3, 6\}\) under Divisibility</h3>
+  <pre>
+       6
+      / \
+     2   3
+      \ /
+       1
+  </pre>
+  <p>For elements \(2\) and \(3\):
+  $$\text{GLB: } 2 \wedge 3 = \gcd(2, 3) = 1 \qquad \text{LUB: } 2 \vee 3 = \operatorname{lcm}(2, 3) = 6$$</p>
+
+  <h3>5.3 Basic Laws of Lattices</h3>
+  <ul>
+    <li><strong>Idempotent:</strong> \(a \vee a = a\), \(a \wedge a = a\)</li>
+    <li><strong>Commutative:</strong> \(a \vee b = b \vee a\), \(a \wedge b = b \wedge a\)</li>
+    <li><strong>Associative:</strong> \((a \vee b) \vee c = a \vee (b \vee c)\), \((a \wedge b) \wedge c = a \wedge (b \wedge c)\)</li>
+    <li><strong>Absorption:</strong> \(a \vee (a \wedge b) = a\), \(a \wedge (a \vee b) = a\)</li>
+  </ul>
+
+  <h3>5.4 Types of Lattices</h3>
+  <ul>
+    <li><strong>Bounded Lattice:</strong> Contains a least element \(0\) and greatest element \(1\) such that \(0 \le a \le 1, \forall a \in L\).</li>
+    <li><strong>Complemented Lattice:</strong> A bounded lattice where for every \(a\), there exists \(a'\) such that \(a \vee a' = 1\) and \(a \wedge a' = 0\).</li>
+    <li><strong>Distributive Lattice:</strong> Satisfies \(a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c)\) and \(a \vee (b \wedge c) = (a \vee b) \wedge (a \vee c)\).</li>
+    <li><strong>Complete Lattice:</strong> Every subset has both a GLB and an LUB.</li>
+  </ul>
+
+  <h2>6. IMPORTANT THEOREMS & PROOFS</h2>
+  <div class="theorem-box">
+    <strong>Theorem 1: Uniqueness of Identity</strong><br>
+    Suppose \(e\) and \(e'\) are both identity elements in \(G\).<br>
+    Since \(e\) is an identity, \(e * e' = e'\). Since \(e'\) is an identity, \(e * e' = e\).<br>
+    Therefore, \(e = e'\). The identity is unique. ∎
+  </div>
+
+  <div class="theorem-box">
+    <strong>Theorem 2: Uniqueness of Inverse</strong><br>
+    Suppose \(b\) and \(c\) are both inverses of \(a\). Then \(a * b = b * a = e\) and \(a * c = c * a = e\).<br>
+    \(b = b * e = b * (a * c) = (b * a) * c = e * c = c\).<br>
+    Therefore, \(b = c\). The inverse is unique. ∎
+  </div>
+
+  <div class="theorem-box">
+    <strong>Theorem 3: Inverse of a Product (Reversal Rule)</strong><br>
+    \((ab)(b^{-1}a^{-1}) = a(bb^{-1})a^{-1} = a(e)a^{-1} = aa^{-1} = e\).<br>
+    Similarly, \((b^{-1}a^{-1})(ab) = e\).<br>
+    Therefore, \((ab)^{-1} = b^{-1}a^{-1}\). ∎
+  </div>
+
+  <div class="theorem-box">
+    <strong>Theorem 4: Subgroup of an Abelian Group is Abelian</strong><br>
+    Let \(H \le G\) where \(G\) is abelian. For any \(a, b \in H\), since \(H \subseteq G\), \(a, b \in G\). Since \(G\) is abelian, \(ab = ba\). Therefore \(H\) is abelian. ∎
+  </div>
+
+  <h2>7. EXAM-ORIENTED SHORT QUESTIONS (2 MARKS)</h2>
+  <ol>
+    <li><strong>Define binary operation:</strong> A function \(* : A \times A \to A\) that assigns an element of \(A\) to every ordered pair in \(A \times A\).</li>
+    <li><strong>What is a semigroup?</strong> A non-empty set with an associative binary operation.</li>
+    <li><strong>What is a monoid?</strong> A semigroup containing an identity element.</li>
+    <li><strong>What is a group?</strong> A monoid in which every element has an inverse.</li>
+    <li><strong>What is an abelian group?</strong> A group \(G\) satisfying \(ab = ba\) for all \(a, b \in G\).</li>
+    <li><strong>Define subgroup:</strong> A non-empty subset \(H\) of group \(G\) that itself forms a group under the operation of \(G\).</li>
+    <li><strong>What is homomorphism?</strong> An operation-preserving map: \(f(a * b) = f(a) \circ f(b)\).</li>
+    <li><strong>What is isomorphism?</strong> A bijective homomorphism.</li>
+    <li><strong>Define lattice:</strong> A poset in which every pair of elements has a greatest lower bound and a least upper bound.</li>
+    <li><strong>What is meet and join?</strong> The GLB of two elements is the meet (\(a \wedge b\)); the LUB is the join (\(a \vee b\)).</li>
+  </ol>
+
+</body>
+</html>

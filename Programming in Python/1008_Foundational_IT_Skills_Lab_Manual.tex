@@ -1,0 +1,1826 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=0.78in,right=0.78in,top=0.72in,bottom=0.72in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{navy}{RGB}{21,48,75}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.5pt}
+\setlength{\headheight}{14pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1pt,topsep=1pt}
+\newcommand{\pageframe}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \draw[navy,line width=0.8pt] ([xshift=0.23in,yshift=-0.23in]current page.north west) rectangle ([xshift=-0.23in,yshift=0.23in]current page.south east);
+  \end{tikzpicture}%
+}
+\fancypagestyle{main}{%
+  \fancyhf{}
+  \fancyhead[L]{\textcolor{navy}{\small 1008 -- Foundational IT Skills \;|\; Semester 1}}
+  \fancyfoot[L]{\textcolor{gray}{\footnotesize STATE BOARD OF TECHNICAL EDUCATION KERALA \;|\; DIPLOMA CURRICULUM REVISION 2026}}
+  \fancyfoot[R]{\textcolor{gray}{\footnotesize \thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\AddToHook{shipout/background}{\pageframe}
+\newcommand{\expheading}[2]{%
+  \vspace{0.1cm}\noindent\textbf{\large EXPERIMENT NO: #1}\hfill\textbf{Date: #2}\par
+}
+\newcommand{\exptitle}[1]{%
+  \begin{center}\vspace{-2mm}\textcolor{navy}{\fontsize{20}{22}\selectfont\bfseries #1}\end{center}
+  \vspace{1mm}\hrule height 0.5pt\vspace{3mm}
+}
+\begin{document}
+\pagestyle{main}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{1.0cm}
+{\textcolor{navy}{\fontsize{18}{21}\selectfont\bfseries STATE BOARD OF TECHNICAL EDUCATION}}\\[-2mm]
+{\textcolor{navy}{\fontsize{18}{21}\selectfont\bfseries KERALA}}\\[1mm]
+{\textcolor{navy}{\large\bfseries DIRECTORATE OF TECHNICAL EDUCATION}}\\
+{\large GOVERNMENT OF KERALA}
+
+\vspace{1.3cm}
+{\textcolor{navy}{\fontsize{23}{27}\selectfont\bfseries Diploma in Engineering}}\\[5mm]
+\colorbox{navy}{\parbox[c][0.48in][c]{3.5in}{\centering\color{white}\Large\bfseries SEMESTER 1}}
+
+\vspace{1.2cm}
+{\textcolor{navy}{\fontsize{22}{26}\selectfont\bfseries LABORATORY MANUAL}}
+
+\vspace{1.0cm}
+\noindent\begin{tabular}{|>{\centering\arraybackslash\bfseries}p{1.15in}|>{\raggedright\arraybackslash\color{white}\bfseries}p{4.55in}|}\hline
+\textcolor{navy}{\Large 1008} & \cellcolor{navy}\Large FOUNDATIONAL IT SKILLS\\\hline
+\end{tabular}
+
+\vspace{1.0cm}
+{\textcolor{navy}{\large\itshape For Diploma Curriculum Revision 2026}}
+
+\vspace{1.0cm}
+{\textcolor{navy}{\Large\bfseries STUDENT COPY}}
+\end{center}
+\clearpage
+\thispagestyle{main}
+\begin{center}{\textcolor{navy}{\fontsize{20}{24}\selectfont\bfseries INDEX}}\end{center}
+\vspace{5mm}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{|c|X|c|c|c|}\hline
+\textbf{Exp. No.} & \textbf{Name of Experiment} & \textbf{Date} & \textbf{Page No.} & \textbf{Faculty Signature}\\\hline
+1 & Hardware \& Software Exploration & & & \\\hline
+2 & File And Folder Management In Linux Gui & & & \\\hline
+3 & Web \& Connectivity & & & \\\hline
+4 & Professional Documentation & & & \\\hline
+5 & Spreadsheet Basics & & & \\\hline
+6 & Presentation Design & & & \\\hline
+7 & Cloud Collaboration & & & \\\hline
+8 & Data Analysis & & & \\\hline
+9 & Data Visualization & & & \\\hline
+10 & Ai Slide Generation & & & \\\hline
+11 & Generative Pre-Trained Transformer (Gpt) Guided Learning & & & \\\hline
+12 & Graphic Design & & & \\\hline
+\end{tabularx}
+\clearpage
+\clearpage
+\expheading{1}{\underline{\hspace{1.8cm}}}
+\exptitle{HARDWARE \& SOFTWARE EXPLORATION}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To identify the major hardware components of a computer system and familiarize students with\par
+\noindent system software and application software available on a personal computer.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO1 : Identify the basic functions and features of Computers, Operating Systems, and Internet\par
+\noindent applications.\par
+\noindent THEORY Write the minimum theory required for performing the experiment.\par
+
+\medskip\noindent\textbf{Hardware}\par
+\noindent Hardware refers to the physical components of a computer system that can be seen and touched,\par
+
+\noindent Major hardware components include:\par
+\noindent 1. CPU (Central Processing Unit)\par
+\noindent\textbullet\; CPU is called the "brain of the computer."\par
+\noindent\textbullet\; It processes instructions and performs calculations.\par
+\noindent\textbullet\; It controls all operations of the computer system.\par
+\noindent\textbullet\; Main components: Arithmetic Logic Unit (AIU), Control Unit (CU), Registers Functions:\par
+\noindent\textbullet\; Executes instructions\par
+\noindent\textbullet\; Processes data\par
+\noindent\textbullet\; Controls system operations\par
+\noindent AIN\par
+\medskip\noindent\textbf{SCHEME}\par
+\noindent 2. RAM (Random Access Memory)\par
+\noindent\textbullet\; RAM is temporary memory used by the computer while executing programs.\par
+\noindent\textbullet\; Data stored in RAM is lost when power is switched off.\par
+
+\noindent Functions:\par
+\noindent\textbullet\; Stores currently running programs\par
+\noindent\textbullet\; Stores temporary data\par
+
+\noindent Characteristics:\par
+\noindent\textbullet\; Volatile memory\par
+\noindent\textbullet\; Faster than secondary storage\par
+\noindent 3. HDD (Hard Disk Drive)\par
+\noindent\textbullet\; HDD is a secondary storage device.\par
+\noindent\textbullet\; Stores operating systems, files, software, and user data permanently. Characteristics:\par
+\noindent\textbullet\; Non-volatile storage\par
+\noindent\textbullet\; Mechanical storage device\par
+\clearpage
+\noindent 4. SSD (Solid State Drive)\par
+\noindent\textbullet\; SSD is a storage device using flash memory.\par
+\noindent\textbullet\; It has no moving parts.\par
+
+\noindent Advantages over HDD:\par
+\noindent\textbullet\; Faster access speed\par
+\noindent\textbullet\; Less power consumption\par
+\noindent\textbullet\; More durable\par
+\noindent 5. Peripheral Ports\par
+\noindent Peripheral ports are interfaces used to connect external devices to the computer.\par
+
+\noindent ‘Common ports:\par
+\noindent Port Purpose USB Port Connect keyboard, mouse, pen drive, printer\par
+\noindent HDMI Port Connect monitor/projector\par
+\noindent VGA Port Connect display devices Ethernet Port ‘Network connection ‘Audio Port Connect\par
+\noindent speakers/headphones Power Port ‘Supply power\par
+\noindent Type-C Port Data transfer and charging\par
+
+\medskip\noindent\textbf{Software}\par
+\noindent Software is a collection of programs and instructions that directs the computer to perform specific\par
+\noindent tasks.\par
+
+\noindent Software is classified into:\par
+\noindent 1. System Software\par
+\noindent System software controls the operation of the computer and manages hardware resources. Examples:\par
+\noindent\textbullet\; Operating System\par
+\noindent\textbullet\; Device Drivers\par
+\noindent\textbullet\; Language Translators\par
+\noindent\textbullet\; Utility Software Examples available on PC:\par
+\noindent\textbullet\; Windows\par
+\noindent\textbullet\; Linux\par
+\noindent\textbullet\; Antivirus software\par
+\noindent\textbullet\; Disk Cleanup utility\par
+\noindent\textbullet\; Device drivers Functions:\par
+\noindent\textbullet\; Manages hardware\par
+\noindent\textbullet\; Provides user interface\par
+\noindent\textbullet\; Controls system resources\par
+\noindent 2. Application Software\par
+\noindent Application software performs specific user tasks.\par
+
+\noindent Examples:\par
+\noindent Software Purpose MS Word ‘Document creation MS Excel ‘Spreadsheet operations ‘MS PowerPoint\par
+\noindent Presentation preparation\par
+\noindent Google Chrome Web browsing\par
+
+\noindent VLC Media Player                                Playing media files\par
+
+\noindent Paint Image editing and drawing,\par
+\noindent Calculator Calculations\par
+\clearpage
+\noindent Sl.No.                      \_ Name of resource         Computer System               1 per student\par
+\noindent Suggested specification    Desktop/Laptop with\par
+\noindent Qua 1                      Ubuntu\par
+
+\noindent Linux\par
+
+\noindent 2                                                      Monitor 15 inch or above 1\par
+
+\noindent 3                                                      Keyboard Standard USB keyboard 1\par
+
+\noindent 4                                                      Mouse Standard USB mouse 1\par
+
+\noindent 5                                                      RAM Module Any available module for 1\par
+\noindent demonstration\par
+
+\noindent 6                                                      HDD/ssD Any available drive for 1 demonstration\par
+
+\noindent 7                                                      Internet Connection Broadband / Wi-Fi 1 per lab\par
+
+\noindent 8—                                     Ubuntu Linux OS Version 22.04     Installed\par
+\noindent LTS or above\par
+
+\noindent 9                                                      Web Browser Mozilla Firefox / Google Installed\par
+
+\noindent Chrome\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\noindent ME\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Hardware Identification\par
+\noindent 1. Observe the computer system carefully.\par
+\noindent 2. Identify CPU.\par
+\noindent 3. Identify RAM.\par
+\noindent 4. Identify HDD/SSD.\par
+\noindent 5. Observe peripheral ports available on the computer.\par
+\noindent 6. Note down the purpose of each port. @ Software Identification\par
+\noindent 1. Switch on the computer.\par
+\noindent 2. Open installed applications.\par
+\noindent 3. Identify system software.\par
+\noindent 4, Identify application software.\par
+\noindent 5. Record observations.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent Thus the major hardware components and software components of a personal computer were\par
+\noindent identified and studied successfully.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent 1. What is CPU?\par
+\noindent 2. Expand RAM.\par
+\noindent 3. What is the difference between RAM and ROM?\par
+\noindent 4. What is HDD?\par
+\noindent 5. What is SSD?\par
+\noindent 6. Name any two peripheral ports.\par
+\clearpage
+\noindent 7. What is system software?\par
+\noindent 8. What is application software?\par
+\noindent 9. Give examples of system software.\par
+\noindent 10. Give examples of application software.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1. Draw or Take a picture of the ports of your Lab PC and label the ports of your PC.\par
+\noindent 2. Compare the RAM, Processor, and Storage type (SSD vs. HDD) of your Tablet PC or any other\par
+\noindent smart devices versus your lab PC. Prepare a comparison chart of the configurations.\par
+\noindent 3. List any 5 system software and application software in your lab PC.\par
+\noindent REFERENCES SI.No. Text Book/ Website ‘Author Publication\par
+
+\noindent 1                           https:/www.geeksforgeek   GeeksforGeeks      GeeksforGeeks g/comput\par
+\noindent s.or                                         er-science-fundame ntals/\par
+\noindent computer-hardware/\par
+\clearpage
+\expheading{2}{\underline{\hspace{1.8cm}}}
+\exptitle{FILE AND FOLDER MANAGEMENT IN}
+\medskip\noindent\textbf{LINUX GUI}\par
+\noindent PRACTICAL SIGNIFICANCE To create and manage files and folders in Linux using the Graphical\par
+\noindent User Interface (GUI. PO1: Apply knowledge of mathematics, natural sciences, engineering\par
+\noindent fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO1 : Identify the basic functions and features of Computers, Operating Systems, and Internet\par
+\noindent applications.\par
+\noindent THEORY Write the minimum theory required for performing the experiment.\par
+
+\noindent Linux Operating System\par
+\noindent Linux is an open-source operating system that manages computer hardware and software resources.\par
+\noindent It supports both command-line and graphical user interfaces.\par
+
+\medskip\noindent\textbf{Features of Linux:}\par
+\noindent Open-source operating system\par
+\noindent Multi-user operating system\par
+\noindent Multi-tasking capability\par
+\noindent Secure and reliable\par
+\noindent Supports GUI and command line interface\par
+
+\noindent Graphical User Interface (GUI)\par
+\noindent GUI allows users to interact with the computer using windows, icons, menus, and a mouse pointer.\par
+\medskip\noindent\textbf{Advantages of GUI}\par
+\noindent Easy to use\par
+\noindent User-friendly\par
+\noindent Does not require memorizing commands\par
+\noindent Supports drag-and-drop operations\par
+
+\noindent File\par
+\noindent A file is a collection of information stored on a storage device.\par
+
+\noindent Examples:\par
+\noindent Text files, Images, Audio files, Video files, Documents\par
+
+\noindent Folder (Directory)\par
+\noindent A folder or directory is used to organize and store files and other folders.\par
+
+\medskip\noindent\textbf{Functions of folders:}\par
+\noindent files\par
+\noindent Reduce confusion\par
+\clearpage
+\noindent Orga\par
+\noindent Improve file management\par
+
+\medskip\noindent\textbf{Common File Management Operations}\par
+\noindent Create : Creating a new file or folder.\par
+\noindent Rename : Changing the name of an existing file or folder. Copy: Creating a duplicate of a file or\par
+\noindent folder.\par
+\noindent Move: Changing the location of a file or folder.\par
+\noindent Delete: Removing unwanted files or folders\par
+
+\noindent RESOURCES REQUIRED          Name of resource          Computer System            1 per student\par
+\noindent Sl.No.                      Suggested specification   Desktop/Laptop with\par
+\noindent Quantity 1                Ubuntu\par
+
+\noindent Linux 2                     Ubuntu Linux Os Version   \_ Installed 3              Files Application (File\par
+\noindent 22.04 LTS or above                                   GNOME Files / Nautilus\par
+\noindent Installed\par
+
+\noindent Manager) (default in Ubuntu)\par
+
+\noindent 4                                                     Text Editor Gedit / Mousepad Installed\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Creating Folders\par
+\noindent 1. Open File Manager.\par
+\noindent 2. Navigate to Home folder.\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\noindent ME\par
+\noindent 3. Right-click in empty space.\par
+\noindent 4. Select New Folder.\par
+\noindent 5. Create folder named ComputerLab.\par
+\noindent Creating Files\par
+\noindent 1. Open ComputerLab folder\par
+\noindent 2. Create files:\par
+\noindent © Student1.txt\par
+\noindent © Student2.txt\par
+\noindent © Student3.txt\par
+\noindent Rename Operation\par
+
+\noindent J. Rename Student                                     .txt as StudentData.txt.\par
+
+\noindent Copy Operation\par
+\noindent 1. Copy Student2.tst into another folder.\par
+\noindent Move Operation\par
+\noindent J. Move Student3.txt to Documents folder.\par
+\noindent Delete Operation\par
+\noindent 1. Delete unwanted files.\par
+\clearpage
+\medskip\noindent\textbf{LINUX COMMANDS RELATED TO FILE AND FOLDER MANAGEMENT ( Optional}\par
+\medskip\noindent\textbf{Exercise For Computer allied branches)}\par
+\noindent AIthough file and folder operations can be performed using the Graphical User Interface (GUI), Linux\par
+\noindent also provides command-line utilities for performing the same tasks efficiently. Understanding these\par
+\noindent commands helps students gain familiarity with Linux system administration and file management.\par
+\noindent 1. pwd ~ Print Working Directory\par
+\noindent Purpose: Displays the current directory path.\par
+\noindent 2. Is — List Directory Contents\par
+\noindent Purpose: Displays files and folders in the current directory. Usefiul Options: Is -I, ls -a\par
+\noindent 3. mkdir — Create Directory\par
+\noindent Purpose: Creates a new folder (directory).\par
+\noindent 4. touch ~ Create Empty File\par
+\noindent Purpose:Creates a new empty file.\par
+\noindent 5. ed ~ Change Directory\par
+\noindent Purpose:Changes the current working directory.\par
+\noindent 6. cp Copy Files and Directories\par
+\noindent Purpose:Creates a duplicate copy of a file or folder.\par
+\noindent 7. mv ~ Move or Rename Files\par
+\noindent Purpose:Moves files/folders or renames them.\par
+\noindent 8. rm ~ Remove Files\par
+\noindent Purpose:Deletes files.\par
+\noindent 9, rmdir ~ Remove Empty Directory\par
+\noindent Purpose: Deletes an empty folder.\par
+\noindent 10. rm -r ~ Remove Directory and Contents\par
+\noindent Purpose:Deletes a folder along with all files and subfolders\par
+\noindent 11. cat — Display File Contents\par
+\noindent Purpose: Displays the contents of a text file.\par
+\noindent Displays the file contents on the terminal.\par
+\noindent 12. clear ~ Clear Terminal Screen\par
+\noindent Purpose:Clears all text displayed in the terminal window.\par
+
+\noindent Practical Note:\par
+\noindent The instructor of Computer allied branches may first demonstrate file and folder management using\par
+\noindent the GUI File Manager and then show the equivalent Linux terminal commands so that students\par
+\noindent understand both graphical and command-line approaches to file management. This helps bridge\par
+\noindent GUI-based learning with Linux system administration concepts.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent File and folder management operations such as creating, renaming, copying, moving, and deleting\par
+\noindent files and folders were successfully performed using the Linux Graphical User\par
+\noindent Interface (GUI). The student gained familiarity with the Linux desktop environment and file\par
+\noindent management tools. A report containing the steps performed was prepared and successfully uploaded\par
+\noindent through Google Classroom.\par
+\clearpage
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent What is Linux? Expand GUI. What is a file? What is a folder? What is File Manager? How do you\par
+\noindent create a folder? What is the difference between copy and move? What is rename operation? What is\par
+\noindent the purpose of Trash?\par
+\noindent 10. Name two Linue desktop environments.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\medskip\noindent\textbf{SP ENAWAWNS}\par
+\noindent 1. Use the GUI to create a directory tree for your semester subjects, using subject codes as ‘folder\par
+\noindent names and creating separate sub-folders to organize notes for each module.\par
+\noindent 2. Create folders and files for the given scenario\par
+\noindent You are preparing for a weekend trip. Your "home base" is your main user folder.Create a new folder\par
+\noindent called Backpack.Go inside your Backpack folder and create two folders: Food and Tools.Inside the\par
+\noindent Tools folder, create a file called flashlight.txt and a file called map.txt. You realize the map.txt\par
+\noindent shouldn't be in Tools. Move it into the Food folder instead. You want a second flashlight just in case.\par
+\noindent Copy the flashlight.txt file and name the copy spare\_light.txt. You decide you don't need the Food\par
+\noindent folder at all. Delete the entire Food folder and everything inside it.List everything left in your\par
+\noindent Backpack to see what you have.\par
+
+\noindent REFERENCES: Sl.No.                     Text Book/ Website Author        Canonical Ltd. Ubuntu Official\par
+\noindent Publication 1                    als/command-line-for-be\par
+\noindent https://ubuntu.com/tutori\par
+
+\noindent ginners\par
+
+\noindent 2                           htips:/www.geeksforgee      GeeksforGeeks            GeeksforGeeks\par
+\noindent ks.org/linux-file-hierarch\par
+\noindent y-structure/\par
+\clearpage
+\expheading{3}{\underline{\hspace{1.8cm}}}
+\exptitle{WEB \& CONNECTIVITY}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To practice effective web searching using advanced search operators, understand email etiquette,\par
+\noindent and familiarize students with the use of Google Classroom.\par
+\noindent RELEVANT PROGRAM OUTCOMES(POS) PO1: Apply knowledge of mathematics, natural sciences,\par
+\noindent engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO1L : Identify the basic functions and features of Computers, Operating Systems, and Internet\par
+\noindent applications.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Web connectivity refers to the ability of a computer system to connect to the internet and access\par
+\noindent online resources and services.\par
+
+\noindent Requirements for web connectivity:\par
+\noindent\textbullet\; Computer or mobile device\par
+\noindent\textbullet\; Internet connection\par
+\noindent\textbullet\; Web browser\par
+\noindent\textbullet\; User account (for online services)\par
+
+\noindent Examples of web browsers:\par
+\noindent\textbullet\; Google Chrome, Mozilla Firefox, Microsoft Edge, Safari\par
+\noindent Advanced Search Operators\par
+\noindent Search operators are special commands used with search engines to obtain more accurate and\par
+\noindent filtered results.\par
+
+\noindent Common search operators:\par
+\noindent Operator Purpose Example "" Search exact phrase "computer networks" site: Search within a specific\par
+\noindent website site:edu operating system filetype: Search for a particular file type filetype:pdf Linux tutorial\par
+\noindent OR Search either keyword Python OR Java\par
+\noindent - Exclude a word Java -coffee\par
+\noindent\textbullet\; Wildcard operator "largest * in India” Advantages:\par
+\noindent\textbullet\; Reduces irrelevant search results\par
+\noindent\textbullet\; Saves time\par
+\noindent\textbullet\; Provides accurate information\par
+\noindent\textbullet\; Helps locate specific documents\par
+\medskip\noindent\textbf{Email Etiquette}\par
+\noindent Email etiquette refers to the professional and proper behavior followed while sending and receiving\par
+\noindent emails.\par
+
+\noindent Guidelines for proper email writing:\par
+\noindent 1. Use a clear subject line Example:\par
+\clearpage
+\noindent Subject: Submission of Lab Record\par
+\noindent 2. Begin with proper greeting\par
+\noindent B\par
+
+\noindent Examples:\par
+\noindent\textbullet\; Dear Sir/Madam,\par
+\noindent\textbullet\; Respected Sir,\par
+\noindent\textbullet\; Hello Team,\par
+\noindent 3. Write concise and clear messages\par
+\noindent\textbullet\; Use simple language\par
+\noindent\textbullet\; Keep the content relevant\par
+\noindent\textbullet\; Avoid unnecessary information 4, Maintain professional language Avoid:\par
+\noindent\textbullet\; Informal words\par
+\noindent\textbullet\; Slang language\par
+\noindent\textbullet\; Excessive punctuation\par
+\noindent 5. End politely Examples:\par
+\noindent\textbullet\; Thank you\par
+\noindent\textbullet\; Regards\par
+\noindent\textbullet\; Yours faithfully\par
+\noindent 6. Check before sending\par
+\noindent\textbullet\; Recipient address\par
+\noindent\textbullet\; Attachments\par
+\noindent\textbullet\; Grammar\par
+\noindent\textbullet\; Spelling mistakes\par
+\noindent Google Classroom\par
+\noindent Google Classroom is an online learning platform used to manage classes and assignments digitally:\par
+
+\noindent Features:\par
+\noindent\textbullet\; Join classes using class code\par
+\noindent\textbullet\; View assignments\par
+\noindent\textbullet\; Submit assignments\par
+\noindent\textbullet\; Download study materials\par
+\noindent\textbullet\; Communicate with instructors\par
+\noindent\textbullet\; Receive notifications Advantages:\par
+\noindent\textbullet\; Easy content sharing\par
+\noindent\textbullet\; Paperless submission\par
+\noindent\textbullet\; Better communication\par
+\noindent\textbullet\; Organized learning environment\par
+
+\noindent RESOURCES REQUIRED SINo.               Computer System Desktop/Laptop    1 per student\par
+\noindent [Name of resource Suggested            with Ubuntu\par
+\noindent specification 1\par
+
+\noindent Linux\par
+
+\noindent 2                                                      Internet Connection Broadband / Wi-Fi 1 per lab\par
+
+\noindent 3                                                      Web Browser Mozilla Firefox / Google Installed\par
+\clearpage
+\noindent Chrome\par
+
+\noindent 4                                      Google Account Valid institution or   1 per student email ID\par
+\noindent personal\par
+
+\noindent 5                                                        Google Classroom Accessed via browser 1 per\par
+\noindent student\par
+
+\medskip\noindent\textbf{AI TEACHERS AND TRAINING}\par
+\noindent PROCEDURE List the one-by-one procedure to be followed for completing the experiment. Activity 1:\par
+\noindent Advanced Search Operators\par
+\noindent 1. Open a web browser. 2, Open a search engine.\par
+\noindent 3. Practice the following searches:\par
+\noindent\textbullet\; "Computer Networks"\par
+\noindent\textbullet\; site:edu computer engineering\par
+\noindent\textbullet\; filetype:pdf Linux notes\par
+\noindent\textbullet\; Python OR Java\par
+\noindent\textbullet\; Java -coffee 4, Observe search results. Activity 2: Email Etiquette\par
+\noindent 1. Open email application.\par
+\noindent 2. Compose a new email.\par
+\noindent 3. Enter recipient email address.\par
+\noindent 4. Enter subject.\par
+\noindent 5. Write a proper message.\par
+\noindent 6. Attach a file if required.\par
+\noindent 7. Verify details and send. Activity 3: Google Classroom\par
+\noindent 1. Open Google Classroom.\par
+\noindent 2. Login using Google account.\par
+\noindent 3. Join a class using class code.\par
+\noindent 4. Access learning materials,\par
+\noindent 5. Submit a sample assignment.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent Thus advanced search operators, email etiquette practices, and Google Classroom functionalities\par
+\noindent were studied and practiced successfully.\par
+\medskip\noindent\textbf{PRACTICAL RELA’}\par
+\noindent 1. What is a search operator?\par
+\noindent 2. What does site: operator do?\par
+\noindent 3. What is filetype: operator?\par
+\noindent 4, Why is email etiquette important?\par
+\noindent 5. What is Google Classroom?\par
+\noindent 6. Name two web browsers.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1. Use filetype:pdf "Computer Engineering” site:edu on Google. Record the URL and File Size (KB) of\par
+\noindent the first PDF result found.\par
+\noindent 2. Enroll 10 google classroom or any other LMS of Foundational IT Skills and customize profile.\par
+\clearpage
+\noindent 3. Create an email id, draft a formal mail and send mail to your friends with netiquitte.(scenario- You\par
+\noindent are the Event Coordinator for your college. You need to send a ‘formal announcement to the Staff\par
+\noindent coordinator, 10 student participants regarding a change in the workshop schedule. You must also\par
+\noindent keep the HoD informed of this update, but you must ensure the students’ private email addresses\par
+\noindent are not visible to one another:)\par
+\medskip\noindent\textbf{REFERENCES,}\par
+\noindent SL.No. ‘Text Book/ Website\par
+
+\noindent 1                                              https://ahrefs.comvblog/google-advanced-search-oper\par
+\noindent ators!\par
+\clearpage
+\expheading{4}{\underline{\hspace{1.8cm}}}
+\exptitle{PROFESSIONAL DOCUMENTATION}
+\medskip\noindent\textbf{PROFESSIONAI DOCUMENTATION}\par
+
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To create a professional document using a word processing application with proper ‘formatting,\par
+\noindent styles, and an automatically generated table of contents.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+\noindent PO6: When solving well-defined engineering problems, evaluate sustainable development\par
+\noindent impacts to: society, the economy, sustainability, health and safety, legal frameworks, and the\par
+\noindent environment (DK1, DK5, and DK7).\par
+\noindent POT: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO2: Use Stand-alone and Cloud-based office tools to prepare documents, spreadsheets, and\par
+\noindent presentations.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Professional documentation refers to preparing documents in a structured and organized ‘manner for\par
+\noindent communication and presentation purposes.\par
+
+\noindent Examples:\par
+\noindent\textbullet\; Project reports, Seminar reports, Lab records, Technical documentation, Business reports\par
+\noindent Characteristics of a professional document:\par
+\noindent\textbullet\; Proper title and headings\par
+\noindent\textbullet\; Consistent formatting\par
+\noindent\textbullet\; Page numbering\par
+\noindent\textbullet\; Table of contents\par
+\noindent\textbullet\; Proper font and alignment\par
+\noindent\textbullet\; Well-organized sections\par
+\noindent Word Processing Software\par
+\noindent Word processing software allows users to create, edit, format, and print documents, Examples:\par
+\noindent\textbullet\; Microsoft Word\par
+\noindent\textbullet\; LibreOffice Writer\par
+\noindent\textbullet\; Google Docs\par
+
+\noindent Functions:\par
+\noindent\textbullet\; Text editing\par
+\noindent\textbullet\; Formatting\par
+\noindent\textbullet\; Inserting images and tables\par
+\clearpage
+\noindent\textbullet\; Spell checking\par
+\noindent\textbullet\; Document organization\par
+
+\noindent Styles\par
+\noindent Styles are predefined formatting settings used to maintain consistency throughout a document.\par
+
+\noindent Common styles:\par
+\noindent Style Purpose\par
+\noindent Title Main document title Heading 1 Main headings Heading 2 Subheadings\par
+\noindent Normal\par
+\noindent Regular text\par
+\noindent Subtitle\par
+\noindent Secondary titles\par
+
+\noindent Advantages of using styles:\par
+\noindent\textbullet\; Uniform appearance\par
+\noindent\textbullet\; Easy formatting\par
+\noindent\textbullet\; Faster editing\par
+\noindent\textbullet\; Automatic table of contents generation\par
+
+\noindent Table of Contents (TOC)\par
+\noindent A table of contents is a list of document headings and corresponding page numbers.\par
+
+\noindent Advantages:\par
+\noindent\textbullet\; Helps locate sections quickly\par
+\noindent\textbullet\; Improves document organization\par
+\noindent\textbullet\; Provides professional appearance\par
+\noindent\textbullet\; Updates automatically when document content changes\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent Sl.No.                       \_ Name of resource        Computer System            1 per student\par
+\noindent Suggested specification   Desktop/Laptop with\par
+\noindent Quantity 1                Ubuntu\par
+
+\noindent Linux 2 LibreOffice          Google Account Valid      1 per student email ID 5   Google Classroom\par
+\noindent Writer Version 7.0 or        institution or personal                              Accessed via browser 1\par
+\noindent above Installed 3 Internet                                                        per student\par
+\noindent Connection Broadband /\par
+\noindent Wi-Fi 1 per lab 4\par
+
+\noindent AIN\par
+\medskip\noindent\textbf{SCHEME}\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Creating a Formal Report\par
+\noindent 1. Open the word processing application.\par
+\noindent 2. Create a new document.\par
+\noindent 3. Enter report ttle. 4, Add headings and content.\par
+\noindent 5. Apply styles:\par
+\noindent\textbullet\; Title style for title\par
+\noindent\textbullet\; Heading 1 for main headings\par
+\clearpage
+\noindent\textbullet\; Heading 2 for subheadings\par
+\noindent\textbullet\; Normal style for body text\par
+\noindent 6. Insert page numbers.\par
+\noindent 7. Generate an automatic table of contents.\par
+\noindent 8. Save the document.\par
+\noindent Sample Report Structure Title:Computer Fundamentals Report\par
+\noindent 1. Introduction\par
+\noindent 2. Hardware Components\par
+\noindent 3. Software Components 4, Advantages of Computers\par
+\noindent 5. Applications of Computers\par
+\noindent 6. Conclusion\par
+\noindent RE!\par
+\noindent He\par
+\noindent Thus a formal report was created successfully using styles and an automatically generated table of\par
+\noindent contents\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS 1,}\par
+\noindent What is professional documentation?\par
+\noindent 2. What is a style?\par
+\noindent 3. Why are styles used?\par
+\noindent 4, What is TOC?\par
+\noindent 5. Which style is used for main headings?\par
+\noindent 6. Name two word processing software applications.\par
+\noindent 7. Why is formatting important?\par
+\noindent 8. How can a table of contents be generated?\par
+\noindent 9. What is the use of page numbering?\par
+\noindent 10, State one advantage of professional documentation.\par
+\medskip\noindent\textbf{SELF- LEARNING COMPONENTS,}\par
+\noindent 1. Create a standard I-page "Assignment Cover Sheet" using Word Styles (Heading 1, Heading 2).\par
+\noindent 2. Create a professional Biodata for an internship application and export it into pdf (The\par
+\noindent Specification:\par
+\noindent Page Layout: Margins: Set to "Normal" (1 inch or 2.54 cm on all sides). Font: Use a professional\par
+\noindent sans-serif font (e.g., Arial or Calibri) for the body.\par
+\noindent Use of Styles: Apply Heading 1 10 main sections (Personal Details, Education, Skills). Modify the\par
+\noindent Heading 1 style to be Bold and Underlined,\par
+\noindent Data Organization (The Table): Use a 2-column Table to align your personal information (e.g., Date of\par
+\noindent Birth, Nationality, Languages) so the colons (:) line up perfectly:\par
+\noindent Border: Remove the table borders so the text looks floating but perfectly aligned. Visual\par
+\noindent Element:Insert a placeholder for a professional photo.\par
+\medskip\noindent\textbf{‘REFERENCES}\par
+\noindent SIN. Text Book/ Website ‘Author Publication\par
+
+\noindent 1                 https://help libr   The Document   LibreOffice n-U    Foundation   Official Help\par
+\noindent eoffice.org/lates                  S/text/swriter/g\par
+\noindent ve                                 uide/main.html\par
+\clearpage
+\null
+\thispagestyle{main}
+\clearpage
+\clearpage
+\expheading{5}{\underline{\hspace{1.8cm}}}
+\exptitle{SPREADSHEET BASICS}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To understand spreadsheet operations and use formulas such as SUM, AVERAGE (AVG), COUNT,\par
+\noindent COUNTIF, and IF with cell referencing.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+\noindent PO6:; When solving well-defined engineering problems, evaluate sustainable development impacts to:\par
+\noindent society, the economy, sustainability, health and safety, legal frameworks, and the environment (DK1,\par
+\noindent DK5, and DK7).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO2: Use Stand-alone and Cloud-based office tools to prepare documents, spreadsheets, and\par
+\noindent presentations\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Spreadsheet\par
+\noindent A spreadsheet is an electronic worksheet used for organizing, storing, and performing calculations on\par
+\noindent data.\par
+\noindent Examples of spreadsheet software: Microsoft Excel, LibreOffice Calc, Google Sheets Applications of\par
+\noindent spreadsheets:\par
+\noindent Mark list preparation\par
+\noindent Attendance records\par
+\noindent\textbullet\; Payroll processing\par
+\noindent Budget preparation\par
+\noindent Data analysis\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\noindent ME\par
+
+\noindent Components of a Spreadsheet\par
+\noindent Workbook\par
+\noindent A workbook is a collection of worksheets.\par
+
+\noindent Worksheet\par
+\noindent A worksheet consists of rows and columns used for entering data.\par
+
+\noindent Row\par
+\noindent Horizontal arrangement of cells\par
+\noindent Identified by numbers\par
+\clearpage
+\noindent Example:\par
+\noindent 12,3...\par
+
+\noindent Column\par
+\noindent Vertical arrangement of cells\par
+\noindent Identified by letters\par
+
+\noindent Example:\par
+\medskip\noindent\textbf{ABC,}\par
+
+\noindent Cell\par
+\noindent Intersection of row and column\par
+\noindent Stores data\par
+
+\noindent Example:\par
+\medskip\noindent\textbf{AI, B2, C5}\par
+
+\noindent Cell Referencing\par
+\noindent Cell referencing is used to refer to a cell address in formulas. Types of cell references:\par
+\noindent 1. Relative Reference\par
+
+\noindent Changes automatically when copied. Example:\par
+\medskip\noindent\textbf{=AI+B1}\par
+\noindent 2. Absolute Reference\par
+\noindent Does not change when copied.\par
+
+\noindent Uses \$ symbol. Example:\par
+\medskip\noindent\textbf{=SASI+SBS1}\par
+\noindent 3. Mixed Reference\par
+
+\noindent Either row or column remains fixed. Examples:\par
+\medskip\noindent\textbf{=SAI}\par
+\medskip\noindent\textbf{=ASI}\par
+
+\noindent Spreadsheet Functions\par
+\noindent SUM Function\par
+\noindent Used to calculate total values. Syntax:\par
+\noindent =SUM(range)\par
+
+\noindent Example:\par
+\medskip\noindent\textbf{=SUM(B2:B6)}\par
+
+\noindent AVERAGE Function (AVG)\par
+\noindent Used to calculate average values. Syntax:\par
+\noindent AVERAGE (range)\par
+
+\noindent Example:\par
+\medskip\noindent\textbf{=AVERAGE(B2:B6)}\par
+
+\noindent COUNT Function\par
+\noindent Counts the number of cells containing numeric values Syntax:\par
+\noindent =COUNT(range)\par
+\clearpage
+\noindent Example:\par
+\medskip\noindent\textbf{=COUNT(B2:B6)}\par
+
+\noindent COUNTIF Function\par
+\noindent Counts cells that satisfy a condition.\par
+\noindent Syntax: =COUNTIF (range,condition)\par
+
+\noindent Example:\par
+\medskip\noindent\textbf{=COUNTIF(B2:B6,">50")}\par
+
+\noindent IF Function\par
+\noindent Performs logical testing.\par
+
+\noindent Syntax:\par
+\noindent =IF (condition, value\_if.true,value\_if false) Example: IF (B2>\par
+\noindent (0,"Pass”,"Fail”)\par
+
+\noindent SI.No. [ Name of            Suggested specification   Computer System          Desktop/Laptop with 1\par
+\noindent resource                    Quantity 1                                         per student\par
+
+\noindent Ubuntu Linux 2        LibreOffice Cale/     LibreOffice Cale     Google Classroom   Accessed via\par
+\noindent Installed Google                        browser 1 per\par
+\noindent sheets Version 7.0                      student\par
+\noindent or above 3\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Using Spreadsheet Functions\par
+\noindent Open spreadsheet software. Create a new worksheet.\par
+\noindent Enter student details and marks. Apply formulas.\par
+\noindent SUM\par
+\medskip\noindent\textbf{AVERAGE}\par
+\medskip\noindent\textbf{COUNT}\par
+\medskip\noindent\textbf{COUNTIF}\par
+\noindent IF\par
+\noindent Apply cell references.\par
+\noindent Observe the results.\par
+\noindent Save the worksheet.\par
+\noindent NAMNeeeee Kune\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\medskip\noindent\textbf{ME *}\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent Spreadsheet formulas (SUM, AVERAGE, COUNT, COUNTIF, and IF) and cell referencing\par
+\noindent were studied and applied successfully and uploaded the spreadsheet in the Google classroom.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent What is a spreadsheet?\par
+\clearpage
+\noindent What is a workbook?\par
+\noindent What is a worksheet?\par
+\noindent What is cell referencing?\par
+\noindent What is the syntax of SUM function? What is COUNT function?\par
+\noindent What is COUNTIF used for?\par
+\noindent What is an IF function?\par
+\noindent 10. Name two spreadsheet applications.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1. Find and apply the COUNTIF formula in a spreadsheet to count how many students\par
+\noindent passed a test\par
+\noindent 2. In a cricket database, use the SUM and AVERAGE functions to calculate the total and mean values\par
+\noindent for the "Runs Scored" field in the range B2:B21. Next, apply the COUNTIF\par
+\noindent Differentiate between relative and absolute references.\par
+\noindent formula to the "Player Category" field in range C2:C21 to find the total number of players listed as\par
+\noindent "Batsman.” In the "Selection Status" column, use an IF formula to check the "Runs\par
+\noindent Scored” in cell B2 and display "Selected" if the value is 50 or higher, otherwise display "Waitlist."\par
+\noindent Finally, use the COUNT function on the "Player Name" field in range A2:A21 to\par
+\noindent verify the total number of participants in the academy.\par
+
+\noindent REFEREN     Text         https://hel   The        LibreOffic     Foundatio    hups:/ww    Geeksfor   Geeksfor\par
+\noindent CES         Book/        p.libreoffi   Document   e Official l   n Help de/   w.geeksfo   Geeks      Geeks\par
+\noindent Sl.No.      Website      ce.org/                  atesten-U      main.html    rgeeks\par
+\noindent ‘Author P                             S/text/sca     2\par
+\noindent ublication                            le/gui\par
+\noindent 1\par
+
+\noindent org/basic-excel-formulas/\par
+\noindent a\par
+\clearpage
+\expheading{6}{\underline{\hspace{1.8cm}}}
+\exptitle{PRESENTATION DESIGN}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To create a professional 5-slide pitch deck using LibreOffice Impress in Ubuntu by applying themes,\par
+\noindent animations, and slide transitions.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+\noindent PO6: When solving well-defined engineering problems, evaluate sustainable development impacts to:\par
+\noindent society, the economy, sustainability, health and safety, legal frameworks, and the environment (DK1,\par
+\noindent DK5, and DK7).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO2: Use Stand-alone and Cloud-based office tools to prepare documents, spreadsheets, and\par
+\noindent presentations.\par
+\medskip\noindent\textbf{‘THEORY}\par
+
+\noindent Presentation Software\par
+\noindent Presentation software is used to create visual presentations containing text, images, graphics, charts,\par
+\noindent and multimedia objects.\par
+
+\noindent Examples:\par
+\noindent © LibreOffice Impress\par
+\noindent © Microsoft PowerPoint\par
+\noindent © Google Slides\par
+
+\noindent Pitch Deck\par
+\noindent A pitch deck is a short presentation used to communicate ideas, projects, products, or solutions\par
+\noindent effectively.\par
+\noindent A typical pitch deck contains\par
+\noindent Title\par
+\noindent Problem Statement\par
+\noindent Solution\par
+\noindent Features/Benefits\par
+\noindent Conclusion\par
+\noindent Animation Animation is the visual effect applied to objects within a slide.\par
+
+\noindent Examples:\par
+\noindent Appear\par
+\clearpage
+\noindent Fade In\par
+\noindent Flyin\par
+\noindent Zoom\par
+
+\noindent Advantages:\par
+\noindent © Makes presentations attractive\par
+\noindent © Highlights important information\par
+\noindent © Improves audience engagement\par
+\noindent Slide Transition Slide transition is the visual effect displayed when moving from one slide to another.\par
+\noindent Examples:\par
+\noindent Fade\par
+\noindent Push\par
+\noindent Wipe\par
+\noindent Split\par
+
+\noindent Advantages:\par
+\noindent © Improves presentation flow\par
+\noindent © Gives a professional appearance\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent Sl.No.                      Name of resource          Computer System            1 per student\par
+\noindent Suggested specification   Desktop/Laptop with\par
+\noindent Quantity 1                Ubuntu\par
+
+\noindent Linux 2                                               LibreOffice Impress Version 7.0 or above Installed\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Creating a 5-Slide Pitch Deck\par
+\noindent Open LibreOffice Impress. Create a new presentation. Select a suitable theme. Create five slides.\par
+\noindent Add content to each slide. Insert images if required. Apply animations to objects. Apply slide\par
+\noindent transitions.\par
+\noindent 1. Save the presentation.\par
+\noindent 10. Run the slideshow.\par
+\noindent SEN AwAWNS\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent A visual presentation containing text, images, graphics and multimedia objects was created\par
+\noindent successfully using presentation software and uploaded the pdf format of the same in the Google\par
+\noindent Classroom.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent What is presentation software?\par
+\noindent What is a pitch deck?\par
+\noindent What is animation?\par
+\noindent What is a transition?\par
+\noindent Name two animation effects.\par
+\clearpage
+\noindent ‘Name two transition effects.\par
+\noindent Which application is used in Ubuntu for presentations? What is the file extension of LibreOffice\par
+\noindent Impress? Which key starts slideshow mode?\par
+\noindent 10. State one advantage of presentation software.\par
+\medskip\noindent\textbf{SEN AWAWNS}\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1, Edit a "Slide Master" to ensure your name and roll number appear automatically on header or\par
+\noindent footer of every slide of a deck.\par
+\noindent REFERENCES SL No.\par
+
+\noindent 1                  hutps:/’help.libr   The Document   \_LibreOftice sen   Foundation   Official Help\par
+\noindent eoftice.org/late                   -US/text/simpre                 main.html\par
+\noindent ss/guide/\par
+
+\noindent Text Book/ Website Author Publication\par
+\clearpage
+\expheading{7}{\underline{\hspace{1.8cm}}}
+\exptitle{CLOUD COLLABORATION}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To understand cloud-based collaboration by using real-time editing features in Google Docs and\par
+\noindent Google Sheets and to explore version history management.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+\noindent PO6: When solving well-defined engineering problems, evaluate sustainable development impacts to:\par
+\noindent society, the economy, sustainability, health and safety, legal frameworks, and the environment (DK1,\par
+\noindent DK5, and DK7)\par
+\noindent POT: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO2: Use Stand-alone and Cloud-based office tools to prepare documents, spreadsheets, and\par
+\noindent presentations\par
+\noindent THEORY ‘Cloud Collaboration\par
+\noindent Cloud collaboration is the process of allowing multiple users to access, edit, and share files or\par
+\noindent resources through internet-based platforms.\par
+
+\noindent ‘Advantages:\par
+\noindent\textbullet\; Enables real-time teamwork\par
+\noindent\textbullet\; Automatic saving of work\par
+\noindent\textbullet\; Access from any device\par
+\noindent\textbullet\; Easy sharing of files\par
+\noindent\textbullet\; Maintains version history\par
+
+\noindent Examples of cloud collaboration platforms:\par
+\noindent\textbullet\; Google Docs\par
+\noindent\textbullet\; Google Sheets\par
+\noindent\textbullet\; Google Drive\par
+\noindent\textbullet\; Microsoft OneDrive\par
+\noindent\textbullet\; Dropbox\par
+
+\noindent Google Docs\par
+\noindent Google Docs is a web-based document editor used to create and edit text documents online. Features:\par
+\noindent\textbullet\; Real-time editing\par
+\noindent\textbullet\; Auto-save\par
+\noindent\textbullet\; Sharing and permissions\par
+\noindent\textbullet\; Comments and suggestions\par
+\noindent\textbullet\; Version history\par
+
+\noindent Applications:\par
+\clearpage
+\noindent\textbullet\; Report writing\par
+\noindent\textbullet\; Documentation\par
+\noindent\textbullet\; Group assignments\par
+\noindent\textbullet\; Project work\par
+
+\medskip\noindent\textbf{Google Sheets}\par
+\noindent Google Sheets is an online spreadsheet application used to create and analyze data. Features:\par
+\noindent\textbullet\; Spreadsheet calculations\par
+\noindent\textbullet\; Real-time collaboration\par
+\noindent\textbullet\; Formula support\par
+\noindent\textbullet\; Chart creation\par
+\noindent\textbullet\; Version history\par
+
+\noindent Applications:\par
+\noindent\textbullet\; Mark lists\par
+\noindent\textbullet\; Attendance sheets\par
+\noindent\textbullet\; Budget preparation\par
+\noindent\textbullet\; Data analysis\par
+
+\noindent Version History\par
+\noindent Version history stores previous changes made to a document. Advantages:\par
+\noindent\textbullet\; Track changes made by users\par
+\noindent\textbullet\; Restore previous versions\par
+\noindent\textbullet\; Identify contributors\par
+\noindent\textbullet\; Prevent accidental data loss\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent SI. No. Name of resource Suggested specification Quantity\par
+
+\noindent 1                                      Computer System Desktop/Laptop       1 per student\par
+\noindent with Ubuntu\par
+
+\noindent Linux 2         internet        Web Browser      \_ Installed 4   Google           1 per student   Google Docs\par
+\noindent Connection      Mozilla                          Account          1D 5            Accessed via\par
+\noindent Broadband /     Firefox /                        ‘Valid                           browser 1\par
+\noindent Wi-Fi 1 per     Google                           institution or                   per student\par
+\noindent lab 3           Chrome                           personal                         (docs\par
+\noindent email                            google.com)\par
+
+\noindent 6                                      Google Sheets Accessed via           Google Classroom Accessed via\par
+\noindent browser 1 per student (sheets        browser 1 per student\par
+\noindent google.com) 7\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Real-Time Editing and Version History\par
+\noindent 1. Open a web browser in Ubuntu.\par
+\noindent 2. Login to Google account.\par
+\noindent 3. Open Google Docs.\par
+\noindent 4. Create a new document.\par
+\noindent 5. Enter sample content.\par
+\noindent 6. Share the document with another user.\par
+\clearpage
+\noindent 7. Perform collaborative editing.\par
+\noindent 8, Add comments and suggestions.\par
+\noindent 9. Open Google Sheets and create sample data. 10, View version history.\par
+\noindent II. Restore an earlier version if required.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent Thus real-time collaboration using Google Docs and Google Sheets along with version history features\par
+\noindent was studied and practiced successfully and uploaded the report in Google classroom,\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent 1. What is cloud collaboration?\par
+\noindent 2. What is Google Docs?\par
+\noindent 3. What is Google Sheets?\par
+\noindent 4. What is version history?\par
+\noindent 1008 - Foundational IT\par
+\noindent Skills Semester 1\par
+\noindent 5. What is real-time editing?\par
+\medskip\noindent\textbf{SELF- LEARNING}\par
+\medskip\noindent\textbf{COMPONENTS}\par
+\noindent 1. Imagine a team of four students is editing a single Google Sheet for a lab report. One student\par
+\noindent accidentally deletes a large data table and then closes the browser. Explain how the team can use\par
+\noindent the ‘Version History’ tool to see the names of people who edited the file and describe the steps to\par
+\noindent restore the table back to its original state.\par
+\noindent 2, In Google Sheets, if three people are working on a project, how can you tell which specific person\par
+\noindent deleted a value in Cell BS? Name the menu path you would use to find this information and explain\par
+\noindent how the ‘color-coded’ system helps identify the person.\par
+\noindent 3. Create a I-page overleaf document that includes a title, a mathematical formula, and a\par
+\noindent list.(Optional Assignment)\par
+\noindent REFERENCES No. Text Book/ Website ‘Author [Publication\par
+
+\noindent 1 htips://support.google.com/          Google                    Google Docs does/answer/2494822\par
+\noindent Help Centre\par
+
+\noindent 2                           https://support.google.co   Google           Google Docs\par
+\noindent m/                                           docs/answer/190843\par
+\noindent Help Centre\par
+\clearpage
+\expheading{8}{\underline{\hspace{1.8cm}}}
+\exptitle{DATA ANALYSIS}
+\medskip\noindent\textbf{DATA ANAIYSIS}\par
+
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To analyze a dataset using Pivot Tables and Slicers in Google Sheets for summarizing and \{filtering\par
+\noindent information.\par
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES (POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices\par
+\noindent PO2: Identify and analyze well-defined engineering problems and reach substantiated conclusions\par
+\noindent using codified methods of analysis specific to their field of activity (DK1 to DK4).\par
+\noindent PO4: Conduct investigations of well-defined problems by locating and search relevant codes and\par
+\noindent catalogues, and by conducting standard tests and measurements (DK8).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9)}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO3: Apply spreadsheet functions and Generative AI tools to construct interactive dashboards,\par
+\noindent automated reports, and professional visual presentations for interpreting complex datasets.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Data analysis is the process of organizing and interpreting data to extract useful information,\par
+\noindent Applications.\par
+\noindent\textbullet\; Student performance analysis\par
+\noindent\textbullet\; Attendance analysis,\par
+\noindent\textbullet\; Sales analysis\par
+\noindent\textbullet\; Survey reports\par
+\noindent\textbullet\; Budget planning\par
+
+\noindent Pivot Table\par
+\noindent A Pivot Table is a spreadsheet feature used to summarize and rearrange large amounts of data\par
+\noindent dynamically.\par
+
+\noindent Functions:\par
+\noindent\textbullet\; Calculate totals\par
+\noindent\textbullet\; Calculate averages\par
+\noindent\textbullet\; Count records\par
+\noindent\textbullet\; Group data\par
+\noindent\textbullet\; Rearrange information Advantages:\par
+\noindent\textbullet\; Faster analysis\par
+\noindent\textbullet\; Easy report generation\par
+\noindent\textbullet\; Better understanding of data\par
+
+\noindent Slicer\par
+\clearpage
+\noindent A Slicer is a visual filtering tool used with Pivot Tables. Functions:\par
+\noindent\textbullet\; Filters data interactively\par
+\noindent\textbullet\; Displays selected categories\par
+\noindent\textbullet\; Makes data analysis easier Advantages:\par
+\noindent\textbullet\; User-friendly\par
+\noindent\textbullet\; Fast filtering\par
+\noindent\textbullet\; Improves visualization\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent SINo. Name of resource Suggested specification Quantity\par
+
+\noindent 1                                      Computer System Desktop/Laptop    1 per student\par
+\noindent with Ubuntu\par
+
+\noindent Linux\par
+
+\noindent 2                                                      Internet Connection Broadband / Wi-Fi 1 per lab\par
+
+\noindent 3                                                      Web Browser Mozilla Firefox / Google Chrome \} \_\par
+\noindent Installed\par
+
+\noindent 4                                                      Google Account Valid institution or personal 1 per\par
+\noindent student\par
+
+\noindent email ID 5                                             Google Sheets Accessed via browser 1 per student\par
+\noindent (sheets. google.com)\par
+
+\noindent 6                                                      Google Classroom Accessed via browser 1 per\par
+\noindent student\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Data Analysis Using Pivot Tables and Slicers\par
+\noindent 1. Open Google Sheets.\par
+\noindent 2. Create a blank spreadsheet.\par
+\noindent 3. Enter sample data.\par
+\noindent 4, Select the dataset.\par
+\noindent 5. Create a Pivot Table.\par
+\noindent 6. Configure row, column, and value fields.\par
+\noindent 7, Adda Slicer.\par
+\noindent 8, Filter the data.\par
+\noindent 9, Analyze the results.\par
+\noindent 10. Save the spreadsheet.\par
+\noindent The dataset was successfully analyzed using Pivot Tables and Slicers in Google Sheets to summarize,\par
+\noindent organize, and filter information. The observations and analysis results were\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\noindent ME\par
+\noindent documented in a report containing the dataset, Pivot Table output, Slicer-based filtering results,\par
+\noindent interpretations, and necessary screenshots. The completed report was successfully uploaded and\par
+\noindent submitted through Google Classroom.\par
+\clearpage
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent 1. What is a Pivot Table?\par
+\noindent 2. What is a Slicer?\par
+\noindent 3. Why is data analysis performed?\par
+\noindent 4. What is filtering?\par
+\noindent 5. What is the purpose of Pivot Tables?\par
+\noindent 6. Name one advantage of Slicers.\par
+\noindent 7. What is the use of row fields?\par
+\noindent 8. What is the use of value fields?\par
+\noindent 9. Which application was used for creating slicers and pivot table?\par
+\noindent 10. State one application of data analysis.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1. Create a Pivot Table from a 50-row sales dataset. Drag "Category" to Rows and "Sales" to Values.\par
+\noindent Record the Grand Total value displayed.\par
+\noindent 2. You have a list of sales for ‘Laptop’, ‘Mouse’, and ‘Keyboard’. Create a Pivot Table to show the total\par
+\noindent sales for each. Insert a Slicer for ‘Region’. If you click ‘South’ on the Slicer, what happens to the\par
+\noindent ‘Grand Total’? If you add a new row of data to your original list, name the button you must click to\par
+\noindent update the Pivot Table.\par
+\medskip\noindent\textbf{REFERENCES,}\par
+\noindent Sl.No. [Text Book/ Website ‘Author Publication\par
+
+\noindent 1                           https://support.google.co   Google —\_        Google Sheets\par
+\noindent mvdoes/answer/1272900\par
+\noindent Help Centre\par
+
+\noindent 2                           hups:/www.geeksforgee       GeeksforGeeks    GeeksforGeeks\par
+\noindent ks.org/google-sheets/ho\par
+\noindent ww-to-create-and-use-piv\par
+\noindent o\par
+\noindent t-tables-in-google-sheets/\par
+\clearpage
+\expheading{9}{\underline{\hspace{1.8cm}}}
+\exptitle{DATA VISUALIZATION}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To create and analyze different types of charts in a spreadsheet for graphical representation and\par
+\noindent interpretation of data.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices.\par
+\noindent PO2: Identify and analyze well-defined engineering problems and reach substantiated conclusions\par
+\noindent using codified methods of analysis specific to their field of activity (DK1 to DK4).\par
+\noindent PO4: Conduct investigations of well-defined problems by locating and search relevant codes and\par
+\noindent catalogues, and by conducting standard tests and measurements (DK8).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO3: Apply spreadsheet functions and Generative AI tools to construct interactive dashboards,\par
+\noindent automated reports, and professional visual presentations for interpreting complex datasets.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Write the minimum theory required for performing the experiment.\par
+\noindent Data visualization is the graphical representation of data and information using charts, graphs, and\par
+\noindent diagrams to understand trends, patterns, and comparisons.\par
+
+\noindent Advantages:\par
+\noindent\textbullet\; Simplifies large amounts of data\par
+\noindent\textbullet\; Helps identify trends and patterns\par
+\noindent\textbullet\; Makes comparisons easier\par
+\noindent\textbullet\; Improves understanding\par
+\noindent\textbullet\; Supports decision-making Applications:\par
+\noindent\textbullet\; Student performance analysis\par
+\noindent\textbullet\; Sales analysis\par
+\noindent\textbullet\; Attendance analysis\par
+\noindent\textbullet\; Survey reports\par
+\noindent\textbullet\; Financial reports\par
+
+\noindent Types of Charts\par
+\noindent 1. Column Chart Displays data using vertical bars. Applications:\par
+\noindent\textbullet\; Comparing values among categories\par
+\noindent\textbullet\; Comparing student marks\par
+\noindent 2. Bar Chart Displays data using horizontal bars. Applications:\par
+\noindent\textbullet\; Ranking information\par
+\noindent\textbullet\; Comparing categories with longer names\par
+\clearpage
+\noindent 3. Pie Chart Displays percentage distribution of values. Applications:\par
+\noindent\textbullet\; Showing proportions\par
+\noindent\textbullet\; Category contribution analysis\par
+\medskip\noindent\textbf{4. Line Chart}\par
+
+\noindent Displays trends and changes over time. Applications:\par
+\noindent\textbullet\; Attendance trends\par
+\noindent\textbullet\; Monthly performance analysis\par
+\noindent\textbullet\; Sales reports\par
+\noindent 5. Seatter Chart\par
+
+\noindent Displays relationships between two variables. Applications:\par
+\noindent\textbullet\; Correlation studies\par
+\noindent\textbullet\; Data comparison\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent SI. No. ‘Name of resource Suggested specification       Computer System Desktop/Laptop with Ubuntu\} 1\par
+\noindent Quantity 1                                              per student\par
+
+\noindent Linux 2         Web Browser     \_ Installed 4   Google           1 per student   Google         Google\par
+\noindent [Internet       Mozilla                         Account Valid    email ID 5      Sheets         Classroom\par
+\noindent Connection      Firefox /                       institution or                   Accessed via   Accessed via\par
+\noindent Broadband /     Google                          personal                         browser 1      browser 1\par
+\noindent Wi-Fi 1 per     Chrome                                                           per student    per student\par
+\noindent lab 3                                                                            (sheets.\par
+\noindent google.com)\par
+\noindent 6\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Creating Different Types of Charts\par
+\noindent 1. Open Google Sheets.\par
+\noindent 2. Create a blank spreadsheet.\par
+\noindent 3. Enter sample data.\par
+\noindent 4, Select the dataset.\par
+\noindent 5. Open Insert → Chart.\par
+\noindent 6. Create:\par
+\noindent\textbullet\; Column Chart\par
+\noindent\textbullet\; Bar Chart\par
+\noindent\textbullet\; Pie Chart\par
+\noindent\textbullet\; Line Chart\par
+\noindent\textbullet\; Scatter Chart\par
+\noindent 7, Add titles and labels.\par
+\noindent 8, Analyze the generated charts.\par
+\noindent 9. Save the spreadsheet.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent Thus different types of charts were created and analyzed successfully using a spreadsheet\par
+\noindent application.\par
+\clearpage
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS 1,}\par
+\noindent What is data visualization?\par
+\noindent 2. What is a chart?\par
+\noindent 3. What is the purpose of a Pie Chart?\par
+\noindent 4. Which chart is used for trends?\par
+\noindent 5. Which chart is suitable for comparison?\par
+\noindent 6. What is a legend?\par
+\noindent 7. What is the use of chart title?\par
+\noindent 8, What is a Scatter Chart?\par
+\noindent 9. Which application was used? 10, State one advantage of data visualization.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1. Create a small summary table showing the count of students who ‘Passed’ (Score > 40) versus\par
+\noindent ‘Failed’ (Score < 40) in the Series Test of Foundational IT Skills. Insert a 3D Pie Chart to\par
+\noindent represent these two groups as percentages of the whole class.\par
+\noindent 2. Create a Clustered Bar Chart (Horizontal) that displays the students’ names on the Y-axis and their\par
+\noindent marks on the X-axis. After creating the chart, apply a Chart Style from the Design tab to change\par
+\noindent the background to a dark theme.\par
+\noindent REFERENCES SI. No. Text Book/ Website ‘Author Publication 1 https://support.google.com/doc\par
+\noindent Google Google Sheets Help\par
+\noindent s/answer/63824 Centre\par
+
+\noindent 2                           https://www.geeksforgee   GeeksforGeeks      — GeeksforGeeks data-vi\par
+\noindent ks.org/                                      sualization/types-of-grap\par
+\noindent hs-in-statistics/\par
+\clearpage
+\expheading{10}{\underline{\hspace{1.8cm}}}
+\exptitle{AI SLIDE GENERATION}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To generate professional multi-slide presentations using Generative AI platforms by providing\par
+\noindent structured text prompts.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices\par
+\noindent PO2: Identify and analyze well-defined engineering problems and reach substantiated conclusions\par
+\noindent using codified methods of analysis specific to their field of activity (DK1 to DK4).\par
+\noindent PO4: Conduct investigations of well-defined problems by locating and search relevant codes and\par
+\noindent catalogues, and by conducting standard tests and measurements (DK8).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9)}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO3: Apply spreadsheet functions and Generative AI tools to construct interactive dashboards,\par
+\noindent automated reports, and professional visual presentations for interpreting complex datasets.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Generative AI\par
+\noindent Generative AI is a type of Artificial Intelligence that creates new content such as text, images,\par
+\noindent presentations, and reports based on user input.\par
+
+\noindent Applications:\par
+\noindent\textbullet\; Presentation generation\par
+\noindent\textbullet\; Report generation\par
+\noindent\textbullet\; Content creation\par
+\noindent\textbullet\; Image generation\par
+\noindent\textbullet\; Educational support Advantages:\par
+\noindent\textbullet\; Saves time\par
+\noindent\textbullet\; Improves productivity\par
+\noindent\textbullet\; Generates organized content\par
+\noindent\textbullet\; Supports creativity\par
+\noindent AI slide generation refers to creating presentation slides automatically from user prompts. Basic\par
+\noindent workflow:\par
+\noindent 1. Enter prompt\par
+\noindent 2. AIl generates slide structure\par
+\noindent 3. AI creates content and design\par
+\noindent 4. User edits output\par
+\noindent 5. Presentation is exported\par
+\noindent Prompt Engineering for Presentation Generation A structured prompt should contain:\par
+\clearpage
+\noindent\textbullet\; Topic\par
+\noindent\textbullet\; Number of slides\par
+\noindent\textbullet\; Target audience\par
+\noindent\textbullet\; Main sections\par
+\noindent\textbullet\; Style of presentation\par
+
+\noindent Example Prompt:\par
+\noindent "Create a 5-slide presentation on Cloud Computing for diploma students. Include introduction,\par
+\noindent applications, advantages, challenges, and conclusion using professional style."\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent Sl.No. [Name of resource               Computer System Desktop/Laptop    1 per student\par
+\noindent Suggested specification Quantity 1     with Ubuntu\par
+
+\noindent Linux 2                                Internet Connection Broadband /   Web Browser Mozilla Firefox /\par
+\noindent Wi-Fi 1 per lab 3                 Google Installed\par
+
+\noindent Chrome 4              Google Account         1 per student email   Gamma AI Accessed     Google Classroom\par
+\noindent Valid institution or   ID 5                  via browser 1 per     Accessed via\par
+\noindent personal                                     student               browser 1 per\par
+\noindent (gamma.app) 6         student\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent Activity: Generating Slides using Gamma AI\par
+\noindent 1. Open web browser in Ubuntu,\par
+\noindent 2. Open Gamma AI.\par
+\noindent 3. Sign in\par
+\noindent 4. Create a new presentation.\par
+\noindent 5. Enter a structured prompt.\par
+\noindent 6. Generate outline.\par
+\noindent 7. Generate slides.\par
+\noindent 8. Review content.\par
+\noindent 9. Modify slides if required.\par
+\noindent 10, Export presentation.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent A professional multi-slide presentation was successfully generated using a Generative AI platform by\par
+\noindent providing structured text prompts. The generated presentation was reviewed,\par
+\noindent AIN\par
+\medskip\noindent\textbf{SCHEME}\par
+\noindent refined, and customized as required. A report containing the prompt used, screenshots of the AI\par
+\noindent generation process, screenshots of the final presentation was prepared and successfully uploaded\par
+\noindent through Google Classroom.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent 1. What is Generative AI?\par
+\noindent What is Gamma AI?\par
+\noindent Ps\par
+\noindent What is a prompt?\par
+\clearpage
+\noindent a\par
+\noindent What is prompt engineering?\par
+\noindent wo\par
+\noindent Why should prompts be specific?\par
+\noindent 6. Why should AI-generated content be reviewed?\par
+\noindent 7. Name one AI presentation platform.\par
+\noindent 8, What is the purpose of exporting presentations?\par
+\noindent 9. What are the advantages of AI slide generation? 10, State one application of Generative AI.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1, Use Gamma.app to generate an 8-slide deck. Record the time taken (in seconds) for the AI to\par
+\noindent generate the full presentation.\par
+\noindent 2. Use Manus AI to research the current market price of three different laptop brands (Dell, HP, and\par
+\noindent Lenovo) with 16GB RAM. Ask the agent to summarize these prices into a formatted table and then\par
+\noindent create a 5-sentence summary recommending the best value for a student budget and make a\par
+\noindent presentation.\par
+
+\noindent SINo.                 Text Book/ Website    https:/help.gamma.   Gamma —\_         Gamma Official\par
+\noindent ‘Author Publication   app/e                                 Help w/\par
+\noindent 1                                                           Technologies Inc.\par
+
+\noindent 2                           https:/vww.geeksforgee    GeeksforGeeks         GeeksforGeeks\par
+\noindent ks.org/artificial-intelligen\par
+\noindent ce/what-is-generative-ai/\par
+\clearpage
+\expheading{11}{\underline{\hspace{1.8cm}}}
+\exptitle{GENERATIVE PRE-TRAINED}
+\medskip\noindent\textbf{TRANSFORMER (GPT) GUIDED LEARNING}\par
+\medskip\noindent\textbf{LEARNING}\par
+
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To create and use a structured "Study Assistant" prompt in a Generative Pre-trained Transformer\par
+\noindent (GPT) system for learning technical concepts effectively.\par
+
+\medskip\noindent\textbf{RELEVANT PROGRAM OUTCOMES(POS)}\par
+\noindent PO1: Apply knowledge of mathematics, natural sciences, engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices\par
+\noindent PO2: Identify and analyze well-defined engineering problems and reach substantiated conclusions\par
+\noindent using codified methods of analysis specific to their field of activity (DK1 to DK4).\par
+\noindent PO3: Design solutions for well-defined technical problems and assist in the design of systems,\par
+\noindent components, or processes to meet specified needs, with appropriate consideration ‘for public health\par
+\noindent and safety, as well as cultural, societal, and environmental factors (DK5).\par
+\noindent PO4: Conduct investigations of well-defined problems by locating and search relevant codes and\par
+\noindent catalogues, and by conducting standard tests and measurements (DK8).\par
+\noindent POT: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9).}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO4: Apply generative AI, digital design platforms for guided learning and visual communication.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Generative Pre-trained Transformer (GPT)\par
+\noindent Generative Pre-trained Transformer (GPT) is an Artificial Intelligence model capable of\par
+\noindent understanding and generating human-like text based on user input.\par
+
+\noindent Applications:\par
+\noindent © Educational assistance\par
+\noindent © Question answering\par
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\noindent ME\par
+\noindent Content generation\par
+\noindent Programming support\par
+\noindent Report writing\par
+\noindent Language learning\par
+
+\noindent Advantages:\par
+\noindent Interactive learning\par
+\clearpage
+\noindent Instant explanations\par
+\noindent Personalized assistance\par
+\noindent Multiple examples and exercises\par
+
+\medskip\noindent\textbf{Prompt Engineering}\par
+\noindent Prompt engineering is the process of creating clear instructions to obtain better responses from AI\par
+\noindent systems,\par
+
+\noindent Characteristics of a good prompt:\par
+\noindent Clearly specify the topic ‘Mention learning level\par
+\noindent Specify expected output\par
+\noindent Mention examples or questions required\par
+\noindent Define response format\par
+\noindent Study Assistant Prompt A Study Assistant prompt helps students learn topics systematically. Typical\par
+\noindent structure:\par
+\noindent Subjectiopic\par
+\noindent Student level\par
+\noindent Explanation requirement\par
+\noindent Examples\par
+\noindent Practice questions\par
+\noindent Summary\par
+\noindent aeAwNS\par
+
+\noindent Sample Study Assistant Prompt\par
+\noindent Prompt: "Act as a study assistant for diploma Computer Engineering students. Teach the topic Data\par
+\noindent Structures ( Any branch specific topic) in simple language. Explain definitions, concepts, examples,\par
+\noindent applications, important points, and provide five practice questions with answers."\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent Sl.No.                      Name of resource            Computer System            1 per student\par
+\noindent Suggested specification     Desktop/Laptop with\par
+\noindent Quantity 1                  Ubuntu\par
+
+\noindent Linux 2                                Internet Connection Broadband /     Web Browser Mozilla Firefox /\par
+\noindent Wi-Fi 1 per lab 3                   Google Installed\par
+
+\noindent Chrome 4           Google Account      Valid account    1 per student ID   GPT Platform     1 per student\par
+\noindent / Email             for platform     5                  ChatGPT\par
+\noindent login                               (chatgpt.com)/\par
+
+\noindent Google Gemini / Any available\par
+
+\noindent GPT tool 6                                              Google Classroom Accessed via browser 1 per\par
+\noindent student\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent List the one-by-one procedure to be followed for completing the experiment.\par
+\noindent Activity: Creating a Study Assistant Prompt\par
+\noindent Open a web browser in Ubuntu.\par
+\noindent Open GPT platform.\par
+\clearpage
+\noindent Sign in if required.\par
+\noindent Create a structured prompt.\par
+\noindent Enter prompt into the system.\par
+\noindent Generate response.\par
+\noindent Review the content.\par
+\noindent Refine prompt if necessary.\par
+\noindent Generate additional questions/examples. 10, Save observations.\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent A structured "Study Assistant” prompt was successfully created and used in a Generative Pre-trained\par
+\noindent Transformer (GPT) system to learn technical concepts effectively. The GPT-generated explanations,\par
+\noindent examples, summaries, and practice questions were analy:\par
+\noindent and validated. A report containing the prompt used, generated responses, observations, and\par
+\noindent necessary screenshots was prepared and successfully uploaded through Google Classroom.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent Expand GPT.\par
+\noindent What is prompt engineering?\par
+\noindent What is a Study Assistant prompt?\par
+\noindent Why should prompts be structured?\par
+\noindent Name one GPT platform.\par
+\noindent What is the advantage of AI-assisted learning? Why should AI-generated content be reviewed? What\par
+\noindent is prompt refinement?\par
+\noindent State one application of GPT.\par
+\noindent 10, What is the purpose of follow-up prompts?\par
+\noindent SeNAwaAwNN\par
+\noindent ‘SELF-LEARNING COMPONENTS List self-learning activities depending on the time allotted in the\par
+\noindent syllabus.\par
+\noindent 1. Give ChatGPT this prompt: "Act as a technical interviewer for a Junior Engineer role. Ask me 5\par
+\noindent questions one by one about computers."\par
+\noindent 2. What you mean by C-R-T-O framework in prompt engineering. Generate a proper prompt in the\par
+\noindent C-R-T-O framework for use cases of your choice.\par
+\noindent REFERENCES. SI.No. Text Book/ Website ‘Author Publication\par
+
+\noindent 1                           https:/www.geeksforgeek   GeeksforGeeks      GeeksforGeeks\par
+\noindent s.org/pro                                    mpt-engineering/\par
+
+\medskip\noindent\textbf{(TEACHERS AND ERY ~ DIPLOMA 2}\par
+\clearpage
+\expheading{12}{\underline{\hspace{1.8cm}}}
+\exptitle{GRAPHIC DESIGN}
+\medskip\noindent\textbf{PRACTICAL SIGNIFICANCE}\par
+\noindent To design a technical event poster using AI-assisted design features in Canva Free Version.\par
+\noindent RELEVANT PROGRAM OUTCOMES(POS) PO1: Apply knowledge of mathematics, natural sciences,\par
+\noindent engineering fundamentals, and an\par
+\noindent engineering specialization (as specified in DK1 to DK4) to a wide range of practical procedures and\par
+\noindent practices\par
+\noindent P02: Identify and analyze well-defined engineering problems and reach substantiated conclusions\par
+\noindent using codified methods of analysis specific to their field of activity (DK1 to DK4).\par
+\noindent PO3: Design solutions for well-defined technical problems and assist in the design of systems,\par
+\noindent components, or processes to meet specified needs, with appropriate consideration ‘for public health\par
+\noindent and safety, as well as cultural, societal, and environmental factors (DK5).\par
+\noindent PO4: Conduct investigations of well-defined problems by locating and search relevant codes and\par
+\noindent catalogues, and by conducting standard tests and measurements (DK8).\par
+\noindent PO7: Understand and commit to professional ethics and the norms of technician practice, including\par
+\noindent compliance with relevant laws. Demonstrate an understanding of the need for diversity and inclusion\par
+\medskip\noindent\textbf{(DK9)}\par
+
+\medskip\noindent\textbf{RELEVANT COURSE OUTCOMES(COS)}\par
+\noindent CO4: Apply generative AI, digital design platforms for guided learning and visual communication.\par
+
+\medskip\noindent\textbf{THEORY}\par
+\noindent Graphic design is the process of creating visual content to communicate information effectively using\par
+\noindent text, images, colors, and layouts.\par
+\noindent Applications.\par
+\noindent Event posters\par
+\noindent Advertisements\par
+\noindent Social media posts\par
+\noindent Technical brochures\par
+\noindent © Presentation graphics\par
+\noindent AI in Graphic Design Artificial Intelligence tools assist users in creating designs automatically by\par
+\noindent suggesting:\par
+\noindent Templates\par
+\noindent Images\par
+\noindent Layouts\par
+\noindent Backgrounds\par
+\noindent Design styles\par
+\noindent Text content\par
+
+\noindent Advantages:\par
+\noindent Reduces design time\par
+\noindent Provides professional templates\par
+\clearpage
+\noindent Improves creativity\par
+\noindent Easy customization\par
+
+\medskip\noindent\textbf{Canva}\par
+\noindent Canva is an online graphic design platform used for creating visual content such as posters,\par
+\noindent presentations, banners, and social media graphics.\par
+\medskip\noindent\textbf{Features.}\par
+\noindent Drag-and-drop interface\par
+\noindent Templates\par
+\noindent AI-assisted design tools\par
+\noindent Icons and images\par
+\noindent Text editing\par
+\noindent Export options\par
+
+\medskip\noindent\textbf{RESOURCES REQUIRED}\par
+\noindent Sl.No.                                                   Name of resource Suggested specification ‘Quantity\par
+
+\noindent 1                                      Computer System Desktop/Laptop      1 per student\par
+\noindent with Ubuntu\par
+
+\noindent Linux\par
+\noindent Ps Internet Connection Broadband / Wi-Fi 1 per lab\par
+\noindent 3 Web Browser Mozilla Firefox / Google Installed\par
+\noindent Chrome\par
+
+\noindent 4                                      Google Account ‘Valid institution   1 per student email ID\par
+\noindent or personal\par
+
+\noindent 5 Canva Free Version, accessed via 1 per student\par
+\noindent browser (canva.com)\par
+
+\noindent 6                                      College Logo File PNG format with   Google Classroom Accessed via\par
+\noindent transparent 1 background            browser 1 per student\par
+\noindent (provided by institution) 7\par
+
+\medskip\noindent\textbf{PROCEDURE}\par
+\noindent List the one-by-one procedure to be followed for completing the experiment.\par
+\noindent Activity: Creating Technical Event Poster\par
+\noindent 1. Open Canva Website Open the browser on your computer. Type www.canva.com in the address bar\par
+\noindent and\par
+
+\noindent press Enter:\par
+\noindent 2. Sign in.\par
+\noindent Click "Sign up" if new, or "Log in" if you already have an account, Click "Continue with Google" and\par
+\noindent select your email ID. You will be taken to the Canva Home Screen.\par
+\noindent 3. Select Poster design.\par
+\noindent Click the search bar at the top, type "Poster" and press Enter. Select "Poster (Portrait)" from the\par
+\noindent results. Click "Create a blank poster" to open the editor.\par
+\noindent 4. Use AI prompt for poster generation.\par
+\clearpage
+\noindent In the left side panel, click "Magic Design” (starAvand icon). A text box will appear. Type a prompt\par
+\noindent describing your event poster, for example:\par
+\noindent "Technical event poster for a symposium on Artificial Intelligence, blue and white color scheme, with\par
+\noindent space for event name, date, venue, and chief guest details."\par
+\noindent Click "Generate". Wait a few seconds. Canva AI will display 4 to 6 ready-made poster designs. Click\par
+\noindent the design you like best to open it in the editor.\par
+\noindent Edit Event Details\par
+\noindent Double-click on any text in the poster to edit it. Press Ctrl + A to select the existing text, delete it, and\par
+\noindent type your own content. Replace all placeholder text with actual ‘event information:\par
+\noindent Event name (e.g., TECHNOVA 2025)\par
+\noindent Event type (e.g., National Level Technical Symposium)\par
+\noindent Date, Time, and Venue\par
+\noindent Chief Guest name and designation\par
+\noindent Department and College name\par
+\noindent Contact email or phone number.\par
+\noindent 5. Edit Event Details.\par
+\noindent Double-click on any text in the poster to edit it. Press Ctrl + A to select the existing text, delete it, and\par
+\noindent type your own content. Replace all placeholder text with actual event information:\par
+\noindent Event name (e.g., TECHNOVA 2025)\par
+\noindent Event type (e.g., National Level Technical Symposium)\par
+\noindent Date, Time, and Venue\par
+\noindent Chief Guest name and designation\par
+\noindent Department and College name\par
+\noindent Contact email or phone number\par
+\noindent 6. Format Text\par
+\noindent Click on a text box and use the top toolbar to change the font style, font bold/talic, and text color. Use\par
+\noindent large font size (60-80pt) for the event title and smaller size (I8-24pt) for body text. Ensure the text\par
+\noindent color contrasts clearly with the background.\par
+\noindent 7. Add Icons and College Logo\par
+\noindent Click "Elements" in the left panel. Search for keywords like "technology" or "circuit" and click any\par
+\noindent free icon to add it to the poster. To add your college logo, click "Uploads" — "Upload files”, select the\par
+\noindent logo from your computer, and drag it to the top or bottom of the poster.\par
+\noindent 8. Adjust Background\par
+\noindent Click on the background area of the poster. Use the color box in the top toolbar to change the\par
+\noindent background color. Choose a color that contrasts well with your text, such as dark blue with white\par
+\noindent text.\par
+\noindent 9. Preview the Poster\par
+\noindent Click the eye icon (Preview) at the top-right corner. Check for spelling errors, overlapping elements,\par
+\noindent and missing information. Press Escape to return to the editor and make corrections if needed.\par
+\noindent 10. Download the Poster\par
+\noindent Click "Share" at the top-right, then click "Download". Select PNG for digital submission or PDF for\par
+\noindent printing. Click "Download" — the file will be saved in your Downloads folder.\par
+\noindent II. Upload to Google Classroom\par
+\clearpage
+\noindent Open Google Classroom, go to the assigned practical, click "Add or Create" > "File", select the\par
+\noindent downloaded poster file, and click "Turn In".\par
+
+\medskip\noindent\textbf{RESULTS}\par
+\noindent A technical event poster was successfully designed using AI-assisted design features available in\par
+\noindent Canva Free Version. The generated design was customized by modifying text, layout, graphics, and\par
+\noindent visual elements to meet the event requirements, A report containing the design prompt, the final\par
+\noindent poster was prepared and successfully uploaded through Google Classroom.\par
+\medskip\noindent\textbf{PRACTICAL RELATED QUESTPRACTICAL RELATED QUESTPRACTICAL RELATED QUESTIONS}\par
+\noindent What is graphic design?\par
+\noindent What is Canva?\par
+\noindent What is AI-assisted design?\par
+\noindent What is Magic Design?\par
+\noindent Why are templates used?\par
+\noindent What is the purpose of posters?\par
+\noindent ‘Name two export formats in Canva.\par
+\noindent What is the use of icons in posters?\par
+\noindent Why should color combinations be selected carefully?\par
+\noindent 10. State one advantage of AI in graphic design.\par
+
+\medskip\noindent\textbf{SELF-LEARNING COMPONENTS}\par
+\noindent 1, Use canva or any web based graphic design platform to design logo for your college art\par
+\noindent festival\par
+\noindent 2. Use Canva’s Magic Studio or any web based graphic design platform to place a photo of yourself in\par
+\noindent front of a "High-Tech Server Room" background for a professional poster.\par
+
+\noindent [REFERENCES           https:/\textbackslash\{\}www.canva.c   hups:/www.geeksfo    GeeksforGeeks   GeeksforGeeks\par
+\noindent SINo. Text Book!      om/en\_in/help/use     rgeeks.org/graphic\par
+\noindent Website ‘Author       Canva Canva\par
+\noindent Publication 1         Official\par
+\noindent -magic-design/ 2 \_\par
+
+\noindent -design/\par
+\medskip\noindent\textbf{STATE INS}\par
+\medskip\noindent\textbf{[AND RESEARCH, KAIAMA}\par
+\medskip\noindent\textbf{UTE OF TECHN}\par
+\end{document}

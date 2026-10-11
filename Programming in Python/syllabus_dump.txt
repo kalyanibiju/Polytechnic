@@ -1,0 +1,153 @@
+TOTAL PAGES: 4
+
+=== PAGE 1 ===
+ 
+Program : Diploma  in  Artificial Intelligence & Machine Language 
+ 
+Course Code : 3347 Course Title: Python  Programming Lab 
+Semester : 3 Credits: 1.5 
+Course Category: Program  Core 
+Periods per week : 4 (L:1 T:0  P:3) Periods per semester: 60 
+ 
+ 
+Course  Objectives: 
+ 
+ Students should be able to use Python as a tool for solving computational problems 
+ 
+Course  Prerequisites: 
+ 
+Topic Course  Title Semester 
+ 
+Basic programming skills 
+Introduction to IT systems Lab 1 
+Problem Solving & Programming 2 
+Problem Solving & Programming Lab 2 
+ 
+Course  Outcomes 
+ 
+On completion of the course, students will be able to: 
+ 
+ 
+COn  
+ 
+Description 
+Duration 
+(Hours) 
+Cognitive  
+Level 
+CO1  Develop simple programs using Python 8 Applying 
+CO2  Illustrate complex data types and functions in Python 15 Applying 
+CO3  Illustrate exception handling & object oriented 
+programming concepts  in Python 17 Applying 
+CO4  Use the modules Numpy, Matplotlib, and Pandas to 
+process data  
+ 
+17 Applying 
+ Lab Exam 3  
+ 
+
+=== PAGE 2 ===
+CO  – PO  Mapping: 
+ 
+Course  
+Outcomes PO1 PO2 PO3 PO4 PO5 PO6 PO7 
+CO1 3   3    
+CO2 3   3    
+CO3 3   3    
+CO4 3 3  3 3 3 3 3 
+              3- Strongly mapped, 2-Moderately mapped, 1- Weekly Mapped 
+ 
+Course  Outline 
+ 
+Module  
+Outcomes  Description  
+Duration  
+(Hours)  
+Cognitive  
+Level  
+CO1  Develop simple programs using Python 
+M1.01 Develop programs using variables and data typ es.      
+     2L+6P 
+Applying 
+M1.02 
+Develop programs using selection control 
+structures 
+Applying 
+M1.03 Make use of iterative control structures Applying 
+CO2  Illustrate complex data types and functions in python 
+M2.01 Illustrate string operations in Python  
+1L+6P 
+Applying 
+M2.02 
+Develop programs using  Lists, Tuples, Sets, 
+Dictionaries 
+Applying 
+M2.03  Demonstrate file operations   
+2L+6P 
+Applying 
+M2.04  Develop programs using functions. Applying 
+ Lab Exam – I 1.5   
+CO3  Illustrate exception handling & object oriented programming concepts  
+in Python  
+M3.01 
+Demonstrate Exception handling for  real-time 
+applications. (divide by zero error, voter’s age 
+validity, student mark range validation)  
+ 
+1L+3P 
+Applying 
+M3.02 Develop programs using class and objects  Applying 
+
+=== PAGE 3 ===
+M3.03 Demonstrate the concept of constructor    2L+6P Applying 
+M3.04 Demonstrate the concept of inheritance  
+CO4 Use the modules Numpy, Matplotlib, and Pandas to process data  
+M3.01  Use NumPy to create arrays  
+1L+3P 
+Applying 
+M3.02 Implement mathematical operations using NumPy 
+arrays 
+Applying 
+M3.03  Demonstrate matrix operations using NumPy Applying 
+M3.04 Develop a python code to read a .csv file using  
+panda module and print the first and last five lines 
+of a file. 
+ 
+1L+6P 
+Applying 
+M3.05  Use Matplotlib to plot lines Applying 
+M3.06 Use Matplotlib to draw geometric shapes Applying 
+M3.07 Open ended experiments  6 Applying 
+ Lab Exam – II       1.5  
+ 
+ 
+**  Suggested  Open-ended  Experiments: 
+ 
+(Not for End Semester Examination but compulsory to be included in Continuous Internal 
+Evaluation. Students can do open-ended experiments as a group of 2-3. There is no 
+duplication in experiments between groups.) 
+1.  Compute the grades of students in a class and visualize the result 
+ 
+Text  / Reference: 
+ 
+T/R Book  Title  / Author 
+R1 Swapnil Saurav, Learn  and  Practice  Python  Programming , Eka Publishers, 
+2020  
+R2 Introduction to Computer Science Using Python - A Computational Problem - 
+Solving Focus - Chales Dierbach Wiley India Pvt. Ltd  
+R3 Yashavant Kanetkar, Aditya Kanetkar, “Let us Python, BPB publication, 1st 
+Edition, 2019  
+R4 Allen B. Downey, “Think Python : How to Think like a Computer Scientist”, 
+2nd Edition, O’Reilly Publishers, 2016.  
+R5 R1 Paul Deitel and Harvey Deitel, “Python for Programmers”, Pearson 
+Education, 1st Edition, 2021. 
+ 
+
+=== PAGE 4 ===
+Online  Resources: 
+ 
+Sl.  No. Website  Link 
+1 https://docs.python.org/3/ 
+2 https://www.programiz.com/python-programming 
+ 
+

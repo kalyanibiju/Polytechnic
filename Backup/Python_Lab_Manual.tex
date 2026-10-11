@@ -1,0 +1,1728 @@
+\documentclass[11pt,a4paper]{article}
+
+% --- Required Packages ---
+\usepackage[margin=20mm,top=22mm,bottom=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{eso-pic}
+\usepackage[hidelinks]{hyperref}
+
+% --- Color Definitions ---
+\definecolor{navyblue}{RGB}{13,35,58}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.96,0.97,0.98}
+
+% --- Double Border Setup ---
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[line width=1.5pt, navyblue] 
+      ($(current page.north west)+(1.0cm,-1.0cm)$) 
+      rectangle 
+      ($(current page.south east)+(-1.0cm,1.0cm)$);
+    \draw[line width=0.5pt, navyblue] 
+      ($(current page.north west)+(1.15cm,-1.15cm)$) 
+      rectangle 
+      ($(current page.south east)+(-1.15cm,1.15cm)$);
+  \end{tikzpicture}%
+}
+
+% --- Code Listing Style ---
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen}\itshape,
+    keywordstyle=\color{navyblue}\bfseries,
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=8pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    frame=single,
+    rulecolor=\color{navyblue!30}
+}
+
+\pagestyle{plain}
+
+\begin{document}
+
+% =========================================================
+% FRONT PAGE (TITLE PAGE)
+% =========================================================
+\begin{titlepage}
+\centering
+\vspace*{0.5cm}
+
+% Placeholder for Logo
+\begin{tikzpicture}
+  \node[draw=navyblue, line width=1.2pt, rounded corners=6pt, inner sep=14pt, fill=navyblue!5] {
+    \begin{minipage}{0.7\textwidth}
+      \centering
+      \Huge \textbf{\textcolor{navyblue}{[ LOGO PLACEHOLDER ]}}\\[6pt]
+      \small Department of Artificial Intelligence \& Machine Learning
+    \end{minipage}
+  };
+\end{tikzpicture}
+
+\vspace{1.2cm}
+
+{\Huge \textbf{\textcolor{navyblue}{Albertian Institute of Science \& Technology}}}\\[0.4cm]
+{\large (Approved by AICTE, Affiliated to State Board of Technical Education)}\\[1.8cm]
+
+{\Huge \textbf{Lab Manual for}}\\[0.8cm]
+
+{\Huge \textbf{\textcolor{navyblue}{Python Programming Lab -- 3347}}}\\[0.6cm]
+
+{\Huge \textbf{Semester -- III (AI \& ML)}}\\[4.0cm]
+
+\vfill
+
+{\Large \textit{Prepared By,}}\\[0.3cm]
+{\Large \textbf{Kalyani M Biju}}\\[0.2cm]
+{\large Lecturer, Department of Artificial Intelligence \& Machine Learning}
+
+\end{titlepage}
+
+% =========================================================
+% INDEX PAGE
+% =========================================================
+\newpage
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{INDEX}}}\\[0.6cm]
+\end{center}
+
+\arrayrulecolor{navyblue}
+\setlength{\arrayrulewidth}{1pt}
+\renewcommand{\arraystretch}{1.4}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|p{7.5cm}|c|c|c|}
+\hline
+\rowcolor{navyblue}
+\textcolor{white}{\textbf{Exp No.}} & \textcolor{white}{\textbf{Name of Experiment}} & \textcolor{white}{\textbf{Date}} & \textcolor{white}{\textbf{Page No.}} & \textcolor{white}{\textbf{Faculty Signature}} \\
+\hline
+1 & Area Of Triangle & & & \\ \hline
+\rowcolor{navyblue!5}
+2 & Largest Among Three Numbers & & & \\ \hline
+3 & Palindrome Numbers & & & \\ \hline
+\rowcolor{navyblue!5}
+4 & Fibonacci Series & & & \\ \hline
+5 & Vowels And Consonants & & & \\ \hline
+\rowcolor{navyblue!5}
+6 & Sorting & & & \\ \hline
+7 & Maximum And Minimum Element Of A Tuple & & & \\ \hline
+\rowcolor{navyblue!5}
+8 & List Of Frequencies & & & \\ \hline
+9 & Frequency Of Characters Of A File & & & \\ \hline
+\rowcolor{navyblue!5}
+10 & Exception Handling & & & \\ \hline
+11 & Student Class & & & \\ \hline
+\rowcolor{navyblue!5}
+12 & Inheritance & & & \\ \hline
+13 & Numpy & & & \\ \hline
+\rowcolor{navyblue!5}
+14 & Panda Module & & & \\ \hline
+15 & Matplotlib & & & \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+% =========================================================
+% EXPERIMENT 1
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 1} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{AREA OF TRIANGLE}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to Find the area of a right angled triangle
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To understand fundamental user input operations and type casting in Python.
+  \item To execute arithmetic multiplication and division calculations for geometry.
+  \item To format and display computed numerical results to the console output.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize the execution environment and prepare to accept dimensions for right angled triangle calculations.
+  \item[Step 2 :- Input Base Length] Prompt the user to enter the base length of the triangle and cast string to integer.
+  \item[Step 3 :- Input Triangle Height] Prompt the user to enter the height of the triangle and convert the string to integer.
+  \item[Step 4 :- Calculate Product] Multiply the base and height values to store the intermediate rectangular surface product result.
+  \item[Step 5 :- Calculate Triangle Area] Divide the intermediate product by two to derive the final numeric area of the triangle.
+  \item[Step 6 :- Display Output] Print the calculated triangle area value along with units on the standard terminal output window.
+  \item[Step 7 :- Stop] Terminate the execution of the Python program and free memory resources back to the system.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+b = int(input("Enter the base: ")) 
+h = int(input("Enter the height: ")) 
+c = b * h 
+area = c / 2 
+print("Area of right angle triangle is:", area, "sqcm")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+def calculate_right_triangle_area(base: float, height: float) -> float:
+    \"\"\"Calculates the area of a right-angled triangle given base and height.\"\"\"
+    if base <= 0 or height <= 0:
+        raise ValueError("Base and height must be positive numbers.")
+    return 0.5 * base * height
+
+def main():
+    try:
+        base = float(input("Enter the base (in cm): "))
+        height = float(input("Enter the height (in cm): "))
+        area = calculate_right_triangle_area(base, height)
+        print(f"\n[+] Base: {base} cm | Height: {height} cm")
+        print(f"[+] Area of right-angled triangle: {area:.2f} sq cm")
+    except ValueError as e:
+        print(f"[!] Invalid input error: {e}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Enter the base: 5\\
+Enter the height: 10\\
+Area of right angle triangle is: 25.0 sqcm
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The program to calculate the area of a right-angled triangle was successfully implemented and verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 2
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 2} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{LARGEST AMONG THREE NUMBERS}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to Find the greatest among three numbers
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To implement multi-way branching using conditional control structures.
+  \item To utilize relational and logical AND operators for comparison.
+  \item To determine maximum numerical value among user inputs.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Begin the program execution for comparing three user input numbers and identifying the largest value.
+  \item[Step 2 :- Input First Number] Prompt the user to enter the first numeric value and parse it as an integer variable.
+  \item[Step 3 :- Input Second Number] Prompt the user to enter the second numeric value and parse it as an integer variable.
+  \item[Step 4 :- Input Third Number] Prompt the user to enter the third numeric value and parse it as an integer variable.
+  \item[Step 5 :- Compare First Value] Check if the first number is strictly greater than both second and third input numbers.
+  \item[Step 6 :- Evaluate Second Value] If first condition fails, check if the second number is strictly greater than third number.
+  \item[Step 7 :- Default Third Value] If preceding conditions evaluate false, assign the third input number as the largest value.
+  \item[Step 8 :- Display Result] Output the identified largest number along with appropriate descriptive message to console display.
+  \item[Step 9 :- Stop] Conclude program execution cleanly and return system control back to the operating system environment.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+a = int(input("Enter first number: ")) 
+b = int(input("Enter second number: ")) 
+c = int(input("Enter third number: "))
+if a > b and a > c: 
+    print("largest number is ", a) 
+elif b > c: 
+    print("the largest number is ", b) 
+else: 
+    print("the largest number is ", c)
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+def find_largest_number(num1: float, num2: float, num3: float) -> float:
+    \"\"\"Returns the maximum among three numbers using comparison logic.\"\"\"
+    if num1 >= num2 and num1 >= num3:
+        return num1
+    elif num2 >= num3:
+        return num2
+    else:
+        return num3
+
+def main():
+    try:
+        a = float(input("Enter first number: "))
+        b = float(input("Enter second number: "))
+        c = float(input("Enter third number: "))
+        
+        largest = find_largest_number(a, b, c)
+        print(f"\n[+] Input Numbers: {a}, {b}, {c}")
+        print(f"[+] The largest number is: {largest}")
+    except ValueError:
+        print("[!] Input error: Please enter valid numerical values.")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Enter first number: 10\\
+Enter second number: 5\\
+Enter third number: 2\\
+largest number is 10
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The program to find the largest among three numbers was successfully executed and verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 3
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 3} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{PALINDROME NUMBERS}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to check whether a given number is palindrome or not
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To implement indefinite iteration using while loop structure.
+  \item To perform digit extraction using modulus and integer floor division.
+  \item To reverse integer values and verify numeric symmetry.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize program execution to check if a user provided integer reads same forward and backward.
+  \item[Step 2 :- Input Integer Value] Prompt the user for an integer number and store a copy in temporary evaluation variable.
+  \item[Step 3 :- Initialize Reversed Variable] Create a variable named reversed number and set its initial numerical value equal to zero.
+  \item[Step 4 :- Check Loop Condition] Execute a while loop as long as temporary evaluation variable remains strictly greater than zero.
+  \item[Step 5 :- Extract Modulo Digit] Extract the last digit of temporary variable using modulus division by base value ten.
+  \item[Step 6 :- Accumulate Reversed Number] Multiply reversed variable by ten and add the extracted last digit to build reverse integer.
+  \item[Step 7 :- Truncate Temporary Value] Perform integer floor division on temporary variable by ten to remove processed last digit.
+  \item[Step 8 :- Compare Original and Reversed] Compare original input integer against the constructed reversed integer for exact numerical equality match.
+  \item[Step 9 :- Print Classification Result] Display palindrome message if values match, otherwise output not palindrome message to console screen.
+  \item[Step 10 :- Stop] End the Python script execution and successfully clear all temporary runtime variables from memory.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+n = int(input("enter a number: ")) 
+rev = 0 
+temp = n 
+while temp > 0: 
+    rem = temp % 10 
+    rev = rev * 10 + rem 
+    temp = temp // 10 
+
+if rev == n: 
+    print("palindrome") 
+else: 
+    print("not palindrome")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+def is_palindrome(number: int) -> bool:
+    \"\"\"Checks if a non-negative integer is a palindrome.\"\"\"
+    if number < 0:
+        return False
+    
+    original = number
+    reversed_num = 0
+    while number > 0:
+        remainder = number % 10
+        reversed_num = (reversed_num * 10) + remainder
+        number //= 10
+        
+    return original == reversed_num
+
+def main():
+    try:
+        num = int(input("Enter a positive integer: "))
+        if is_palindrome(num):
+            print(f"[+] The number {num} is a Palindrome.")
+        else:
+            print(f"[-] The number {num} is NOT a Palindrome.")
+    except ValueError:
+        print("[!] Input error: Please enter a valid integer.")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+enter a number: 121\\
+palindrome
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The palindrome number checking program was executed and verified for various input cases.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 4
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 4} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{FIBONACCI SERIES}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to print Fibonacci series
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To understand sequence generation and iterative loop bounds.
+  \item To manage variable swapping and accumulator updates during iterations.
+  \item To display sequence terms up to user specified limit.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize the execution environment to compute and display a specified count of Fibonacci terms.
+  \item[Step 2 :- Input Number of Terms] Prompt the user to enter total term count and convert input string into integer.
+  \item[Step 3 :- Initialize Seed Terms] Set initial first term value to zero and initial second term value to integer one.
+  \item[Step 4 :- Print Initial Seed Values] Display the first two seed numbers on separate lines to begin the Fibonacci sequence.
+  \item[Step 5 :- Execute Term Loop] Loop through range starting from index two up to the specified total number of terms.
+  \item[Step 6 :- Compute Next Term] Calculate next Fibonacci term by adding current values of first and second sequence terms.
+  \item[Step 7 :- Print Computed Term] Output the newly calculated term value to standard console output for user visibility.
+  \item[Step 8 :- Shift Sequence Term Variables] Update first term variable with second term, and second term variable with new term.
+  \item[Step 9 :- Stop] Conclude Fibonacci generation process successfully and release all script memory resources to system.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+n = int(input("enter your number of terms: ")) 
+a = 0 
+b = 1 
+print(a) 
+print(b) 
+for i in range(2, n): 
+    c = a + b 
+    print(c)  
+    a = b 
+    b = c
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from typing import List
+
+def generate_fibonacci(n_terms: int) -> List[int]:
+    \"\"\"Generates a list containing the first n terms of the Fibonacci sequence.\"\"\"
+    if n_terms <= 0:
+        return []
+    elif n_terms == 1:
+        return [0]
+    
+    series = [0, 1]
+    while len(series) < n_terms:
+        next_term = series[-1] + series[-2]
+        series.append(next_term)
+    return series
+
+def main():
+    try:
+        n = int(input("Enter number of terms to generate: "))
+        if n <= 0:
+            print("[!] Please enter a positive integer greater than zero.")
+            return
+        
+        result = generate_fibonacci(n)
+        print(f"\n[+] Fibonacci Series ({n} terms):")
+        print(" -> ".join(map(str, result)))
+    except ValueError:
+        print("[!] Input error: Please enter a valid integer.")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+enter your number of terms: 7\\
+0\\
+1\\
+1\\
+2\\
+3\\
+5\\
+8
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The program to generate the Fibonacci series was implemented and output verified successfully.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 5
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 5} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{VOWELS AND CONSONANTS}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to count number of vowels and consonants in a string
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To iterate over character elements of a text string.
+  \item To perform string inspection using logical OR conditions and isalpha().
+  \item To count distinct character classes in textual input.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize the string analyzer program to count total number of vowels and consonants present.
+  \item[Step 2 :- Input String Sentence] Prompt user to enter any text string and store character array in text variable.
+  \item[Step 3 :- Initialize Counter Variables] Set vowel counter variable to zero and consonant counter variable to zero for tracking.
+  \item[Step 4 :- Iterate String Characters] Loop through each character of input text string from starting index to ending length.
+  \item[Step 5 :- Check Vowel Condition] Check if current character matches any upper or lower case English language vowel alphabet.
+  \item[Step 6 :- Increment Vowel Count] Increase vowel counter variable by integer value one when character matches vowel condition criteria.
+  \item[Step 7 :- Check Alphabetic Consonant] Check if character is alphabetic but not a vowel, then increment consonant counter variable.
+  \item[Step 8 :- Display Counter Summary] Output final counts of total vowels and total consonants clearly to standard console window.
+  \item[Step 9 :- Stop] Finish execution of string parsing script and release character buffers back to system resources.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+s = str(input("enter a string: ")) 
+l = len(s) 
+c = 0 
+v = 0 
+for i in range(l): 
+    if s[i] == 'a' or s[i] == 'e' or s[i] == 'i' or s[i] == 'o' or s[i] == 'u' or \
+       s[i] == 'A' or s[i] == 'E' or s[i] == 'I' or s[i] == 'O' or s[i] == 'U': 
+        v = v + 1 
+    elif s[i].isalpha(): 
+        c = c + 1 
+print("Number of vowels is ", v) 
+print("Number of consonants is ", c)
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from typing import Tuple
+
+def count_vowels_and_consonants(text: str) -> Tuple[int, int]:
+    \"\"\"Counts vowels and consonants in a given string.\"\"\"
+    VOWELS = set("aeiouAEIOU")
+    vowels_count = 0
+    consonants_count = 0
+    
+    for char in text:
+        if char.isalpha():
+            if char in VOWELS:
+                vowels_count += 1
+            else:
+                consonants_count += 1
+                
+    return vowels_count, consonants_count
+
+def main():
+    user_input = input("Enter a string for character analysis: ")
+    v_count, c_count = count_vowels_and_consonants(user_input)
+    
+    print(f"\n[+] String Analyzed: \"{user_input}\"")
+    print(f"[+] Total Vowels     : {v_count}")
+    print(f"[+] Total Consonants : {c_count}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+enter a string: Hello\\
+Number of vowels is  2\\
+Number of consonants is  3
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The vowel and consonant counting program was successfully executed and output verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 6
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 6} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{SORTING}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to Sort the elements of a list using function
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To define modular functions accepting list parameters in Python.
+  \item To implement bubble sort algorithm using nested loops and element swapping.
+  \item To return and print ordered data structures.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize the sorting module to reorder elements of a numerical list in non decreasing order.
+  \item[Step 2 :- Define Sorting Function] Declare bubble sort function accepting an input array list parameter for sorting process execution.
+  \item[Step 3 :- Determine List Length] Calculate total count of list elements and store integer length in variable parameter n.
+  \item[Step 4 :- Outer Pass Loop] Iterate outer loop from index zero up to list length minus one for passes.
+  \item[Step 5 :- Inner Comparison Loop] Iterate inner loop from zero up to list length minus outer index minus one.
+  \item[Step 6 :- Compare Adjacent Elements] Check if current element is strictly greater than adjacent element located at next index.
+  \item[Step 7 :- Swap Out of Order Values] Swap adjacent element values in place when left element is larger than right element.
+  \item[Step 8 :- Return Sorted Array] Return fully ordered array list from function upon completing all nested comparison passes.
+  \item[Step 9 :- Invoke and Output] Call sorting function with sample input list and print formatted sorted output to console.
+  \item[Step 10 :- Stop] Terminate Python execution cleanly and free array memory allocations back to system runtime pool.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+def bubble_sort(arr): 
+    n = len(arr) 
+    for i in range(n): 
+        for j in range(0, n - i - 1): 
+            if arr[j] > arr[j + 1]: 
+                arr[j], arr[j + 1] = arr[j + 1], arr[j] 
+    return arr 
+ 
+sample_list = [64, 34, 25, 12, 22, 11, 90] 
+sorted_list = bubble_sort(sample_list) 
+print(f"Sorted list in non-decreasing order: {sorted_list}")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from typing import List
+
+def bubble_sort_optimized(arr: List[int]) -> List[int]:
+    \"\"\"Sorts a list of numbers in non-decreasing order using optimized Bubble Sort.\"\"\"
+    data = arr.copy()
+    n = len(data)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n - i - 1):
+            if data[j] > data[j + 1]:
+                data[j], data[j + 1] = data[j + 1], data[j]
+                swapped = True
+        if not swapped:
+            break  # Early termination if list is already sorted
+    return data
+
+def main():
+    sample_list = [64, 34, 25, 12, 22, 11, 90]
+    print(f"[+] Original List : {sample_list}")
+    sorted_res = bubble_sort_optimized(sample_list)
+    print(f"[+] Sorted List   : {sorted_res}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Sorted list in non-decreasing order: [11, 12, 22, 25, 34, 64, 90]
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The list sorting function was successfully implemented using bubble sort and output verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 7
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 7} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{MAXIMUM AND MINIMUM ELEMENT OF A TUPLE}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to find Maximum and minimum elements of a tuple using function
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To explore immutable sequence types (tuples) in Python.
+  \item To traverse tuple elements and perform conditional minimum/maximum evaluation.
+  \item To return tuple pairs containing multiple values from functions.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize tuple evaluation script to find largest and smallest numeric values using custom function.
+  \item[Step 2 :- Define Function] Declare function accepting a numeric tuple and returning tuple containing maximum and minimum elements.
+  \item[Step 3 :- Handle Empty Tuple] Check if input tuple is empty, returning None for both maximum and minimum values.
+  \item[Step 4 :- Initialize Extremes] Set initial maximum element and minimum element variables to first element of input tuple.
+  \item[Step 5 :- Loop Tuple Values] Iterate through each numeric element contained within the input tuple from start to finish.
+  \item[Step 6 :- Update Maximum Value] Compare current number with maximum element variable and update if current number is greater.
+  \item[Step 7 :- Update Minimum Value] Compare current number with minimum element variable and update if current number is smaller.
+  \item[Step 8 :- Return Extreme Pair] Return tuple containing identified overall maximum element and minimum element from custom function.
+  \item[Step 9 :- Execute and Print] Pass sample numeric tuple into function and display minimum and maximum results to display.
+  \item[Step 10 :- Stop] End script execution safely and release tuple memory structures back to system operating environment.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+def find_max_min(tup): 
+    if not tup: 
+        return None, None 
+    max_element = tup[0] 
+    min_element = tup[0] 
+   
+    for num in tup: 
+        if num > max_element: 
+            max_element = num 
+        if num < min_element: 
+            min_element = num 
+    return max_element, min_element 
+ 
+sample_tuple = (3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5) 
+max_element, min_element = find_max_min(sample_tuple) 
+print(f"The maximum element in the tuple is: {max_element}") 
+print(f"The minimum element in the tuple is: {min_element}")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from typing import Tuple, Optional, Any
+
+def get_tuple_extremes(data_tuple: Tuple[Any, ...]) -> Tuple[Optional[Any], Optional[Any]]:
+    \"\"\"Finds and returns the maximum and minimum elements of a tuple safely.\"\"\"
+    if not data_tuple:
+        return None, None
+    
+    max_val = data_tuple[0]
+    min_val = data_tuple[0]
+    
+    for item in data_tuple[1:]:
+        if item > max_val:
+            max_val = item
+        elif item < min_val:
+            min_val = item
+            
+    return max_val, min_val
+
+def main():
+    sample = (3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5)
+    maximum, minimum = get_tuple_extremes(sample)
+    
+    print(f"[+] Tuple Analyzed : {sample}")
+    print(f"[+] Maximum Element: {maximum}")
+    print(f"[+] Minimum Element: {minimum}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+The maximum element in the tuple is: 9\\
+The minimum element in the tuple is: 1
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The function to find maximum and minimum elements of a tuple was executed and verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 8
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 8} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{LIST OF FREQUENCIES}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to create list of frequencies in non-increasing order using function
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To build frequency maps using Python dictionaries.
+  \item To extract dictionary values into lists and implement custom sorting logic.
+  \item To arrange frequency counts in descending numerical order.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize frequency distribution analyzer to count list elements and sort frequencies in descending order.
+  \item[Step 2 :- Define Frequency Function] Declare function accepting input array and returning sorted list of element frequency values.
+  \item[Step 3 :- Handle Empty Input] Check if input array is empty and return an empty list immediately if true.
+  \item[Step 4 :- Build Dictionary Counts] Iterate array elements, populating key value pairs of elements and their occurrences in dictionary.
+  \item[Step 5 :- Extract Frequency Values] Extract all numerical frequency counts from dictionary values into a separate linear list structure.
+  \item[Step 6 :- Outer Sorting Pass] Execute outer loop through frequency list indices to begin manual descending bubble sort algorithm.
+  \item[Step 7 :- Inner Sorting Pass] Execute inner loop comparing current frequency value against subsequent frequency values in list.
+  \item[Step 8 :- Swap Descending Order] Swap adjacent frequency counts if preceding count is smaller than following count for descending order.
+  \item[Step 9 :- Return and Output] Return sorted frequency list from function and print formatted frequency list to console output.
+  \item[Step 10 :- Stop] Conclude execution of frequency analysis algorithm and clear dictionary data structures from memory.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+def frequency_list(arr): 
+    if not arr:  
+        return [] 
+    frequency_dict = {} 
+ 
+    for item in arr: 
+        if item in frequency_dict: 
+            frequency_dict[item] += 1 
+        else: 
+            frequency_dict[item] = 1 
+    frequencies = list(frequency_dict.values()) 
+ 
+    for i in range(len(frequencies)): 
+        for j in range(i + 1, len(frequencies)): 
+            if frequencies[i] < frequencies[j]: 
+                frequencies[i], frequencies[j] = frequencies[j], frequencies[i] 
+ 
+    return frequencies 
+
+sample_list = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5] 
+frequencies = frequency_list(sample_list) 
+print(f"List of frequencies in non-increasing order: {frequencies}")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from collections import Counter
+from typing import List, Any
+
+def get_descending_frequencies(elements: List[Any]) -> List[int]:
+    \"\"\"Returns element occurrence frequencies sorted in non-increasing (descending) order.\"\"\"
+    if not elements:
+        return []
+    
+    # Use standard library Counter for O(N) frequency tally
+    freq_map = Counter(elements)
+    # Extract frequencies and sort descending
+    return sorted(freq_map.values(), reverse=True)
+
+def main():
+    data = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+    result = get_descending_frequencies(data)
+    
+    print(f"[+] Dataset Elements : {data}")
+    print(f"[+] Non-Increasing Frequencies: {result}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+List of frequencies in non-increasing order: [3, 2, 2, 1, 1, 1, 1]
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The frequency list computation program in non-increasing order was tested and verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 9
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 9} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{FREQUENCY OF CHARACTERS OF A FILE}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to find Frequency of characters in a given file
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To manage file I/O operations using Python context managers (with open).
+  \item To handle file stream exceptions like FileNotFoundError.
+  \item To count character occurrences across file text content.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize file character analyzer to count occurrences of each character inside a target text file.
+  \item[Step 2 :- Define Analysis Function] Create function accepting filename parameter to read text content and construct character frequency dictionary.
+  \item[Step 3 :- Open File and Read Text] Open specified file in read mode safely using context manager and read entire text string.
+  \item[Step 4 :- Populate Character Counts] Iterate through each character in text string, updating occurrence counts in character frequency dictionary.
+  \item[Step 5 :- Exception Handling Guard] Wrap file operations in try block and catch file not found error if file is missing.
+  \item[Step 6 :- Create Sample Text File] Create sample output text file and write test string content to verify reading logic.
+  \item[Step 7 :- Call Function and Print] Pass filename into analysis function and print extracted character frequency dictionary to console display.
+  \item[Step 8 :- Stop] Conclude file stream operations, close active handles, and terminate program execution with zero error exit.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+def character_frequency(filename): 
+    try: 
+        with open(filename, 'r') as file: 
+            text = file.read() 
+        frequency_dict = {} 
+        for char in text: 
+            if char in frequency_dict: 
+                frequency_dict[char] += 1 
+            else: 
+                frequency_dict[char] = 1 
+        return frequency_dict 
+    except FileNotFoundError: 
+        print(f"The file {filename} does not exist.") 
+        return {} 
+
+filename = 'file.txt' 
+f = open(filename, 'w') 
+f.write("hello world") 
+f.close() 
+
+frequencies = character_frequency(filename) 
+print(f"Frequencies of characters in the file: {frequencies}")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from collections import Counter
+from typing import Dict
+
+def analyze_file_character_frequency(filepath: str) -> Dict[str, int]:
+    \"\"\"Reads a file safely and calculates character frequencies using Counter.\"\"\"
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            content = file.read()
+        return dict(Counter(content))
+    except FileNotFoundError:
+        print(f"[!] Error: The file '{filepath}' was not found.")
+        return {}
+    except IOError as e:
+        print(f"[!] File I/O Error: {e}")
+        return {}
+
+def main():
+    test_filename = "sample_test.txt"
+    # Helper to setup sample text file
+    with open(test_filename, "w", encoding="utf-8") as f:
+        f.write("hello world")
+        
+    freqs = analyze_file_character_frequency(test_filename)
+    print(f"[+] Character Frequencies for '{test_filename}':")
+    for char, count in freqs.items():
+        repr_char = repr(char)
+        print(f"    Character {repr_char:<6} : {count}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Frequencies of characters in the file: {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The file character frequency analyzer was implemented and output verified successfully.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 10
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 10} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{EXCEPTION HANDLING}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to handle exception in the case of voters age validity If age < 0 raise an exception
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To raise custom exceptions (ValueError) based on business logic.
+  \item To wrap error prone statements inside try-except blocks.
+  \item To intercept specific exception classes (ValueError, TypeError).
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize age validation program to enforce minimum voting eligibility age using custom exception handling rules.
+  \item[Step 2 :- Define Age Check Function] Create function accepting numerical age argument to evaluate voter eligibility and raise value exceptions.
+  \item[Step 3 :- Check Negative Age Exception] Raise ValueError with descriptive message if input age argument is strictly less than zero.
+  \item[Step 4 :- Evaluate Voting Eligibility] Print ineligible message if age is under eighteen, or eligible message if age is eighteen or above.
+  \item[Step 5 :- Execute Try Block] Prompt user for integer age input inside try block and invoke age validation function.
+  \item[Step 6 :- Catch ValueError Exception] Intercept raised ValueError exception and print descriptive error message to terminal output screen.
+  \item[Step 7 :- Catch TypeError Exception] Intercept invalid non integer type errors and prompt user to enter valid integer age format.
+  \item[Step 8 :- Stop] End exception handling workflow safely without crashing application execution environment during runtime error states.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+def check_voter_age(age): 
+    if age < 0: 
+        raise ValueError("Age cannot be negative.") 
+    elif age < 18: 
+        print("You are not eligible to vote.") 
+    else: 
+        print("You are eligible to vote.") 
+
+try: 
+    age = int(input("Enter your age: ")) 
+    check_voter_age(age) 
+except ValueError as e: 
+    print(f"Error: {e}") 
+except TypeError: 
+    print("Please enter a valid integer for age.")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+class InvalidAgeError(Exception):
+    \"\"\"Custom exception raised when an age is negative.\"\"\"
+    pass
+
+def validate_voter_eligibility(age: int) -> str:
+    \"\"\"Validates voter age and returns eligibility status or raises exception.\"\"\"
+    if age < 0:
+        raise InvalidAgeError("Age cannot be negative.")
+    elif age < 18:
+        return f"Age {age}: Ineligible to vote (Minimum age required is 18)."
+    else:
+        return f"Age {age}: Eligible to vote."
+
+def main():
+    try:
+        user_age = int(input("Enter voter age: "))
+        status = validate_voter_eligibility(user_age)
+        print(f"[+] Status: {status}")
+    except InvalidAgeError as e:
+        print(f"[!] Validation Error: {e}")
+    except ValueError:
+        print("[!] Input Error: Please enter a valid numerical integer.")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Enter your age: -5\\
+Error: Age cannot be negative.
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The voter age exception handling program was executed and exception handling verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 11
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 11} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{STUDENT CLASS}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to create a student class and create following methods: setMarks() - to update marks, getMarks() - to get individual marks, avgMarks() - to find average of marks, showResults() - to show results of each student
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To understand Object-Oriented Programming (OOP) concepts in Python.
+  \item To initialize instance attributes using constructors (__init__).
+  \item To define instance methods for data manipulation, query, and formatted summary display.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize object oriented student management system to model student marks, averages, and result summaries.
+  \item[Step 2 :- Define Student Class] Construct Student class blueprint containing constructor method to store student name and marks dictionary.
+  \item[Step 3 :- Implement Mark Setter] Create setMarks method accepting subject name and numeric mark to populate student marks dictionary.
+  \item[Step 4 :- Implement Mark Getter] Create getMarks method accepting subject name to query and return corresponding numeric subject mark.
+  \item[Step 5 :- Implement Average Calculator] Create avgMarks method to sum dictionary marks and divide by total subject count for average.
+  \item[Step 6 :- Implement Result Display] Create showResults method to print complete subject score breakdown and overall average mark summary.
+  \item[Step 7 :- Instantiate Object and Set Data] Instantiate Student object, set sample marks across subjects, and demonstrate getter and average methods.
+  \item[Step 8 :- Stop] Conclude class demonstration, destroy instantiated object references, and return control to Python runtime engine.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+class Student: 
+    def __init__(self, name): 
+        self.name = name 
+        self.marks = {} 
+ 
+    def setMarks(self, subject, mark): 
+        self.marks[subject] = mark 
+ 
+    def getMarks(self, subject): 
+        return self.marks.get(subject, "No marks available for this subject.") 
+ 
+    def avgMarks(self): 
+        if not self.marks: 
+            return "No marks available." 
+        total_marks = sum(self.marks.values()) 
+        average_marks = total_marks / len(self.marks) 
+        return average_marks 
+ 
+    def showResults(self): 
+        if not self.marks: 
+            print(f"No marks available for {self.name}.") 
+            return 
+         
+        print(f"Results for {self.name}:") 
+        for subject, mark in self.marks.items(): 
+            print(f"{subject}: {mark}") 
+         
+        average_marks = self.avgMarks() 
+        print(f"Average Marks: {average_marks:.2f}") 
+
+student1 = Student("John Doe") 
+student1.setMarks("Math", 85) 
+student1.setMarks("Science", 90) 
+student1.setMarks("English", 88) 
+
+print(student1.getMarks("Math")) 
+print(student1.getMarks("History")) 
+print(student1.avgMarks()) 
+student1.showResults()
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+from typing import Dict, Union
+
+class Student:
+    \"\"\"Represents a student record with subject marks and average calculations.\"\"\"
+    
+    def __init__(self, name: str):
+        self.name: str = name
+        self._marks: Dict[str, float] = {}
+
+    def setMarks(self, subject: str, mark: float) -> None:
+        if mark < 0 or mark > 100:
+            raise ValueError("Mark must be between 0 and 100.")
+        self._marks[subject] = float(mark)
+
+    def getMarks(self, subject: str) -> Union[float, str]:
+        return self._marks.get(subject, "No marks available for this subject.")
+
+    def avgMarks(self) -> float:
+        if not self._marks:
+            return 0.0
+        return sum(self._marks.values()) / len(self._marks)
+
+    def showResults(self) -> None:
+        print(f"\n" + "="*30)
+        print(f"   STUDENT REPORT: {self.name.upper()}")
+        print("="*30)
+        if not self._marks:
+            print(" No mark records available.")
+            return
+        
+        for subject, score in self._marks.items():
+            print(f" -> {subject:<15}: {score:.1f}")
+        print("-"*30)
+        print(f" Overall Average  : {self.avgMarks():.2f}")
+        print("="*30)
+
+def main():
+    st = Student("Kalyani Biju")
+    st.setMarks("Python Programming", 95)
+    st.setMarks("Data Structures", 88)
+    st.setMarks("Linear Algebra", 92)
+    st.showResults()
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+85\\
+No marks available for this subject.\\
+87.66666666666667\\
+Results for John Doe:\\
+Math: 85\\
+Science: 90\\
+English: 88\\
+Average Marks: 87.67
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The Student class implementation with method encapsulation was verified successfully.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 12
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 12} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{INHERITANCE}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to create a vehicle class with variables name, speed, mileage and methods setCapacity() and getFare(), create a class bus that inherits from the Vehicle class.
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To implement OOP inheritance between superclasses and subclasses.
+  \item To leverage superclass methods using super().
+  \item To demonstrate method overriding and specialized behavior in derived classes.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize object oriented inheritance application to model parent Vehicle class and child Bus subclass behavior.
+  \item[Step 2 :- Define Base Vehicle Class] Construct Vehicle class with constructor initializing name, speed, mileage, capacity, and default fare methods.
+  \item[Step 3 :- Implement Vehicle Methods] Add setCapacity method to set passenger limit and getFare method calculating base passenger fare.
+  \item[Step 4 :- Define Child Bus Subclass] Create Bus class inheriting from Vehicle, overriding getFare method to add ten percent maintenance charge.
+  \item[Step 5 :- Instantiate Vehicle Object] Create Vehicle instance with sample parameters, set capacity, and display attribute properties and fare.
+  \item[Step 6 :- Instantiate Bus Object] Create Bus instance with sample parameters, set capacity, and display inherited attributes and updated fare.
+  \item[Step 7 :- Stop] Terminate object oriented execution context cleanly and release object references back to heap memory.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+class Vehicle: 
+    def __init__(self, name, speed, mileage): 
+        self.name = name 
+        self.speed = speed 
+        self.mileage = mileage 
+        self.capacity = 0 
+ 
+    def setCapacity(self, capacity): 
+        self.capacity = capacity 
+
+    def getFare(self): 
+        return self.capacity * 100 
+ 
+class Bus(Vehicle): 
+    def getFare(self): 
+        base_fare = super().getFare() 
+        return base_fare * 1.1 
+ 
+vehicle1 = Vehicle("Car", 150, 15) 
+vehicle1.setCapacity(5) 
+print(f"Vehicle Name: {vehicle1.name}") 
+print(f"Speed: {vehicle1.speed} km/h") 
+print(f"Mileage: {vehicle1.mileage} km/l") 
+print(f"Capacity: {vehicle1.capacity}") 
+print(f"Fare: {vehicle1.getFare()}") 
+ 
+bus1 = Bus("School Bus", 80, 10) 
+bus1.setCapacity(50) 
+print(f"\nBus Name: {bus1.name}") 
+print(f"Speed: {bus1.speed} km/h") 
+print(f"Mileage: {bus1.mileage} km/l") 
+print(f"Capacity: {bus1.capacity}") 
+print(f"Fare: {bus1.getFare()}")
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+class Vehicle:
+    \"\"\"Base class representing general vehicle properties.\"\"\"
+    BASE_FARE_PER_PASSENGER = 100.0
+
+    def __init__(self, name: str, speed: float, mileage: float):
+        self.name = name
+        self.speed = speed
+        self.mileage = mileage
+        self.capacity = 0
+
+    def setCapacity(self, capacity: int) -> None:
+        self.capacity = capacity
+
+    def getFare(self) -> float:
+        return self.capacity * self.BASE_FARE_PER_PASSENGER
+
+class Bus(Vehicle):
+    \"\"\"Subclass Bus overriding fare calculation with maintenance charge.\"\"\"
+    MAINTENANCE_SURCHARGE_PERCENT = 0.10  # 10% extra charge
+
+    def getFare(self) -> float:
+        base_fare = super().getFare()
+        total_fare = base_fare * (1 + self.MAINTENANCE_SURCHARGE_PERCENT)
+        return total_fare
+
+def main():
+    car = Vehicle("Sedan Car", 140, 18)
+    car.setCapacity(4)
+    print(f"[+] Vehicle: {car.name} | Speed: {car.speed} km/h | Fare: Rs. {car.getFare():.2f}")
+
+    bus = Bus("Volvo Express", 90, 8)
+    bus.setCapacity(50)
+    print(f"[+] Bus    : {bus.name} | Speed: {bus.speed} km/h | Fare: Rs. {bus.getFare():.2f}")
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Vehicle Name: Car\\
+Speed: 150 km/h\\
+Mileage: 15 km/l\\
+Capacity: 5\\
+Fare: 500\\
+\\
+Bus Name: School Bus\\
+Speed: 80 km/h\\
+Mileage: 10 km/l\\
+Capacity: 50\\
+Fare: 5500.0
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The OOP inheritance hierarchy between Vehicle and Bus classes was successfully demonstrated.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 13
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 13} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{NUMPY}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to create a matrix using numpy and do the following operations: Perform matrix addition, subtraction and multiplication, Find transpose of matrix, Calculates the inverse of matrix, Calculates the determinant of matrix, Transforms a matrix into 1d array (flatten)
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To utilize NumPy library for numerical array processing.
+  \item To perform fundamental matrix operations (addition, subtraction, dot product).
+  \item To compute linear algebra functions (transpose, inverse, determinant, flattening).
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize matrix computation module using NumPy library for linear algebra operations and array reshaping.
+  \item[Step 2 :- Import NumPy Library] Import numerical Python package under standard alias np to access matrix algebra functions.
+  \item[Step 3 :- Construct Input Matrices] Create two two-dimensional square matrix arrays with sample integer values for linear algebra testing.
+  \item[Step 4 :- Perform Matrix Arithmetic] Compute element wise matrix addition, matrix subtraction, and matrix dot product multiplication using NumPy functions.
+  \item[Step 5 :- Compute Transpose Matrix] Compute matrix transpose using np.transpose function to swap rows and columns of input matrix.
+  \item[Step 6 :- Calculate Determinant and Inverse] Calculate matrix inverse using np.linalg.inv and matrix determinant using np.linalg.det module functions.
+  \item[Step 7 :- Flatten Matrix Array] Transform two-dimensional matrix into one-dimensional array using flatten method for linear array operations.
+  \item[Step 8 :- Display Operation Results] Print original matrices and calculated arithmetic, transpose, inverse, determinant, and flattened outputs to console screen.
+  \item[Step 9 :- Stop] Conclude matrix algebra calculations and free NumPy array allocations from application runtime environment memory.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+import numpy as np 
+ 
+# Create matrices 
+matrix1 = np.array([[1, 2], [3, 4]]) 
+matrix2 = np.array([[5, 6], [7, 8]]) 
+ 
+# Perform matrix addition 
+addition = np.add(matrix1, matrix2) 
+ 
+# Perform matrix subtraction 
+subtraction = np.subtract(matrix1, matrix2) 
+ 
+# Perform matrix multiplication 
+multiplication = np.dot(matrix1, matrix2) 
+ 
+# Find transpose of matrix1 
+transpose = np.transpose(matrix1) 
+ 
+# Calculate the inverse of matrix1 
+inverse = np.linalg.inv(matrix1) 
+ 
+# Calculate the determinant of matrix1 
+determinant = np.linalg.det(matrix1) 
+ 
+# Transform matrix1 into a 1D array (flatten) 
+flattened = matrix1.flatten() 
+ 
+# Display results 
+print("Matrix 1:\n", matrix1) 
+print("\nMatrix 2:\n", matrix2) 
+print("\nMatrix Addition:\n", addition) 
+print("\nMatrix Subtraction:\n", subtraction) 
+print("\nMatrix Multiplication:\n", multiplication) 
+print("\nTranspose of Matrix 1:\n", transpose) 
+print("\nInverse of Matrix 1:\n", inverse) 
+print("\nDeterminant of Matrix 1:\n", determinant) 
+print("\nFlattened Matrix 1:\n", flattened)
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+import numpy as np
+
+def demonstrate_numpy_matrix_ops():
+    \"\"\"Demonstrates core NumPy matrix transformations and linear algebra operations.\"\"\"
+    A = np.array([[1, 2], [3, 4]], dtype=float)
+    B = np.array([[5, 6], [7, 8]], dtype=float)
+
+    print("=== NumPy Matrix Algebra Suite ===")
+    print(f"Matrix A:\n{A}")
+    print(f"Matrix B:\n{B}")
+    print(f"\n1. Addition (A + B):\n{A + B}")
+    print(f"2. Subtraction (A - B):\n{A - B}")
+    print(f"3. Matrix Product (A @ B):\n{A @ B}")
+    print(f"4. Transpose (A^T):\n{A.T}")
+    
+    det_A = np.linalg.det(A)
+    print(f"5. Determinant det(A): {det_A:.4f}")
+    if abs(det_A) > 1e-9:
+        print(f"6. Inverse (A^-1):\n{np.linalg.inv(A)}")
+    
+    print(f"7. Flattened 1D Array: {A.flatten()}")
+
+if __name__ == "__main__":
+    demonstrate_numpy_matrix_ops()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+Matrix 1:\\
+[[1 2]\\
+ [3 4]]\\
+\\
+Matrix 2:\\
+[[5 6]\\
+ [7 8]]\\
+\\
+Matrix Addition:\\
+[[ 6  8]\\
+ [10 12]]\\
+\\
+Matrix Subtraction:\\
+[[-4 -4]\\
+ [-4 -4]]\\
+\\
+Matrix Multiplication:\\
+[[19 22]\\
+ [43 50]]\\
+\\
+Transpose of Matrix 1:\\
+[[1 3]\\
+ [2 4]]\\
+\\
+Inverse of Matrix 1:\\
+[[-2.   1. ]\\
+ [ 1.5 -0.5]]\\
+\\
+Determinant of Matrix 1:\\
+-2.0\\
+\\
+Flattened Matrix 1:\\
+[1 2 3 4]
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The matrix operations program using NumPy library was executed and results verified.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 14
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 14} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{PANDA MODULE}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a python program to read a .csv file using panda module and print the first and last five lines of a file
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To leverage Pandas library for structured data manipulation.
+  \item To load CSV datasets into DataFrames using read_csv.
+  \item To inspect head and tail slices of dataset files.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize data processing module using Pandas library to inspect structured tabular records from CSV file.
+  \item[Step 2 :- Import Pandas Package] Import pandas library under standard alias pd to utilize DataFrame file loading and inspection methods.
+  \item[Step 3 :- Load CSV File] Read external comma separated values file into DataFrame object using pd.read_csv file loader method.
+  \item[Step 4 :- Extract Head Rows] Call head method on DataFrame object to extract and display first five rows of data file.
+  \item[Step 5 :- Extract Tail Rows] Call tail method on DataFrame object to extract and display last five rows of data file.
+  \item[Step 6 :- Generate Sample CSV] Write sample dataset file containing ten student records with name, age, and city fields.
+  \item[Step 7 :- Display Inspection Output] Output formatted head and tail DataFrame slices clearly to terminal console display window.
+  \item[Step 8 :- Stop] Terminate file processing operations and clean up pandas DataFrame memory structures from system runtime.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+import pandas as pd 
+ 
+filename = 'sample.csv' 
+df = pd.read_csv(filename) 
+ 
+print("First five lines of the file:") 
+print(df.head()) 
+ 
+print("\nLast five lines of the file:") 
+print(df.tail())
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+import pandas as pd
+import os
+
+def process_csv_dataset(csv_filepath: str) -> None:
+    \"\"\"Reads a CSV dataset and displays the first 5 and last 5 records cleanly.\"\"\"
+    if not os.path.exists(csv_filepath):
+        # Create a sample CSV if it doesn't exist
+        sample_data = {
+            "Name": ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Hannah", "Ivan", "Judy"],
+            "Age": [30, 25, 35, 40, 28, 33, 45, 27, 50, 29],
+            "City": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose"]
+        }
+        pd.DataFrame(sample_data).to_csv(csv_filepath, index=False)
+        print(f"[+] Created sample dataset file: '{csv_filepath}'")
+
+    df = pd.read_csv(csv_filepath)
+    print(f"\n[+] Total Records Loaded: {len(df)} rows, {len(df.columns)} columns")
+    print("\n--- FIRST 5 ROWS (HEAD) ---")
+    print(df.head(5).to_string(index=True))
+    
+    print("\n--- LAST 5 ROWS (TAIL) ---")
+    print(df.tail(5).to_string(index=True))
+
+if __name__ == "__main__":
+    process_csv_dataset("sample.csv")
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+First five lines of the file:\\
+      Name  Age         City\\
+0    Alice   30     New York\\
+1      Bob   25  Los Angeles\\
+2  Charlie   35      Chicago\\
+3    David   40      Houston\\
+4      Eve   28      Phoenix\\
+\\
+Last five lines of the file:\\
+     Name  Age         City\\
+5   Frank   33  Philadelphia\\
+6   Grace   45   San Antonio\\
+7  Hannah   27     San Diego\\
+8    Ivan   50        Dallas\\
+9    Judy   29      San Jose
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The Pandas CSV data reading and head/tail preview program was verified successfully.
+
+\newpage
+
+% =========================================================
+% EXPERIMENT 15
+% =========================================================
+\noindent
+\textbf{\large EXPERIMENT NO: 15} \hfill \textbf{\large Date: \underline{\hspace{3cm}}}
+
+\vspace{0.2cm}
+\begin{center}
+{\Huge \textbf{\textcolor{navyblue}{MATPLOTLIB}}}
+\end{center}
+\vspace{0.3cm}
+
+\subsection*{\textit{AIM}}
+Write a program to draw geometric shapes using matplotlib
+
+\subsection*{\textit{OBJECTIVES}}
+\begin{itemize}
+  \item To initialize Matplotlib figure and subplot axis objects.
+  \item To render geometric patch primitives (Rectangle, Circle, Polygon).
+  \item To format plot aesthetics including labels, title, grid, aspect ratio, and show display.
+\end{itemize}
+
+\subsection*{\textit{ALGORITHM}}
+\begin{description}
+  \item[Step 1 :- Start] Initialize graphic visualization module using Matplotlib library to plot custom geometric shapes on coordinate axes.
+  \item[Step 2 :- Import Plotting Libraries] Import matplotlib.pyplot module and numpy library for coordinate math and geometric rendering functions.
+  \item[Step 3 :- Create Figure Canvas] Instantiate figure and subplots axis objects using plt.subplots function to define plot environment canvas.
+  \item[Step 4 :- Add Rectangle Patch] Create Rectangle patch specifying anchor coordinates, width, height, and color, adding patch to axis object.
+  \item[Step 5 :- Add Circle Patch] Create Circle patch specifying center coordinate, radius, fill color, and transparency alpha value on plot.
+  \item[Step 6 :- Add Polygon Triangle Patch] Define numpy array of triangle coordinate vertices, create Polygon patch, and add patch to axis.
+  \item[Step 7 :- Configure Axis Properties] Set axis display limits from zero to one, set equal aspect ratio, enable grid background lines.
+  \item[Step 8 :- Display Visual Figure] Set axis title and axis labels, displaying complete plotted geometric shapes figure using plt.show method.
+  \item[Step 9 :- Stop] Close visualization window, terminate graphic rendering context, and release plotting canvas resources back to operating system.
+\end{description}
+
+\subsection*{\textit{PROGRAM (LAB MANUAL VERSION)}}
+\begin{lstlisting}[style=pythonstyle]
+import matplotlib.pyplot as plt 
+import numpy as np 
+ 
+fig, ax = plt.subplots() 
+ 
+rectangle = plt.Rectangle((0.2, 0.5), 0.4, 0.3, color='blue', alpha=0.3) 
+ax.add_patch(rectangle) 
+ 
+circle = plt.Circle((0.8, 0.2), 0.1, color='green', alpha=0.5) 
+ax.add_patch(circle) 
+ 
+triangle_points = np.array([[0.6, 0.8], [0.8, 0.8], [0.7, 0.9], [0.6, 0.8]]) 
+triangle = plt.Polygon(triangle_points, closed=True, color='red', alpha=0.4) 
+ax.add_patch(triangle) 
+ 
+ax.set_xlim(0, 1) 
+ax.set_ylim(0, 1) 
+ax.set_aspect('equal', adjustable='box') 
+ 
+ax.grid(True) 
+ax.set_xlabel('X-axis') 
+ax.set_ylabel('Y-axis') 
+ax.set_title('Geometric Shapes') 
+ 
+plt.show()
+\end{lstlisting}
+
+\subsection*{\textit{ENHANCED PROGRAM (BETTER PROGRAM)}}
+\begin{lstlisting}[style=pythonstyle]
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import numpy as np
+
+def draw_styled_geometric_shapes():
+    \"\"\"Renders styled geometric shapes with legend using Matplotlib patches.\"\"\"
+    fig, ax = plt.subplots(figsize=(7, 7))
+
+    # Add shapes
+    rect = patches.Rectangle((0.15, 0.45), 0.35, 0.3, color='#1F77B4', alpha=0.6, label='Rectangle')
+    circ = patches.Circle((0.75, 0.25), 0.15, color='#2CA02C', alpha=0.6, label='Circle')
+    tri_pts = np.array([[0.55, 0.75], [0.85, 0.75], [0.70, 0.95]])
+    poly = patches.Polygon(tri_pts, closed=True, color='#D62728', alpha=0.6, label='Triangle')
+
+    ax.add_patch(rect)
+    ax.add_patch(circ)
+    ax.add_patch(poly)
+
+    # Plot styling
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_aspect('equal')
+    ax.grid(True, linestyle='--', alpha=0.5)
+    ax.set_xlabel('X Coordinate', fontsize=11, fontweight='bold')
+    ax.set_ylabel('Y Coordinate', fontsize=11, fontweight='bold')
+    ax.set_title('Geometric Shapes Visualization', fontsize=14, fontweight='bold', pad=15)
+    ax.legend(loc='upper left')
+
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == "__main__":
+    draw_styled_geometric_shapes()
+\end{lstlisting}
+
+\subsection*{\textit{SAMPLE OUTPUT}}
+\begin{tcolorbox}[colback=black!85,colframe=navyblue,title=\textbf{Terminal Output},coltitle=white,fonttitle=\bfseries\small]
+\small\ttfamily\color{green!30!white}
+[Plot Window Displayed: Rendered Blue Rectangle, Green Circle, and Red Triangle shapes on grid axes]
+\end{tcolorbox}
+
+\subsection*{\textit{RESULT}}
+The Matplotlib geometric shape rendering program was successfully executed and visualized.
+
+\newpage
+
+\end{document}
